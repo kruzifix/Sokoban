@@ -5,7 +5,7 @@ namespace SokobanContentPipeline
 {
     [Serializable]
     [XmlRoot("map")]
-    public class TiledMap
+    public class TiledMapFile
     {
         [XmlAttribute("width")]
         public int Width { get; set; }
