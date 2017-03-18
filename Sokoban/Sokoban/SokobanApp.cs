@@ -10,6 +10,8 @@ namespace Sokoban
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
+        TiledMap map;
         
         public SokobanApp()
         {
@@ -26,9 +28,7 @@ namespace Sokoban
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
             
-            TiledMap map = Content.Load<TiledMap>("sokoban");
-
-            Console.WriteLine("Map Width: {0}", map.Width);
+            map = Content.Load<TiledMap>("sokoban");
         }
 
         protected override void UnloadContent()
@@ -47,7 +47,9 @@ namespace Sokoban
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            
+
+            map.Draw(spriteBatch);
+
             base.Draw(gameTime);
         }
     }
