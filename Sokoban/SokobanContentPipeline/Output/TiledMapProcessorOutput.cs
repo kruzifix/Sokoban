@@ -9,7 +9,7 @@ namespace SokobanContentPipeline
         public int TileWidth { get; set; }
         public int TileHeight { get; set; }
 
-        public string TileSetPath { get; set; }
+        public TiledMapTilesetOutput Tileset { get; set; }
 
         public List<TiledMapLayerOutput> Layers { get; private set; }
 

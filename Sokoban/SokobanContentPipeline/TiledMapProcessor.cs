@@ -18,14 +18,24 @@ namespace SokobanContentPipeline
 
                 context.Logger.LogMessage("Tileset Name: {0}", input.TileSet.Name);
                 context.Logger.LogMessage("Layer Count: {0}", input.Layers.Count);
-                
+
+                var tileset = new TiledMapTilesetOutput()
+                {
+                    Name = input.TileSet.Name,
+                    TileWidth = input.TileSet.TileWidth,
+                    TileHeight = input.TileSet.TileHeight,
+                    TileCount = input.TileSet.TileCount,
+                    Columns = input.TileSet.Columns,
+                    TilesetPath = input.TileSet.Image.Source.Split('.')[0]
+                };
+
                 var output = new TiledMapProcessorOutput()
                 {
                     Width = input.Width,
                     Height = input.Height,
                     TileWidth = input.TileWidth,
                     TileHeight = input.TileHeight,
-                    TileSetPath = input.TileSet.Image.Source.Split('.')[0]
+                    Tileset = tileset
                 };
                 
                 foreach (var layerData in input.Layers)

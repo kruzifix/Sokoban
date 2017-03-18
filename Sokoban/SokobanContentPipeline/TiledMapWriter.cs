@@ -18,8 +18,14 @@ namespace SokobanContentPipeline
             output.Write(value.TileWidth);
             output.Write(value.TileHeight);
 
-            output.Write(value.TileSetPath);
-
+            // --- Tileset ---
+            output.Write(value.Tileset.Name);
+            output.Write(value.Tileset.TileWidth);
+            output.Write(value.Tileset.TileHeight);
+            output.Write(value.Tileset.TileCount);
+            output.Write(value.Tileset.Columns);
+            output.Write(value.Tileset.TilesetPath);
+            
             // --- Layers ---
             output.Write(value.Layers.Count);
             foreach (var layer in value.Layers)
