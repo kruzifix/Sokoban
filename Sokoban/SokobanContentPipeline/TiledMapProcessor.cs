@@ -1,6 +1,10 @@
 ﻿using System;
 using Microsoft.Xna.Framework.Content.Pipeline;
 
+/*
+ * Reference: http://dylanwilson.net/creating-custom-content-importers-for-the-monogame-pipeline
+ */
+
 namespace SokobanContentPipeline
 {
     [ContentProcessor(DisplayName = "TiledMap Processor - Sokoban")]

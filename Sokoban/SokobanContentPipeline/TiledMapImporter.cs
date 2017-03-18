@@ -2,6 +2,10 @@
 using System.Xml.Serialization;
 using Microsoft.Xna.Framework.Content.Pipeline;
 
+/*
+ * Reference: http://dylanwilson.net/creating-custom-content-importers-for-the-monogame-pipeline
+ */
+
 namespace SokobanContentPipeline
 {
     [ContentImporter(".tmx", DefaultProcessor = "TiledMapProcessor", DisplayName = "TiledMap Importer - Sokoban")]
