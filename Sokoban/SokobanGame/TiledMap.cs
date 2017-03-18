@@ -9,21 +9,18 @@ namespace SokobanGame
         public int Height { get; private set; }
         public int TileWidth { get; private set; }
         public int TileHeight { get; private set; }
-        
-        private Texture2D tilesetTexture;
 
-        public Texture2D TilesetTexture { get { return tilesetTexture; } }
-        
+        public TiledTileset Tileset { get; private set; }
         private List<TiledLayer> layers;
         
-        public TiledMap(int width, int height, int tileWidth, int tileHeight, Texture2D tilesetTexture)
+        public TiledMap(int width, int height, int tileWidth, int tileHeight, TiledTileset tileset)
         {
             Width = width;
             Height = height;
             TileWidth = tileWidth;
             TileHeight = tileHeight;
-            
-            this.tilesetTexture = tilesetTexture;
+
+            Tileset = tileset;
             layers = new List<TiledLayer>();
         }
 
