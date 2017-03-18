@@ -13,7 +13,7 @@ namespace SokobanGame
         private Texture2D tilesetTexture;
 
         public Texture2D TilesetTexture { get { return tilesetTexture; } }
-
+        
         private List<TiledLayer> layers;
         
         public TiledMap(int width, int height, int tileWidth, int tileHeight, Texture2D tilesetTexture)
@@ -22,7 +22,7 @@ namespace SokobanGame
             Height = height;
             TileWidth = tileWidth;
             TileHeight = tileHeight;
-
+            
             this.tilesetTexture = tilesetTexture;
             layers = new List<TiledLayer>();
         }
@@ -30,6 +30,14 @@ namespace SokobanGame
         public void AddLayer(TiledLayer layer)
         {
             layers.Add(layer);
+        }
+
+        public void Draw(SpriteBatch batch)
+        {
+            foreach (var layer in layers)
+            {
+                layer.Draw(batch);
+            }
         }
     }
 }
