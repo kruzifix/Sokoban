@@ -1,6 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using SokobanGame;
 
 namespace Sokoban
 {
@@ -8,7 +10,7 @@ namespace Sokoban
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
+        
         public SokobanApp()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -23,6 +25,10 @@ namespace Sokoban
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            
+            TiledMap map = Content.Load<TiledMap>("sokoban");
+
+            Console.WriteLine("Map Width: {0}", map.Width);
         }
 
         protected override void UnloadContent()

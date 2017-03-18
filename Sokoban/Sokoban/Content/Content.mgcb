@@ -10,6 +10,12 @@
 
 #-------------------------------- References --------------------------------#
 
+/reference:..\..\SokobanContentPipeline\bin\Debug\SokobanContentPipeline.dll
 
 #---------------------------------- Content ---------------------------------#
+
+#begin sokoban.tmx
+/importer:
+/processor:
+/build:sokoban.tmx
 
