@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace SokobanGame
@@ -22,6 +23,12 @@ namespace SokobanGame
 
             Tileset = tileset;
             layers = new List<TiledLayer>();
+        }
+
+        public void SetTileSize(int tileWidth, int tileHeight)
+        {
+            TileWidth = tileWidth;
+            TileHeight = tileHeight;
         }
 
         public void AddLayer(TiledLayer layer)

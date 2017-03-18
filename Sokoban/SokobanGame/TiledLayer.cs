@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace SokobanGame
@@ -40,7 +41,18 @@ namespace SokobanGame
         public void Draw(SpriteBatch batch)
         {
             batch.Begin();
-
+            for (int y = 0; y < Height; y++)
+            {
+                for (int x = 0; x < Width; x++)
+                {
+                    int dat = Data[x, y];
+                    if (dat > 0)
+                    {
+                        Rectangle dest = new Rectangle(x * map.TileWidth, y * map.TileHeight, map.TileWidth, map.TileHeight);
+                        batch.Draw(map.Tileset.Texture, dest, map.Tileset.GetSourceRect(dat - 1), Color.White);
+                    }
+                }
+            }
             batch.End();
         }
     }
