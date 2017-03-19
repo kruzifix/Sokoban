@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -6,17 +7,23 @@ namespace SokobanGame
 {
     public class SokobanGame : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        public static SokobanGame Instance { get; private set; }
+
+        public GraphicsDeviceManager Graphics { get; private set; }
+        public SpriteBatch SpriteBatch { get; private set; }
 
         TiledMap map;
         
         public SokobanGame()
         {
-            graphics = new GraphicsDeviceManager(this);
-            graphics.PreferredBackBufferWidth = 720;
-            graphics.PreferredBackBufferHeight = 720;
-            graphics.ApplyChanges();
+            if (Instance != null)
+                throw new ApplicationException("SokobanGame.SokobanGame(): Only one instance of SokobanGame is allowed!");
+            Instance = this;
+
+            Graphics = new GraphicsDeviceManager(this);
+            Graphics.PreferredBackBufferWidth = 720;
+            Graphics.PreferredBackBufferHeight = 720;
+            Graphics.ApplyChanges();
 
             Content.RootDirectory = "Content";
         }
@@ -30,7 +37,7 @@ namespace SokobanGame
 
         protected override void LoadContent()
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            SpriteBatch = new SpriteBatch(GraphicsDevice);
             
             map = Content.Load<TiledMap>("sokoban");
             map.SetTileSize(64, 64);
@@ -53,7 +60,7 @@ namespace SokobanGame
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            map.Draw(spriteBatch);
+            map.Draw(SpriteBatch);
 
             base.Draw(gameTime);
         }
