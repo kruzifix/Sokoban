@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using SokobanGame.Screen;
 using SokobanGame.Tiled;
 
 namespace SokobanGame
@@ -14,9 +15,7 @@ namespace SokobanGame
         public SpriteBatch SpriteBatch { get; private set; }
 
         public SpriteFont DebugFont { get; private set; }
-
-        TiledMap map;
-        
+                
         public SokobanGame()
         {
             if (Instance != null)
@@ -34,6 +33,8 @@ namespace SokobanGame
         protected override void Initialize()
         {
             IsMouseVisible = true;
+
+            ScreenManager.CreateScreenManager(new MenuScreen());
             
             base.Initialize();
         }
@@ -43,9 +44,6 @@ namespace SokobanGame
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 
             DebugFont = Content.Load<SpriteFont>("debug_font");
-
-            map = Content.Load<TiledMap>("sokoban");
-            map.SetTileSize(64, 64);
         }
 
         protected override void UnloadContent()
@@ -57,6 +55,8 @@ namespace SokobanGame
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+
+            ScreenManager.Instance.Update(gameTime);
             
             base.Update(gameTime);
         }
@@ -65,7 +65,7 @@ namespace SokobanGame
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            map.Draw(SpriteBatch);
+            ScreenManager.Instance.Draw(gameTime);
 
             base.Draw(gameTime);
         }
