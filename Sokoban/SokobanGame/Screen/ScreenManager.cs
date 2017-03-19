@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
+/*
+ * Reference: https://blogs.msdn.microsoft.com/etayrien/2006/12/12/basic-game-engine-structure/
+ */
+
 namespace SokobanGame.Screen
 {
     public class ScreenManager
