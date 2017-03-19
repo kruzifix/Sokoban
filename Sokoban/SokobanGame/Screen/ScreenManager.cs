@@ -26,7 +26,17 @@ namespace SokobanGame.Screen
             activeScreens = new Stack<Screen>();
             activeScreens.Push(startupScreen);
         }
-        
+
+        public Screen RemoveScreen()
+        {
+            return activeScreens.Pop();
+        }
+
+        public void AddScreen(Screen screen)
+        {
+            activeScreens.Push(screen);
+        }
+
         public void Update(GameTime gameTime)
         {
             foreach (var screen in activeScreens)

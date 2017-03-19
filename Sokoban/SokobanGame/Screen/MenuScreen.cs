@@ -1,4 +1,6 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace SokobanGame.Screen
 {
@@ -18,7 +20,18 @@ namespace SokobanGame.Screen
 
         public override void Update(GameTime gameTime)
         {
+            Console.WriteLine("MenuScreen.Update()");
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            {
+                SokobanGame.Instance.Exit();
+                return;
+            }
             
+            if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+            {
+                ScreenManager.Instance.AddScreen(new LevelSelectScreen());
+            }
         }
     }
 }
