@@ -13,12 +13,12 @@ namespace SokobanGame.Screen
 
         public override void Draw(GameTime gameTime)
         {
-            throw new NotImplementedException();
+            SokobanGame.Instance.DrawDebugMessage("MenuScreen", new Vector2(10, 10), Color.Black);
         }
 
         public override void Update(GameTime gameTime)
         {
-            throw new NotImplementedException();
+            
         }
     }
 }
