@@ -2,12 +2,12 @@
 
 namespace SokobanGame.Screen
 {
-    public abstract class GameScreen
+    public abstract class Screen
     {
         public bool BlocksDraw { get; private set; }
         public bool BlocksUpdate { get; private set; }
 
-        public GameScreen(bool blocksDraw, bool blocksUpdate)
+        public Screen(bool blocksDraw, bool blocksUpdate)
         {
             BlocksDraw = blocksDraw;
             BlocksUpdate = blocksUpdate;

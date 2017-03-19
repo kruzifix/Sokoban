@@ -7,7 +7,7 @@ namespace SokobanGame.Screen
     {
         private static ScreenManager instance = null;
 
-        public static ScreenManager CreateScreenManager(Game game, GameScreen startupScreen)
+        public static ScreenManager CreateScreenManager(Game game, Screen startupScreen)
         {
             if (instance != null)
             {
@@ -19,13 +19,13 @@ namespace SokobanGame.Screen
         public static ScreenManager Instance { get { return instance; } }
 
         private Game game;
-        private Stack<GameScreen> activeScreens;
+        private Stack<Screen> activeScreens;
 
-        private ScreenManager(Game game, GameScreen startupScreen)
+        private ScreenManager(Game game, Screen startupScreen)
         {
             this.game = game;
 
-            activeScreens = new Stack<GameScreen>();
+            activeScreens = new Stack<Screen>();
             activeScreens.Push(startupScreen);
         }
         
@@ -41,7 +41,7 @@ namespace SokobanGame.Screen
 
         public void Draw(GameTime gameTime)
         {
-            List<GameScreen> screensToDraw = new List<GameScreen>();
+            List<Screen> screensToDraw = new List<Screen>();
             foreach (var screen in activeScreens)
             {
                 screensToDraw.Add(screen);
