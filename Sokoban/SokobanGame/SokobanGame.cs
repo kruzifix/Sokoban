@@ -13,6 +13,8 @@ namespace SokobanGame
         public GraphicsDeviceManager Graphics { get; private set; }
         public SpriteBatch SpriteBatch { get; private set; }
 
+        public SpriteFont DebugFont { get; private set; }
+
         TiledMap map;
         
         public SokobanGame()
@@ -39,7 +41,9 @@ namespace SokobanGame
         protected override void LoadContent()
         {
             SpriteBatch = new SpriteBatch(GraphicsDevice);
-            
+
+            DebugFont = Content.Load<SpriteFont>("debug_font");
+
             map = Content.Load<TiledMap>("sokoban");
             map.SetTileSize(64, 64);
         }
@@ -64,6 +68,13 @@ namespace SokobanGame
             map.Draw(SpriteBatch);
 
             base.Draw(gameTime);
+        }
+
+        public void DrawDebugMessage(string message, Vector2 position, Color color)
+        {
+            SpriteBatch.Begin();
+            SpriteBatch.DrawString(DebugFont, message, position, color);
+            SpriteBatch.End();
         }
     }
 }

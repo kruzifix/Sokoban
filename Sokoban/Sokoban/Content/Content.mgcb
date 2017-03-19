@@ -31,3 +31,9 @@
 /processorParam:TextureFormat=Color
 /build:sokoban_tilesheet.png
 
+#begin debug_font.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:debug_font.spritefont
+
