@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Content.Pipeline;
 using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Compiler;
-using SokobanGame;
+using SokobanGame.Tiled;
 
 /*
  * Reference: http://dylanwilson.net/creating-custom-content-importers-for-the-monogame-pipeline

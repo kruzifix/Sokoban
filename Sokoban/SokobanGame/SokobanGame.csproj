@@ -43,9 +43,9 @@
     <Compile Include="Screen\GameScreen.cs" />
     <Compile Include="Screen\ScreenManager.cs" />
     <Compile Include="SokobanGame.cs" />
-    <Compile Include="TiledLayer.cs" />
-    <Compile Include="TiledMap.cs" />
-    <Compile Include="TiledTileset.cs" />
+    <Compile Include="Tiled\TiledLayer.cs" />
+    <Compile Include="Tiled\TiledMap.cs" />
+    <Compile Include="Tiled\TiledTileset.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

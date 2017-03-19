@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using SokobanGame;
+using SokobanGame.Tiled;
 
 namespace Sokoban
 {
