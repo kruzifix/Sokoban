@@ -28,5 +28,31 @@ namespace SokobanGame.Screen
             activeScreens = new Stack<GameScreen>();
             activeScreens.Push(startupScreen);
         }
+        
+        public void Update(GameTime gameTime)
+        {
+            foreach (var screen in activeScreens)
+            {
+                screen.Update(gameTime);
+                if (screen.BlocksUpdate)
+                    break;
+            }
+        }
+
+        public void Draw(GameTime gameTime)
+        {
+            List<GameScreen> screensToDraw = new List<GameScreen>();
+            foreach (var screen in activeScreens)
+            {
+                screensToDraw.Add(screen);
+                if (screen.BlocksDraw)
+                    break;
+            }
+
+            for (int i = screensToDraw.Count - 1; i >= 0; i--)
+            {
+                screensToDraw[i].Draw(gameTime);
+            }
+        }
     }
 }
