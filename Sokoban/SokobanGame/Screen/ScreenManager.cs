@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 
 namespace SokobanGame.Screen
 {
@@ -18,10 +19,14 @@ namespace SokobanGame.Screen
         public static ScreenManager Instance { get { return instance; } }
 
         private Game game;
+        private Stack<GameScreen> activeScreens;
 
         private ScreenManager(Game game, GameScreen startupScreen)
         {
             this.game = game;
+
+            activeScreens = new Stack<GameScreen>();
+            activeScreens.Push(startupScreen);
         }
     }
 }
