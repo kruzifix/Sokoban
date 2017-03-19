@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 namespace SokobanGame.Screen
@@ -7,24 +8,21 @@ namespace SokobanGame.Screen
     {
         private static ScreenManager instance = null;
 
-        public static ScreenManager CreateScreenManager(Game game, Screen startupScreen)
+        public static void CreateScreenManager(Screen startupScreen)
         {
             if (instance != null)
             {
-                instance = new ScreenManager(game, startupScreen);
+                throw new ApplicationException("ScreenManager.CreateScreenManager(Screen): Only one instance of ScreenManager is allowed!");
             }
-            return instance;
+            instance = new ScreenManager(startupScreen);
         }
 
         public static ScreenManager Instance { get { return instance; } }
-
-        private Game game;
+        
         private Stack<Screen> activeScreens;
 
-        private ScreenManager(Game game, Screen startupScreen)
+        private ScreenManager(Screen startupScreen)
         {
-            this.game = game;
-
             activeScreens = new Stack<Screen>();
             activeScreens.Push(startupScreen);
         }
