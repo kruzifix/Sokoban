@@ -1,19 +1,17 @@
-﻿using System;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using SokobanGame;
 
-namespace Sokoban
+namespace SokobanGame
 {
-    public class SokobanApp : Game
+    public class SokobanGame : Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
         TiledMap map;
         
-        public SokobanApp()
+        public SokobanGame()
         {
             graphics = new GraphicsDeviceManager(this);
             graphics.PreferredBackBufferWidth = 720;

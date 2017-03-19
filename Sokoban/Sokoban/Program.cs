@@ -8,7 +8,7 @@ namespace Sokoban
         [STAThread]
         static void Main()
         {
-            using (var game = new SokobanApp())
+            using (var game = new SokobanGame.SokobanGame())
             {
                 game.Run();
             }
