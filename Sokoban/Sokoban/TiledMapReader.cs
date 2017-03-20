@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using SokobanGame;
+using SokobanGame.Logic;
 using SokobanGame.Tiled;
 
 namespace Sokoban
@@ -23,12 +25,32 @@ namespace Sokoban
 
             Texture2D tileSetTexture = input.ContentManager.Load<Texture2D>(tsPath);
             var tileset = new TiledTileset(tsName, tsTileWidth, tsTileHeight, tsTileCount, tsColumns, tileSetTexture);
+
+            // --- Room ---
+            IntVec playerPos = new IntVec(input.ReadInt32(), input.ReadInt32());
+            IntVec[] switches = new IntVec[input.ReadInt32()];
+            for (int i = 0; i < switches.Length; i++)
+                switches[i] = new IntVec(input.ReadInt32(), input.ReadInt32());
+            IntVec[] boxes = new IntVec[input.ReadInt32()];
+            for (int i = 0; i < boxes.Length; i++)
+                boxes[i] = new IntVec(input.ReadInt32(), input.ReadInt32());
+
+            int roomWidth = input.ReadInt32();
+            int roomHeight = input.ReadInt32();
+            Room room = new Room(roomWidth, roomHeight, new RoomState(playerPos, switches, boxes));
             
-            var map = new TiledMap(width, height, tileWidth, tileHeight, tileset);
+            for (int j = 0; j < roomHeight; j++)
+            {
+                for (int i = 0; i < roomWidth; i++)
+                {
+                    room.SetWall(i, j, input.ReadInt32());
+                }
+            }
+            
+            var map = new TiledMap(width, height, tileWidth, tileHeight, tileset, room);
 
             // --- Layers ---
             int layerCount = input.ReadInt32();
-
             for (int i = 0; i < layerCount; i++)
             {
                 string name = input.ReadString();
