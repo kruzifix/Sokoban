@@ -30,6 +30,8 @@ namespace SokobanContentPipeline.Output
 
             Tileset.WriteToOutput(output);
 
+            Room.WriteToOutput(output);
+
             output.Write(Layers.Count);
 
             foreach (var layer in Layers)
