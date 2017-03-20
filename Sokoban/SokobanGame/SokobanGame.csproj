@@ -39,6 +39,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets.cs" />
     <Compile Include="InputManager.cs" />
     <Compile Include="IntVec.cs" />
     <Compile Include="Logic\Room.cs" />

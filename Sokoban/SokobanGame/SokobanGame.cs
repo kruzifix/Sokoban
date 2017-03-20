@@ -13,9 +13,7 @@ namespace SokobanGame
 
         public GraphicsDeviceManager Graphics { get; private set; }
         public SpriteBatch SpriteBatch { get; private set; }
-
-        public SpriteFont DebugFont { get; private set; }
-                
+                     
         public SokobanGame()
         {
             if (Instance != null)
@@ -43,7 +41,7 @@ namespace SokobanGame
         {
             SpriteBatch = new SpriteBatch(GraphicsDevice);
 
-            DebugFont = Content.Load<SpriteFont>("debug_font");
+            Assets.LoadAssets(Content);
         }
 
         protected override void UnloadContent()
@@ -72,7 +70,7 @@ namespace SokobanGame
         public void DrawDebugMessage(string message, Vector2 position, Color color)
         {
             SpriteBatch.Begin();
-            SpriteBatch.DrawString(DebugFont, message, position, color);
+            SpriteBatch.DrawString(Assets.DebugFont, message, position, color);
             SpriteBatch.End();
         }
     }
