@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.Xna.Framework.Content.Pipeline;
+using SokobanContentPipeline.Output;
 
 /*
  * Reference: http://dylanwilson.net/creating-custom-content-importers-for-the-monogame-pipeline
@@ -10,6 +11,13 @@ namespace SokobanContentPipeline
     [ContentProcessor(DisplayName = "TiledMap Processor - Sokoban")]
     public class TiledMapProcessor : ContentProcessor<TiledMapFile, TiledMapProcessorOutput>
     {
+        public string ObjectLayerName { get; set; } = "Objects";
+        public string WallLayerName { get; set; } = "Walls";
+
+        public int PlayerId { get; set; } = 72;
+        public int BoxId { get; set; } = 6;
+        public int SwitchId { get; set; } = 24;
+
         public override TiledMapProcessorOutput Process(TiledMapFile input, ContentProcessorContext context)
         {
             try

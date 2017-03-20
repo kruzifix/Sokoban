@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Compiler;
 
-namespace SokobanContentPipeline
+namespace SokobanContentPipeline.Output
 {
     public class TiledMapProcessorOutput
     {
@@ -13,9 +14,28 @@ namespace SokobanContentPipeline
 
         public List<TiledMapLayerOutput> Layers { get; private set; }
 
+        public RoomProcessorOutput Room { get; set; }
+
         public TiledMapProcessorOutput()
         {
             Layers = new List<TiledMapLayerOutput>();
+        }
+
+        public void WriteToOutput(ContentWriter output)
+        {
+            output.Write(Width);
+            output.Write(Height);
+            output.Write(TileWidth);
+            output.Write(TileHeight);
+
+            Tileset.WriteToOutput(output);
+
+            output.Write(Layers.Count);
+
+            foreach (var layer in Layers)
+            {
+                layer.WriteToOutput(output);
+            }
         }
     }
 }

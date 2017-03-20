@@ -1,4 +1,6 @@
-﻿namespace SokobanContentPipeline
+﻿using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Compiler;
+
+namespace SokobanContentPipeline.Output
 {
     public class TiledMapLayerOutput
     {
@@ -16,6 +18,20 @@
             Width = width;
             Height = height;
             Data = new int[width, height];
+        }
+
+        public void WriteToOutput(ContentWriter output)
+        {
+            output.Write(Name);
+            output.Write(Width);
+            output.Write(Height);
+            for (int j = 0; j < Height; j++)
+            {
+                for (int i = 0; i < Width; i++)
+                {
+                    output.Write(Data[i, j]);
+                }
+            }
         }
     }
 }
