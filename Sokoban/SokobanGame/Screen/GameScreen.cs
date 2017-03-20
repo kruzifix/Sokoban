@@ -3,30 +3,26 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SokobanGame.Screen
 {
-    public class MenuScreen : Screen
+    public class GameScreen : Screen
     {
-        public MenuScreen()
+        public GameScreen()
             : base(true, true)
         {
-
+            Assets.TestMap.SetTileSize(64, 64);
         }
 
         public override void Draw(GameTime gameTime)
         {
-            SokobanGame.Instance.DrawDebugMessage("Menu Screen", new Vector2(10, 10), Color.Black);
+            Assets.TestMap.Draw();
+
+            SokobanGame.Instance.DrawDebugMessage("Game Screen", new Vector2(10, 10), Color.Black);
         }
 
         public override void Update(GameTime gameTime)
         {
             if (InputManager.Instance.KeyPress(Keys.Escape))
             {
-                SokobanGame.Instance.Exit();
-                return;
-            }
-            
-            if (InputManager.Instance.KeyPress(Keys.Enter))
-            {
-                ScreenManager.Instance.AddScreen(new GameScreen());
+                ScreenManager.Instance.RemoveScreen();
             }
         }
     }

@@ -45,6 +45,7 @@
     <Compile Include="Logic\Room.cs" />
     <Compile Include="Logic\RoomState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Screen\GameScreen.cs" />
     <Compile Include="Screen\LevelSelectScreen.cs" />
     <Compile Include="Screen\MenuScreen.cs" />
     <Compile Include="Screen\Screen.cs" />
