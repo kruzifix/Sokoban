@@ -13,11 +13,15 @@ namespace SokobanGame.Logic
         public RoomState CurrentState { get; private set; }
         private Stack<RoomState> history;
 
-        public Room(int width, int height)
+        public Room(int width, int height, RoomState initialState)
         {
             Width = width;
             Height = height;
             walls = new int[Width, Height];
+
+            this.initialState = initialState.Copy();
+            history = new Stack<RoomState>();
+            Reset();
         }
 
         public void SetWall(int x, int y, int v)
