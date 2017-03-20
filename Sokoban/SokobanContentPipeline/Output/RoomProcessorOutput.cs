@@ -19,6 +19,8 @@ namespace SokobanContentPipeline.Output
 
         public void WriteToOutput(ContentWriter output)
         {
+            InitialState.WriteToOutput(output);
+
             output.Write(Width);
             output.Write(Height);
             for (int j = 0; j < Height; j++)
@@ -28,8 +30,6 @@ namespace SokobanContentPipeline.Output
                     output.Write(Walls[i, j]);
                 }
             }
-
-            InitialState.WriteToOutput(output);
         }
     }
 }
