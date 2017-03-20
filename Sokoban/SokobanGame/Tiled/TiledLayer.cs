@@ -5,6 +5,8 @@ namespace SokobanGame.Tiled
 {
     public class TiledLayer
     {
+        private SpriteBatch sb;
+
         private TiledMap map;
 
         public string Name { get; private set; }
@@ -15,6 +17,8 @@ namespace SokobanGame.Tiled
         
         public TiledLayer(TiledMap map, string name, int width, int height)
         {
+            sb = SokobanGame.Instance.SpriteBatch;
+
             this.map = map;
             Name = name;
             Width = width;
@@ -33,9 +37,11 @@ namespace SokobanGame.Tiled
             Data[x, y] = value;
         }
 
-        public void Draw(SpriteBatch batch)
+        public void Draw()
         {
-            batch.Begin();
+            Rectangle dest = new Rectangle(0, 0, map.TileWidth, map.TileHeight);
+
+            sb.Begin();
             for (int y = 0; y < Height; y++)
             {
                 for (int x = 0; x < Width; x++)
@@ -43,12 +49,13 @@ namespace SokobanGame.Tiled
                     int dat = Data[x, y];
                     if (dat > 0)
                     {
-                        Rectangle dest = new Rectangle(x * map.TileWidth, y * map.TileHeight, map.TileWidth, map.TileHeight);
-                        batch.Draw(map.Tileset.Texture, dest, map.Tileset.GetSourceRect(dat - 1), Color.White);
+                        dest.X = x * map.TileWidth;
+                        dest.Y = y * map.TileHeight;
+                        sb.Draw(map.Tileset.Texture, dest, map.Tileset.GetSourceRect(dat - 1), Color.White);
                     }
                 }
             }
-            batch.End();
+            sb.End();
         }
     }
 }

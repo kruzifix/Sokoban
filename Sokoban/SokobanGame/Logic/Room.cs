@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace SokobanGame.Logic
 {
@@ -12,6 +13,8 @@ namespace SokobanGame.Logic
         private RoomState initialState;
         public RoomState CurrentState { get; private set; }
         private Stack<RoomState> history;
+
+        public int Moves { get { return history.Count; } }
 
         public Room(int width, int height, RoomState initialState)
         {
@@ -29,6 +32,16 @@ namespace SokobanGame.Logic
             walls[x, y] = v;
         }
 
+        public int GetWall(int x, int y)
+        {
+            return walls[x, y];
+        }
+
+        public int GetWall(IntVec v)
+        {
+            return GetWall(v.X, v.Y);
+        }
+
         public void Reset()
         {
             history.Clear();
@@ -39,6 +52,15 @@ namespace SokobanGame.Logic
         {
             if (history.Count > 0)
                 CurrentState = history.Pop();
+        }
+
+        public void Update(IntVec dir)
+        {
+            IntVec pos = CurrentState.PlayerPosition + dir;
+            if (GetWall(pos) > 0)
+                return;
+            history.Push(CurrentState.Copy());
+            CurrentState.PlayerPosition = pos;
         }
     }
 }

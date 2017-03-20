@@ -2,9 +2,9 @@
 {
     public class RoomState
     {
-        public IntVec PlayerPosition { get; private set; }
-        public IntVec[] Switches { get; private set; }
-        public IntVec[] Boxes { get; private set; }
+        public IntVec PlayerPosition { get; set; }
+        public IntVec[] Switches { get; set; }
+        public IntVec[] Boxes { get; set; }
 
         public RoomState(IntVec playerPosition, IntVec[] switches, IntVec[] boxes)
         {
