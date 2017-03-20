@@ -20,7 +20,7 @@ namespace SokobanGame.Screen
         {
             Console.WriteLine("LevelSelectScreen.Update()");
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (InputManager.Instance.KeyPress(Keys.Escape))
             {
                 ScreenManager.Instance.RemoveScreen();
             }

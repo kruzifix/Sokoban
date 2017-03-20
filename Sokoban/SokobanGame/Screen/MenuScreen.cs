@@ -22,13 +22,13 @@ namespace SokobanGame.Screen
         {
             Console.WriteLine("MenuScreen.Update()");
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (InputManager.Instance.KeyPress(Keys.Escape))
             {
                 SokobanGame.Instance.Exit();
                 return;
             }
             
-            if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+            if (InputManager.Instance.KeyPress(Keys.Enter))
             {
                 ScreenManager.Instance.AddScreen(new LevelSelectScreen());
             }

@@ -53,8 +53,7 @@ namespace SokobanGame
         
         protected override void Update(GameTime gameTime)
         {
-            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            //    Exit();
+            InputManager.Instance.Update();
 
             ScreenManager.Instance.Update(gameTime);
             
