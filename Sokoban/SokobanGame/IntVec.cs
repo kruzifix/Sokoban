@@ -1,4 +1,7 @@
-﻿namespace SokobanGame
+﻿using System;
+using Microsoft.Xna.Framework;
+
+namespace SokobanGame
 {
     public struct IntVec
     {
@@ -23,7 +26,12 @@
         {
             return string.Format("({0}, {1})", X, Y);
         }
-        
+
+        public Vector2 ToVector2()
+        {
+            return new Vector2(X, Y);
+        }
+
         public override bool Equals(object obj)
         {
             if (obj == null)
@@ -62,7 +70,7 @@
         {
             return !p.Equals(v);
         }
-
+        
         #endregion
     }
 }
