@@ -40,7 +40,7 @@
             return true;
         }
 
-        public int IsBoxAt(IntVec pos)
+        public int BoxAt(IntVec pos)
         {
             for (int i = 0; i < Boxes.Length; i++)
             {

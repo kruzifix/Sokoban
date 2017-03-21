@@ -60,7 +60,7 @@ namespace SokobanGame.Logic
             if (GetWall(pos) > 0)
                 return;
 
-            int box = CurrentState.IsBoxAt(pos);
+            int box = CurrentState.BoxAt(pos);
             if (box >= 0)
             {
                 if (!TryMoveBox(box, dir))
@@ -76,7 +76,7 @@ namespace SokobanGame.Logic
             IntVec pos = CurrentState.Boxes[box] + dir;
             if (GetWall(pos) > 0)
                 return false;
-            if (CurrentState.IsBoxAt(pos) >= 0)
+            if (CurrentState.BoxAt(pos) >= 0)
                 return false;
             CurrentState.Boxes[box] = pos;
             return true;
