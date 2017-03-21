@@ -8,6 +8,8 @@ namespace SokobanGame.Screen
     {
         TiledMap map;
 
+        bool debugMode = false;
+
         public GameScreen(TiledMap map)
             : base(true, true)
         {
@@ -19,6 +21,9 @@ namespace SokobanGame.Screen
         {
             map.Draw();
 
+            if (debugMode)
+                map.DrawDebug();
+
             SokobanGame.Instance.DrawDebugMessage("Game Screen", new Vector2(10, 10), Color.Black);
         }
 
@@ -27,6 +32,11 @@ namespace SokobanGame.Screen
             if (InputManager.Instance.KeyPress(Keys.Escape))
             {
                 ScreenManager.Instance.RemoveScreen();
+            }
+
+            if (InputManager.Instance.KeyPress(Keys.F1))
+            {
+                debugMode = !debugMode;
             }
 
             if (InputManager.Instance.KeyPress(Keys.R))

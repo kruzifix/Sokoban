@@ -55,6 +55,30 @@ namespace SokobanGame.Tiled
             DrawRoomState(Room.CurrentState);
         }
 
+        public void DrawDebug()
+        {
+            sb.Begin();
+
+            Rectangle dest = new Rectangle(0, 0, TileWidth, TileHeight);
+            // draw walls for debugging
+            for (int i = 0; i < Room.Width; i++)
+            {
+                for (int j = 0; j < Room.Height; j++)
+                {
+                    if (Room.GetWall(i, j) == 0)
+                        continue;
+
+                    dest.X = i * TileWidth;
+                    dest.Y = j * TileHeight;
+                    sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(41), Color.White);
+                }
+            }
+
+
+
+            sb.End();
+        }
+
         private void DrawRoomState(RoomState rs)
         {
             sb.Begin();
@@ -78,23 +102,7 @@ namespace SokobanGame.Tiled
             dest.X = rs.PlayerPosition.X * TileWidth;
             dest.Y = rs.PlayerPosition.Y * TileHeight;
             sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(65), Color.White);
-
-            /*
-            // draw walls for debugging
-            for (int i = 0; i < Room.Width; i++)
-            {
-                for (int j = 0; j < Room.Height; j++)
-                {
-                    if (Room.GetWall(i, j) == 0)
-                        continue;
-
-                    dest.X = i * TileWidth;
-                    dest.Y = j * TileHeight;
-                    sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(41), Color.White);
-                }
-            }
-            */
-
+            
             sb.DrawString(Assets.DebugFont, string.Format("History: {0}", Room.Moves), new Vector2(200, 10), Color.Black);
 
             sb.End();
