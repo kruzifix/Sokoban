@@ -39,5 +39,15 @@
 
             return true;
         }
+
+        public int IsBoxAt(IntVec pos)
+        {
+            for (int i = 0; i < Boxes.Length; i++)
+            {
+                if (Boxes[i] == pos)
+                    return i;
+            }
+            return -1;
+        }
     }
 }

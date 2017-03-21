@@ -73,9 +73,7 @@ namespace SokobanGame.Tiled
                     sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(41), Color.White);
                 }
             }
-
-
-
+            
             sb.End();
         }
 
