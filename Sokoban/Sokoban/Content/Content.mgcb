@@ -52,3 +52,13 @@
 /processorParam:SwitchId=24
 /build:Levels/02_second_level.tmx
 
+#begin Levels/03_third_level.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/processorParam:ObjectLayerName=Objects
+/processorParam:WallLayerName=Walls
+/processorParam:PlayerId=72
+/processorParam:BoxId=6
+/processorParam:SwitchId=24
+/build:Levels/03_third_level.tmx
+
