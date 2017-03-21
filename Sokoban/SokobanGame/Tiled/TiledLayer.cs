@@ -37,7 +37,7 @@ namespace SokobanGame.Tiled
             Data[x, y] = value;
         }
 
-        public void Draw()
+        public void Draw(Vector2 offset)
         {
             Rectangle dest = new Rectangle(0, 0, map.TileWidth, map.TileHeight);
 
@@ -49,8 +49,8 @@ namespace SokobanGame.Tiled
                     int dat = Data[x, y];
                     if (dat > 0)
                     {
-                        dest.X = x * map.TileWidth;
-                        dest.Y = y * map.TileHeight;
+                        dest.X = x * map.TileWidth + (int)offset.X;
+                        dest.Y = y * map.TileHeight + (int)offset.Y;
                         sb.Draw(map.Tileset.Texture, dest, map.Tileset.GetSourceRect(dat - 1), Color.White);
                     }
                 }

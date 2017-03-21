@@ -46,13 +46,13 @@ namespace SokobanGame.Tiled
             layers.Add(layer);
         }
 
-        public void Draw()
+        public void Draw(Vector2 offset)
         {
             foreach (var layer in layers)
             {
-                layer.Draw();
+                layer.Draw(offset);
             }
-            DrawRoomState(Room.CurrentState);
+            DrawRoomState(Room.CurrentState, offset);
         }
 
         public void DrawDebug()
@@ -77,7 +77,7 @@ namespace SokobanGame.Tiled
             sb.End();
         }
 
-        private void DrawRoomState(RoomState rs)
+        private void DrawRoomState(RoomState rs, Vector2 offset)
         {
             sb.Begin();
 
@@ -85,20 +85,20 @@ namespace SokobanGame.Tiled
 
             for (int i = 0; i < rs.Switches.Length; i++)
             {
-                dest.X = rs.Switches[i].X * TileWidth;
-                dest.Y = rs.Switches[i].Y * TileHeight;
+                dest.X = rs.Switches[i].X * TileWidth + (int)offset.X;
+                dest.Y = rs.Switches[i].Y * TileHeight + (int)offset.Y;
                 sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(24), Color.White);
             }
 
             for (int i = 0; i < rs.Boxes.Length; i++)
             {
-                dest.X = rs.Boxes[i].X * TileWidth;
-                dest.Y = rs.Boxes[i].Y * TileHeight;
+                dest.X = rs.Boxes[i].X * TileWidth + (int)offset.X;
+                dest.Y = rs.Boxes[i].Y * TileHeight + (int)offset.Y;
                 sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(6), Color.White);
             }
 
-            dest.X = rs.PlayerPosition.X * TileWidth;
-            dest.Y = rs.PlayerPosition.Y * TileHeight;
+            dest.X = rs.PlayerPosition.X * TileWidth + (int)offset.X;
+            dest.Y = rs.PlayerPosition.Y * TileHeight + (int)offset.Y;
             sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(65), Color.White);
             
             sb.DrawString(Assets.DebugFont, string.Format("History: {0}", Room.Moves), new Vector2(200, 10), Color.Black);
