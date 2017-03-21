@@ -26,7 +26,7 @@ namespace SokobanGame.Screen
             
             if (InputManager.Instance.KeyPress(Keys.Enter))
             {
-                ScreenManager.Instance.AddScreen(new GameScreen(Assets.TestMap));
+                ScreenManager.Instance.AddScreen(new GameScreen(Assets.Levels[1]));
             }
         }
     }

@@ -14,6 +14,9 @@ namespace SokobanGame.Screen
             : base(true, true)
         {
             this.map = map;
+            this.map.Room.Reset();
+
+            // TODO: calc tile size from screen size!
             map.SetTileSize(64, 64);
         }
 
