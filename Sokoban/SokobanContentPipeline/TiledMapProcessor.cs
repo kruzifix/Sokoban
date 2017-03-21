@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Microsoft.Xna.Framework.Content.Pipeline;
 using SokobanContentPipeline.Output;
 using SokobanGame;
@@ -29,6 +30,11 @@ namespace SokobanContentPipeline
                 context.Logger.LogMessage("Tileset Name: {0}", input.TileSet.Name);
                 context.Logger.LogMessage("Layer Count: {0}", input.Layers.Count);
 
+                int lastDot = input.TileSet.Image.Source.LastIndexOf('.');
+
+                // HACK!!!
+                string tilesetPath = input.TileSet.Image.Source.Substring(0, lastDot).Replace("../", "");
+
                 var tileset = new TiledMapTilesetOutput()
                 {
                     Name = input.TileSet.Name,
@@ -36,7 +42,7 @@ namespace SokobanContentPipeline
                     TileHeight = input.TileSet.TileHeight,
                     TileCount = input.TileSet.TileCount,
                     Columns = input.TileSet.Columns,
-                    TilesetPath = input.TileSet.Image.Source.Split('.')[0]
+                    TilesetPath = tilesetPath
                 };
 
                 var output = new TiledMapProcessorOutput()
