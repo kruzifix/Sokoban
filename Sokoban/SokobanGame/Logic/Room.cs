@@ -56,6 +56,8 @@ namespace SokobanGame.Logic
 
         public void Update(IntVec dir)
         {
+            var oldState = CurrentState.Copy();
+
             IntVec pos = CurrentState.PlayerPosition + dir;
             if (GetWall(pos) > 0)
                 return;
@@ -67,8 +69,9 @@ namespace SokobanGame.Logic
                     return;
             }
             
-            history.Push(CurrentState.Copy());
             CurrentState.PlayerPosition = pos;
+
+            history.Push(oldState);
         }
 
         private bool TryMoveBox(int box, IntVec dir)
