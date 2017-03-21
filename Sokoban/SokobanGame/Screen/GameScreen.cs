@@ -36,6 +36,8 @@ namespace SokobanGame.Screen
                 map.DrawDebug();
 
             SokobanGame.Instance.DrawDebugMessage("Game Screen", new Vector2(10, 10), Color.Black);
+
+            SokobanGame.Instance.DrawDebugMessage(string.Format("History: {0}", map.Room.Moves), new Vector2(200, 10), Color.Black);
             SokobanGame.Instance.DrawDebugMessage(string.Format("Solved: {0}", map.Room.CurrentState.IsSolved()), new Vector2(200, 30), Color.Black);
         }
 

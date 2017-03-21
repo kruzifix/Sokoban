@@ -109,8 +109,6 @@ namespace SokobanGame.Tiled
             dest.Y = rs.PlayerPosition.Y * TileHeight + offset.Y;
             sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(65), Color.White);
             
-            sb.DrawString(Assets.DebugFont, string.Format("History: {0}", Room.Moves), new Vector2(200, 10), Color.Black);
-
             sb.End();
         }
     }
