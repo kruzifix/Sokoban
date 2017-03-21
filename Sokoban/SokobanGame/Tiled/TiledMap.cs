@@ -15,6 +15,8 @@ namespace SokobanGame.Tiled
         public int TileWidth { get; private set; }
         public int TileHeight { get; private set; }
 
+        public IntVec RenderOffset { get; set; }
+
         public TiledTileset Tileset { get; private set; }
         private List<TiledLayer> layers;
 
@@ -30,6 +32,8 @@ namespace SokobanGame.Tiled
             Height = height;
             TileWidth = tileWidth;
             TileHeight = tileHeight;
+
+            RenderOffset = new IntVec();
 
             Tileset = tileset;
             layers = new List<TiledLayer>();
@@ -50,13 +54,13 @@ namespace SokobanGame.Tiled
             layers.Add(layer);
         }
 
-        public void Draw(Vector2 offset)
+        public void Draw()
         {
             foreach (var layer in layers)
             {
-                layer.Draw(offset);
+                layer.Draw(RenderOffset);
             }
-            DrawRoomState(Room.CurrentState, offset);
+            DrawRoomState(Room.CurrentState, RenderOffset);
         }
 
         public void DrawDebug()
@@ -81,7 +85,7 @@ namespace SokobanGame.Tiled
             sb.End();
         }
 
-        private void DrawRoomState(RoomState rs, Vector2 offset)
+        private void DrawRoomState(RoomState rs, IntVec offset)
         {
             sb.Begin();
 
@@ -89,20 +93,20 @@ namespace SokobanGame.Tiled
 
             for (int i = 0; i < rs.Switches.Length; i++)
             {
-                dest.X = rs.Switches[i].X * TileWidth + (int)offset.X;
-                dest.Y = rs.Switches[i].Y * TileHeight + (int)offset.Y;
+                dest.X = rs.Switches[i].X * TileWidth + offset.X;
+                dest.Y = rs.Switches[i].Y * TileHeight + offset.Y;
                 sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(24), Color.White);
             }
 
             for (int i = 0; i < rs.Boxes.Length; i++)
             {
-                dest.X = rs.Boxes[i].X * TileWidth + (int)offset.X;
-                dest.Y = rs.Boxes[i].Y * TileHeight + (int)offset.Y;
+                dest.X = rs.Boxes[i].X * TileWidth + offset.X;
+                dest.Y = rs.Boxes[i].Y * TileHeight + offset.Y;
                 sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(6), Color.White);
             }
 
-            dest.X = rs.PlayerPosition.X * TileWidth + (int)offset.X;
-            dest.Y = rs.PlayerPosition.Y * TileHeight + (int)offset.Y;
+            dest.X = rs.PlayerPosition.X * TileWidth + offset.X;
+            dest.Y = rs.PlayerPosition.Y * TileHeight + offset.Y;
             sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(65), Color.White);
             
             sb.DrawString(Assets.DebugFont, string.Format("History: {0}", Room.Moves), new Vector2(200, 10), Color.Black);

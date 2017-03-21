@@ -7,7 +7,6 @@ namespace SokobanGame.Screen
     public class GameScreen : Screen
     {
         TiledMap map;
-        Vector2 renderOffset;
 
         bool debugMode = false;
 
@@ -26,12 +25,12 @@ namespace SokobanGame.Screen
             int width = SokobanGame.Instance.Graphics.GraphicsDevice.Viewport.Width;
             int height = SokobanGame.Instance.Graphics.GraphicsDevice.Viewport.Height;
             
-            renderOffset = new Vector2((width - totalMapWidth) / 2, (height - totalMapHeight) / 2);
+            map.RenderOffset = new IntVec((width - totalMapWidth) / 2, (height - totalMapHeight) / 2);
         }
 
         public override void Draw(GameTime gameTime)
         {
-            map.Draw(renderOffset);
+            map.Draw();
 
             if (debugMode)
                 map.DrawDebug();
