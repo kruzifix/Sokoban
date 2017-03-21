@@ -16,6 +16,7 @@ namespace Sokoban
             int tileWidth = input.ReadInt32();
             int tileHeight = input.ReadInt32();
 
+            // --- Property ---
             int propertyCount = input.ReadInt32();
             Dictionary<string, string> properties = new Dictionary<string, string>();
             for (int i = 0; i < propertyCount; i++)
