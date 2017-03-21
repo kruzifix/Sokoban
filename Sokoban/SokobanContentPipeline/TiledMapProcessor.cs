@@ -27,6 +27,11 @@ namespace SokobanContentPipeline
             {
                 context.Logger.LogMessage("Processing TiledMap ...");
 
+                foreach (var p in input.Properties)
+                {
+                    context.Logger.LogMessage("Property: {0} => {1}", p.Key, p.Value);
+                }
+
                 context.Logger.LogMessage("Tileset Name: {0}", input.TileSet.Name);
                 context.Logger.LogMessage("Layer Count: {0}", input.Layers.Count);
 
@@ -52,7 +57,8 @@ namespace SokobanContentPipeline
                     TileWidth = input.TileWidth,
                     TileHeight = input.TileHeight,
                     Tileset = tileset,
-                    Room = new RoomProcessorOutput(input.Width, input.Height)
+                    Room = new RoomProcessorOutput(input.Width, input.Height),
+                    Properties = input.Properties
                 };
                 output.Room.InitialState = new RoomStateProcessorOutput();
                 

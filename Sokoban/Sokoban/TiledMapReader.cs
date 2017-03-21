@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Content;
+﻿using System.Collections.Generic;
+using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using SokobanGame;
 using SokobanGame.Logic;
@@ -14,6 +15,13 @@ namespace Sokoban
             int height = input.ReadInt32();
             int tileWidth = input.ReadInt32();
             int tileHeight = input.ReadInt32();
+
+            int propertyCount = input.ReadInt32();
+            Dictionary<string, string> properties = new Dictionary<string, string>();
+            for (int i = 0; i < propertyCount; i++)
+            {
+                properties.Add(input.ReadString(), input.ReadString());
+            }
 
             // --- Tileset ---
             string tsName = input.ReadString();
@@ -48,6 +56,9 @@ namespace Sokoban
             }
             
             var map = new TiledMap(width, height, tileWidth, tileHeight, tileset, room);
+
+            foreach (KeyValuePair<string, string> kvp in properties)
+                map.Properties.Add(kvp.Key, kvp.Value);
 
             // --- Layers ---
             int layerCount = input.ReadInt32();

@@ -20,10 +20,24 @@ namespace SokobanContentPipeline
         [XmlAttribute("tileheight")]
         public int TileHeight { get; set; }
 
+        [XmlArray("properties")]
+        [XmlArrayItem("property")]
+        public List<Property> Properties { get; set; }
+
         [XmlElement("tileset")]
         public TiledMapTileSetFile TileSet { get; set; }
         
         [XmlElement("layer")]
         public List<TiledMapLayerFile> Layers { get; set; }
+    }
+
+    [Serializable]
+    public class Property
+    {
+        [XmlAttribute("name")]
+        public string Key { get; set; }
+
+        [XmlAttribute("value")]
+        public string Value { get; set; }
     }
 }

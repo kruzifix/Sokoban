@@ -10,6 +10,8 @@ namespace SokobanContentPipeline.Output
         public int TileWidth { get; set; }
         public int TileHeight { get; set; }
 
+        public List<Property> Properties { get; set; }
+
         public TiledMapTilesetOutput Tileset { get; set; }
 
         public List<TiledMapLayerOutput> Layers { get; private set; }
@@ -18,6 +20,7 @@ namespace SokobanContentPipeline.Output
 
         public TiledMapProcessorOutput()
         {
+            Properties = new List<Property>();
             Layers = new List<TiledMapLayerOutput>();
         }
 
@@ -27,6 +30,13 @@ namespace SokobanContentPipeline.Output
             output.Write(Height);
             output.Write(TileWidth);
             output.Write(TileHeight);
+
+            output.Write(Properties.Count);
+            foreach (var p in Properties)
+            {
+                output.Write(p.Key);
+                output.Write(p.Value);
+            }
 
             Tileset.WriteToOutput(output);
 

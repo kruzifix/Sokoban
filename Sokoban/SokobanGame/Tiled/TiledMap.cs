@@ -20,6 +20,8 @@ namespace SokobanGame.Tiled
 
         public Room Room { get; private set; }
 
+        public Dictionary<string, string> Properties { get; private set; }
+
         public TiledMap(int width, int height, int tileWidth, int tileHeight, TiledTileset tileset, Room room)
         {
             sb = SokobanGame.Instance.SpriteBatch;
@@ -33,6 +35,8 @@ namespace SokobanGame.Tiled
             layers = new List<TiledLayer>();
 
             Room = room;
+
+            Properties = new Dictionary<string, string>();
         }
 
         public void SetTileSize(int tileWidth, int tileHeight)
