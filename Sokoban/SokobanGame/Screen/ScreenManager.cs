@@ -33,11 +33,21 @@ namespace SokobanGame.Screen
 
         public Screen RemoveScreen()
         {
-            return activeScreens.Pop();
+            if (activeScreens.Count == 0)
+                return null;
+            Screen top = activeScreens.Pop();
+
+            if (activeScreens.Count > 0)
+                activeScreens.Peek().Activated();
+
+            return top;
         }
 
         public void AddScreen(Screen screen)
         {
+            if (activeScreens.Count > 0)
+                activeScreens.Peek().Disabled();
+
             activeScreens.Push(screen);
         }
 

@@ -17,6 +17,9 @@ namespace SokobanGame.Screen
             BlocksUpdate = blocksUpdate;
         }
 
+        public virtual void Activated() { }
+        public virtual void Disabled() { }
+
         public abstract void Update(GameTime gameTime);
         public abstract void Draw(GameTime gameTime);
     }
