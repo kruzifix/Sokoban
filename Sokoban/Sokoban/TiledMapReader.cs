@@ -35,15 +35,18 @@ namespace Sokoban
             Texture2D tileSetTexture = input.ContentManager.Load<Texture2D>(tsPath);
             var tileset = new TiledTileset(tsName, tsTileWidth, tsTileHeight, tsTileCount, tsColumns, tileSetTexture);
 
-            // --- Room ---
+            // --- Initial Room State ---
             IntVec playerPos = new IntVec(input.ReadInt32(), input.ReadInt32());
-            IntVec[] switches = new IntVec[input.ReadInt32()];
-            for (int i = 0; i < switches.Length; i++)
-                switches[i] = new IntVec(input.ReadInt32(), input.ReadInt32());
+
             List<Box> boxes = new List<Box>();
             int boxCount = input.ReadInt32();
             for (int i = 0; i < boxCount; i++)
                 boxes.Add(new Box() { Pos = new IntVec(input.ReadInt32(), input.ReadInt32()) });
+
+            // --- Room ---
+            IntVec[] switches = new IntVec[input.ReadInt32()];
+            for (int i = 0; i < switches.Length; i++)
+                switches[i] = new IntVec(input.ReadInt32(), input.ReadInt32());
 
             int roomWidth = input.ReadInt32();
             int roomHeight = input.ReadInt32();

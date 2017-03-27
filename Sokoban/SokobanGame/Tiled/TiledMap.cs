@@ -61,15 +61,15 @@ namespace SokobanGame.Tiled
                 layer.Draw(RenderOffset);
             }
 
-            sb.Begin();
-            Rectangle dest = new Rectangle(0, 0, TileWidth, TileHeight);
-            foreach (var s in Room.Switches)
-            {
-                dest.X = s.X * TileWidth + RenderOffset.X;
-                dest.Y = s.Y * TileHeight + RenderOffset.Y;
-                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(25), Color.White);
-            }
-            sb.End();
+            //sb.Begin();
+            //Rectangle dest = new Rectangle(0, 0, TileWidth, TileHeight);
+            //foreach (var s in Room.Switches)
+            //{
+            //    dest.X = s.X * TileWidth + RenderOffset.X;
+            //    dest.Y = s.Y * TileHeight + RenderOffset.Y;
+            //    sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(25), Color.White);
+            //}
+            //sb.End();
 
             DrawRoomState(Room.CurrentState);
         }

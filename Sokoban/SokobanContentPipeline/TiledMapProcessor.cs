@@ -15,11 +15,12 @@ namespace SokobanContentPipeline
     public class TiledMapProcessor : ContentProcessor<TiledMapFile, TiledMapProcessorOutput>
     {
         public string ObjectLayerName { get; set; } = "Objects";
-        public string WallLayerName { get; set; } = "Walls";
+        public string WallSwitchesLayerName { get; set; } = "Walls_Switches";
 
         public int PlayerId { get; set; } = 72;
         public int BoxId { get; set; } = 6;
-        public int SwitchId { get; set; } = 24;
+        public int WallId { get; set; } = 99;
+        public int SwitchId { get; set; } = 25;
 
         public override TiledMapProcessorOutput Process(TiledMapFile input, ContentProcessorContext context)
         {
@@ -74,25 +75,29 @@ namespace SokobanContentPipeline
                         layer[i] = int.Parse(tokens[i].Trim());
                     }
 
-                    if (layer.Name.Equals(WallLayerName))
+                    if (layer.Name.Equals(WallSwitchesLayerName))
                     {
-                        context.Logger.LogMessage("Copying Walls to Room.");
+                        context.Logger.LogMessage("Copying Walls and Switches to Room.");
                         // copy walls
+                        List<IntVec> switches = new List<IntVec>();
                         for (int i = 0; i < output.Width; i++)
                         {
                             for (int j = 0; j < output.Height; j++)
                             {
-                                if (layer.Data[i, j] > 0)
+                                if (layer.Data[i, j] - 1 == WallId)
                                     output.Room.Walls[i, j] = 1;
+                                if (layer.Data[i, j] - 1 == SwitchId)
+                                    switches.Add(new IntVec(i, j));
                             }
                         }
+                        output.Room.Switches = switches.ToArray();
+                        context.Logger.LogMessage("\tSwitches: {0}", output.Room.Switches.Length);
                         output.Layers.Add(layer);
                     }
                     else if (layer.Name.Equals(ObjectLayerName))
                     {
                         context.Logger.LogMessage("Parsing initial room state.");
-
-                        List<IntVec> switches = new List<IntVec>();
+                        
                         List<IntVec> boxes = new List<IntVec>();
                         for (int i = 0; i < output.Width; i++)
                         {
@@ -100,17 +105,13 @@ namespace SokobanContentPipeline
                             {
                                 if (layer.Data[i, j] - 1 == PlayerId)
                                     output.Room.InitialState.PlayerPosition = new IntVec(i, j);
-                                else if (layer.Data[i, j] - 1 == SwitchId)
-                                    switches.Add(new IntVec(i, j));
                                 else if (layer.Data[i, j] - 1 == BoxId)
                                     boxes.Add(new IntVec(i, j));
                             }
                         }
-                        output.Room.InitialState.Switches = switches.ToArray();
                         output.Room.InitialState.Boxes = boxes.ToArray();
 
                         context.Logger.LogMessage("\tPlayerPosition: {0}", output.Room.InitialState.PlayerPosition);
-                        context.Logger.LogMessage("\tSwitches: {0}", output.Room.InitialState.Switches.Length);
                         context.Logger.LogMessage("\tBoxes: {0}", output.Room.InitialState.Boxes.Length);
                     }
                     else

@@ -36,29 +36,32 @@
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
-/processorParam:WallLayerName=Walls
+/processorParam:WallSwitchesLayerName=Walls_Switches
 /processorParam:PlayerId=72
 /processorParam:BoxId=6
-/processorParam:SwitchId=24
+/processorParam:WallId=99
+/processorParam:SwitchId=25
 /build:Levels/01_first_level.tmx
 
 #begin Levels/02_second_level.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
-/processorParam:WallLayerName=Walls
+/processorParam:WallSwitchesLayerName=Walls_Switches
 /processorParam:PlayerId=72
 /processorParam:BoxId=6
-/processorParam:SwitchId=24
+/processorParam:WallId=99
+/processorParam:SwitchId=25
 /build:Levels/02_second_level.tmx
 
 #begin Levels/03_third_level.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
-/processorParam:WallLayerName=Walls
+/processorParam:WallSwitchesLayerName=Walls_Switches
 /processorParam:PlayerId=72
 /processorParam:BoxId=6
-/processorParam:SwitchId=24
+/processorParam:WallId=99
+/processorParam:SwitchId=25
 /build:Levels/03_third_level.tmx
 
