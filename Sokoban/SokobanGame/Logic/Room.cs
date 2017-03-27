@@ -9,18 +9,20 @@ namespace SokobanGame.Logic
         public int Height { get; private set; }
 
         private int[,] walls;
+        public IntVec[] Switches { get; private set; }
 
         private RoomState initialState;
         public RoomState CurrentState { get; private set; }
         private Stack<RoomState> history;
-
+        
         public int Moves { get { return history.Count; } }
 
-        public Room(int width, int height, RoomState initialState)
+        public Room(int width, int height, IntVec[] switches, RoomState initialState)
         {
             Width = width;
             Height = height;
             walls = new int[Width, Height];
+            Switches = switches;
 
             this.initialState = initialState.Copy();
             history = new Stack<RoomState>();
@@ -53,6 +55,30 @@ namespace SokobanGame.Logic
             if (history.Count > 0)
                 CurrentState = history.Pop();
         }
+        
+        public bool IsSolved()
+        {
+            List<Box> boxes = CurrentState.Boxes;
+
+            for (int i = 0; i < Switches.Length; i++)
+            {
+                bool boxFound = false;
+
+                foreach (Box b in boxes)
+                {
+                    if (Switches[i] == b.Pos)
+                    {
+                        boxFound = true;
+                        break;
+                    }
+                }
+
+                if (!boxFound)
+                    return false;
+            }
+
+            return true;
+        }
 
         public void Update(IntVec dir)
         {
@@ -62,8 +88,8 @@ namespace SokobanGame.Logic
             if (GetWall(pos) > 0)
                 return;
 
-            int box = CurrentState.BoxAt(pos);
-            if (box >= 0)
+            Box box = CurrentState.BoxAt(pos);
+            if (box != null)
             {
                 if (!TryMoveBox(box, dir))
                     return;
@@ -74,14 +100,14 @@ namespace SokobanGame.Logic
             history.Push(oldState);
         }
 
-        private bool TryMoveBox(int box, IntVec dir)
+        private bool TryMoveBox(Box box, IntVec dir)
         {
-            IntVec pos = CurrentState.Boxes[box] + dir;
+            IntVec pos = box.Pos + dir;
             if (GetWall(pos) > 0)
                 return false;
-            if (CurrentState.BoxAt(pos) >= 0)
+            if (CurrentState.BoxAt(pos) != null)
                 return false;
-            CurrentState.Boxes[box] = pos;
+            box.Pos = pos;
             return true;
         }
     }

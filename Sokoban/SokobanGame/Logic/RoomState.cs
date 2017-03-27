@@ -1,53 +1,44 @@
-﻿namespace SokobanGame.Logic
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace SokobanGame.Logic
 {
     public class RoomState
     {
         public IntVec PlayerPosition { get; set; }
-        public IntVec[] Switches { get; set; }
-        public IntVec[] Boxes { get; set; }
+        public List<Entity> Entities { get; private set; }
 
-        public RoomState(IntVec playerPosition, IntVec[] switches, IntVec[] boxes)
+        private List<Box> boxes;
+        public List<Box> Boxes
+        {
+            get
+            {
+                if (boxes == null)
+                    boxes = Entities.Where(e => e is Box).Cast<Box>().ToList();
+                return boxes;
+            }
+        }
+
+        public RoomState(IntVec playerPosition, IEnumerable<Entity> ents)
         {
             PlayerPosition = playerPosition;
-            Switches = switches;
-            Boxes = boxes;
+            Entities = new List<Entity>(ents);
         }
 
         public RoomState Copy()
         {
-            return new RoomState(PlayerPosition, (IntVec[])Switches.Clone(), (IntVec[])Boxes.Clone());
+            var copy = new List<Entity>();
+            foreach (var e in Entities)
+                copy.Add(e.Copy());
+            return new RoomState(PlayerPosition, copy);
         }
 
-        public bool IsSolved()
+        public Box BoxAt(IntVec pos)
         {
-            for (int i = 0; i < Switches.Length; i++)
-            {
-                bool boxFound = false;
-
-                for (int j = 0; j < Boxes.Length; j++)
-                {
-                    if (Switches[i] == Boxes[j])
-                    {
-                        boxFound = true;
-                        break;
-                    }
-                }
-
-                if (!boxFound)
-                    return false;
-            }
-
-            return true;
-        }
-
-        public int BoxAt(IntVec pos)
-        {
-            for (int i = 0; i < Boxes.Length; i++)
-            {
-                if (Boxes[i] == pos)
-                    return i;
-            }
-            return -1;
+            foreach (var b in Boxes)
+                if (b.Pos == pos)
+                    return b;
+            return null;
         }
     }
 }

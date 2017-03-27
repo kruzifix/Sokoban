@@ -60,6 +60,17 @@ namespace SokobanGame.Tiled
             {
                 layer.Draw(RenderOffset);
             }
+
+            sb.Begin();
+            Rectangle dest = new Rectangle(0, 0, TileWidth, TileHeight);
+            foreach (var s in Room.Switches)
+            {
+                dest.X = s.X * TileWidth + RenderOffset.X;
+                dest.Y = s.Y * TileHeight + RenderOffset.Y;
+                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(24), Color.White);
+            }
+            sb.End();
+
             DrawRoomState(Room.CurrentState, RenderOffset);
         }
 
@@ -91,17 +102,12 @@ namespace SokobanGame.Tiled
 
             Rectangle dest = new Rectangle(0, 0, TileWidth, TileHeight);
 
-            for (int i = 0; i < rs.Switches.Length; i++)
-            {
-                dest.X = rs.Switches[i].X * TileWidth + offset.X;
-                dest.Y = rs.Switches[i].Y * TileHeight + offset.Y;
-                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(24), Color.White);
-            }
+            
 
-            for (int i = 0; i < rs.Boxes.Length; i++)
+            foreach (Box b in rs.Boxes)
             {
-                dest.X = rs.Boxes[i].X * TileWidth + offset.X;
-                dest.Y = rs.Boxes[i].Y * TileHeight + offset.Y;
+                dest.X = b.Pos.X * TileWidth + offset.X;
+                dest.Y = b.Pos.Y * TileHeight + offset.Y;
                 sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(6), Color.White);
             }
 

@@ -40,13 +40,15 @@ namespace Sokoban
             IntVec[] switches = new IntVec[input.ReadInt32()];
             for (int i = 0; i < switches.Length; i++)
                 switches[i] = new IntVec(input.ReadInt32(), input.ReadInt32());
-            IntVec[] boxes = new IntVec[input.ReadInt32()];
-            for (int i = 0; i < boxes.Length; i++)
-                boxes[i] = new IntVec(input.ReadInt32(), input.ReadInt32());
+            List<Box> boxes = new List<Box>();
+            int boxCount = input.ReadInt32();
+            for (int i = 0; i < boxCount; i++)
+                boxes.Add(new Box() { Pos = new IntVec(input.ReadInt32(), input.ReadInt32()) });
 
             int roomWidth = input.ReadInt32();
             int roomHeight = input.ReadInt32();
-            Room room = new Room(roomWidth, roomHeight, new RoomState(playerPos, switches, boxes));
+            
+            Room room = new Room(roomWidth, roomHeight, switches, new RoomState(playerPos, boxes));
             
             for (int j = 0; j < roomHeight; j++)
             {

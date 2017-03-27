@@ -30,7 +30,7 @@ namespace SokobanGame.Screen
 
         public override void Draw(GameTime gameTime)
         {
-            if (map.Room.CurrentState.IsSolved())
+            if (map.Room.IsSolved())
                 SokobanGame.Instance.GraphicsDevice.Clear(Color.Green);
 
             map.Draw();
@@ -41,7 +41,7 @@ namespace SokobanGame.Screen
             SokobanGame.Instance.DrawDebugMessage("Game Screen", new Vector2(10, 10), Color.Black);
 
             SokobanGame.Instance.DrawDebugMessage(string.Format("History: {0}", map.Room.Moves), new Vector2(200, 10), Color.Black);
-            SokobanGame.Instance.DrawDebugMessage(string.Format("Solved: {0}", map.Room.CurrentState.IsSolved()), new Vector2(200, 30), Color.Black);
+            SokobanGame.Instance.DrawDebugMessage(string.Format("Solved: {0}", map.Room.IsSolved()), new Vector2(200, 30), Color.Black);
         }
 
         public override void Update(GameTime gameTime)
@@ -66,7 +66,7 @@ namespace SokobanGame.Screen
                 map.Room.Undo();
             }
 
-            if (map.Room.CurrentState.IsSolved())
+            if (map.Room.IsSolved())
                 return;
 
             if (InputManager.Instance.KeyPress(Keys.Up))
