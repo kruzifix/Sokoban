@@ -30,6 +30,9 @@ namespace SokobanGame.Screen
 
         public override void Draw(GameTime gameTime)
         {
+            if (map.Room.CurrentState.IsSolved())
+                SokobanGame.Instance.GraphicsDevice.Clear(Color.Green);
+
             map.Draw();
 
             if (debugMode)
