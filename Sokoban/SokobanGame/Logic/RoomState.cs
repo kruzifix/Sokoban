@@ -27,10 +27,7 @@ namespace SokobanGame.Logic
 
         public RoomState Copy()
         {
-            var copy = new List<Entity>();
-            foreach (var e in Entities)
-                copy.Add(e.Copy());
-            return new RoomState(PlayerPosition, copy);
+            return new RoomState(PlayerPosition, Entities.ConvertAll(e => e.Copy()));
         }
 
         public Box BoxAt(IntVec pos)
