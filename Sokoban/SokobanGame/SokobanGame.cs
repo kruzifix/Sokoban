@@ -32,9 +32,9 @@ namespace SokobanGame
         {
             IsMouseVisible = true;
 
-            ScreenManager.CreateScreenManager(new MenuScreen());
-            
             base.Initialize();
+
+            ScreenManager.CreateScreenManager(new MenuScreen());
         }
 
         protected override void LoadContent()
