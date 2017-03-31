@@ -110,5 +110,13 @@ namespace SokobanGame.Logic
             box.Pos = pos;
             return true;
         }
+
+        public bool OnSwitch(IntVec pos)
+        {
+            foreach (IntVec s in Switches)
+                if (s == pos)
+                    return true;
+            return false;
+        }
     }
 }

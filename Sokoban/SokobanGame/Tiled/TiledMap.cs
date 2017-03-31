@@ -100,15 +100,17 @@ namespace SokobanGame.Tiled
         {
             sb.Begin();
 
-            int boxPad = 4;
+            int boxPad = 5;
 
             Rectangle dest = new Rectangle(0, 0, TileWidth-boxPad*2, TileHeight-boxPad*2);
 
             foreach (Box b in rs.Boxes)
             {
+                bool boxOnSwitch = Room.OnSwitch(b.Pos);
+
                 dest.X = b.Pos.X * TileWidth + RenderOffset.X + boxPad;
                 dest.Y = b.Pos.Y * TileHeight + RenderOffset.Y + boxPad;
-                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(6), Color.White);
+                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(boxOnSwitch ? 19 : 6), Color.White);
             }
 
             dest.X = rs.PlayerPosition.X * TileWidth + RenderOffset.X;
