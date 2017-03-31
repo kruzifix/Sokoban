@@ -127,11 +127,11 @@ namespace SokobanGame.Logic
 
         private bool MoveStickyBoxes(HashSet<StickyBox> visited, StickyBox box, IntVec dir)
         {
-            bool firstBox = visited.Count == 0;
-
             IntVec ortho = new IntVec(-dir.Y, dir.X);
 
+            // all connected sticky boxes, in row/column of move direction
             List<StickyBox> group = new List<StickyBox>();
+            // all boxes to the side of row/column, connected to group
             List<StickyBox> branches = new List<StickyBox>();
 
             // move backwards
@@ -169,6 +169,7 @@ namespace SokobanGame.Logic
                 nextBox = CurrentState.EntityAt<StickyBox>(nextBox.Pos + dir);
             }
 
+            bool firstBox = visited.Count == 0;
             // can only move 1 wide groups!
             if (firstBox && group.Count > 1)
                 return false;
@@ -184,6 +185,7 @@ namespace SokobanGame.Logic
             // execute all branches
             foreach (var s in branches)
             {
+                // avoid duplicate movement
                 if (visited.Contains(s))
                     continue;
                 MoveStickyBoxes(visited, s, dir);
