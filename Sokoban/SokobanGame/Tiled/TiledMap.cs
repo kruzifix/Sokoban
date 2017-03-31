@@ -77,7 +77,6 @@ namespace SokobanGame.Tiled
         public void DrawDebug()
         {
             sb.Begin();
-
             Rectangle dest = new Rectangle(0, 0, TileWidth, TileHeight);
             // draw walls for debugging
             for (int i = 0; i < Room.Width; i++)
@@ -92,7 +91,6 @@ namespace SokobanGame.Tiled
                     sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(41), Color.White);
                 }
             }
-            
             sb.End();
         }
 
