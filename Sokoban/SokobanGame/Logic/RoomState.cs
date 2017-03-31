@@ -48,5 +48,14 @@ namespace SokobanGame.Logic
                     return e;
             return null;
         }
+
+        public T EntityAt<T>(IntVec pos) 
+            where T : Entity
+        {
+            var ent = EntityAt(pos);
+            if (ent != null && ent is T)
+                return ent as T;
+            return null;
+        }
     }
 }
