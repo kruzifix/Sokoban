@@ -127,6 +127,8 @@ namespace SokobanGame.Logic
 
         private bool MoveStickyBoxes(HashSet<StickyBox> visited, StickyBox box, IntVec dir)
         {
+            bool firstBox = visited.Count == 0;
+
             IntVec ortho = new IntVec(-dir.Y, dir.X);
 
             // all connected sticky boxes, in row/column of move direction
@@ -145,10 +147,9 @@ namespace SokobanGame.Logic
                 if (right != null)
                     branches.Add(right);
 
-                if (visited.Contains(nextBox))
+                if (!visited.Add(nextBox))
                     break;
                 group.Add(nextBox);
-                visited.Add(nextBox);
                 nextBox = CurrentState.EntityAt<StickyBox>(nextBox.Pos - dir);
             }
             // move forwards
@@ -162,14 +163,12 @@ namespace SokobanGame.Logic
                 if (right != null)
                     branches.Add(right);
 
-                if (visited.Contains(nextBox))
+                if (!visited.Add(nextBox))
                     break;
                 group.Add(nextBox);
-                visited.Add(nextBox);
                 nextBox = CurrentState.EntityAt<StickyBox>(nextBox.Pos + dir);
             }
-
-            bool firstBox = visited.Count == 0;
+                        
             // can only move 1 wide groups!
             if (firstBox && group.Count > 1)
                 return false;
