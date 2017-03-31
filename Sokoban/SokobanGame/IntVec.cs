@@ -5,6 +5,11 @@ namespace SokobanGame
 {
     public struct IntVec
     {
+        public static readonly IntVec Up    = new IntVec( 0, -1);
+        public static readonly IntVec Down  = new IntVec( 0,  1);
+        public static readonly IntVec Left  = new IntVec(-1,  0);
+        public static readonly IntVec Right = new IntVec( 1,  0);
+
         public int X { get; set; }
         public int Y { get; set; }
 
