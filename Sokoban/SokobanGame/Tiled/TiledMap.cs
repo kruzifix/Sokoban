@@ -113,6 +113,15 @@ namespace SokobanGame.Tiled
                 sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(boxOnSwitch ? 19 : 6), Color.White);
             }
 
+            foreach (StickyBox b in rs.StickyBoxes)
+            {
+                bool boxOnSwitch = Room.OnSwitch(b.Pos);
+
+                dest.X = b.Pos.X * TileWidth + RenderOffset.X + boxPad;
+                dest.Y = b.Pos.Y * TileHeight + RenderOffset.Y + boxPad;
+                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(boxOnSwitch ? 21 : 9), Color.White);
+            }
+
             dest.X = rs.PlayerPosition.X * TileWidth + RenderOffset.X;
             dest.Y = rs.PlayerPosition.Y * TileHeight + RenderOffset.Y;
             dest.Width = TileWidth;

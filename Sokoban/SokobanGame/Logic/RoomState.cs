@@ -19,6 +19,17 @@ namespace SokobanGame.Logic
             }
         }
 
+        private List<StickyBox> stickyBoxes;
+        public List<StickyBox> StickyBoxes
+        {
+            get
+            {
+                if (stickyBoxes == null)
+                    stickyBoxes = Entities.Where(e => e is StickyBox).Cast<StickyBox>().ToList();
+                return stickyBoxes;
+            }
+        }
+
         public RoomState(IntVec playerPosition, IEnumerable<Entity> ents)
         {
             PlayerPosition = playerPosition;
