@@ -6,18 +6,18 @@ namespace SokobanContentPipeline.Output
     public class RoomStateProcessorOutput
     {
         public IntVec PlayerPosition { get; set; }
-        public IntVec[] Boxes { get; set; }
+
+        public EntityProcessorOutput[] Entities { get; set; }
 
         public void WriteToOutput(ContentWriter output)
         {
             output.Write(PlayerPosition.X);
             output.Write(PlayerPosition.Y);
             
-            output.Write(Boxes.Length);
-            for (int i = 0; i < Boxes.Length; i++)
+            output.Write(Entities.Length);
+            for (int i = 0; i < Entities.Length; i++)
             {
-                output.Write(Boxes[i].X);
-                output.Write(Boxes[i].Y);
+                Entities[i].WriteToOutput(output);
             }
         }
     }

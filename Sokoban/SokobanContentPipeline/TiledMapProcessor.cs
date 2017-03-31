@@ -19,6 +19,7 @@ namespace SokobanContentPipeline
 
         public int PlayerId { get; set; } = 72;
         public int BoxId { get; set; } = 6;
+        public int StickyBoxId { get; set; } = 9;
         public int WallId { get; set; } = 99;
         public int SwitchId { get; set; } = 25;
 
@@ -98,7 +99,7 @@ namespace SokobanContentPipeline
                     {
                         context.Logger.LogMessage("Parsing initial room state.");
                         
-                        List<IntVec> boxes = new List<IntVec>();
+                        var ents = new List<EntityProcessorOutput>();
                         for (int i = 0; i < output.Width; i++)
                         {
                             for (int j = 0; j < output.Height; j++)
@@ -106,13 +107,15 @@ namespace SokobanContentPipeline
                                 if (layer.Data[i, j] - 1 == PlayerId)
                                     output.Room.InitialState.PlayerPosition = new IntVec(i, j);
                                 else if (layer.Data[i, j] - 1 == BoxId)
-                                    boxes.Add(new IntVec(i, j));
+                                    ents.Add(new EntityProcessorOutput() { Type = "box", Pos = new IntVec(i, j) });
+                                else if (layer.Data[i, j] - 1 == StickyBoxId)
+                                    ents.Add(new EntityProcessorOutput() { Type = "sbox", Pos = new IntVec(i, j) });
                             }
                         }
-                        output.Room.InitialState.Boxes = boxes.ToArray();
+                        output.Room.InitialState.Entities = ents.ToArray();
 
                         context.Logger.LogMessage("\tPlayerPosition: {0}", output.Room.InitialState.PlayerPosition);
-                        context.Logger.LogMessage("\tBoxes: {0}", output.Room.InitialState.Boxes.Length);
+                        context.Logger.LogMessage("\tEntities: {0}", output.Room.InitialState.Entities.Length);
                     }
                     else
                     {
