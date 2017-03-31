@@ -86,7 +86,7 @@ namespace SokobanGame.Screen
 
             if (InputManager.Instance.KeyPress(Keys.Enter))
             {
-                ScreenManager.Instance.AddScreen(new GameScreen(Assets.Levels[selectedLevel]));
+                ScreenManager.Instance.AddScreen(new GameScreen(selectedLevel));
             }
 
             if (InputManager.Instance.KeyPress(Keys.Right))

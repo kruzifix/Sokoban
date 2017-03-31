@@ -7,15 +7,17 @@ namespace SokobanGame.Screen
 {
     public class GameScreen : Screen
     {
-        TiledMap map;
+        private TiledMap map;
+        private bool debugMode = false;
 
-        bool debugMode = false;
+        public int Level { get; private set; }
 
-        public GameScreen(TiledMap map)
+        public GameScreen(int level)
             : base(true, true)
         {
-            this.map = map;
-            this.map.Room.Reset();
+            Level = level;
+            map = Assets.Levels[level];
+            map.Room.Reset();
 
             int width = SokobanGame.Instance.Graphics.GraphicsDevice.Viewport.Width;
             int height = SokobanGame.Instance.Graphics.GraphicsDevice.Viewport.Height;
