@@ -119,7 +119,7 @@ namespace SokobanGame.Tiled
 
                 dest.X = b.Pos.X * TileWidth + RenderOffset.X + boxPad;
                 dest.Y = b.Pos.Y * TileHeight + RenderOffset.Y + boxPad;
-                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(boxOnSwitch ? 21 : 9), Color.White);
+                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(boxOnSwitch ? 22: 9), Color.White);
             }
 
             dest.X = rs.PlayerPosition.X * TileWidth + RenderOffset.X;
