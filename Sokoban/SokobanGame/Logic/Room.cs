@@ -118,25 +118,22 @@ namespace SokobanGame.Logic
         private bool TryMoveStickyBox(StickyBox box, IntVec dir)
         {
             // get all connected sticky boxes
-            // TODO: recursively find all sticky boxes!
-            var north = CurrentState.EntityAt(box.Pos + IntVec.Up);
-            var south= CurrentState.EntityAt(box.Pos + IntVec.Down);
-            var west = CurrentState.EntityAt(box.Pos + IntVec.Left);
-            var east = CurrentState.EntityAt(box.Pos + IntVec.Right);
-
             List<StickyBox> others = new List<StickyBox>();
-            if (north != null && north is StickyBox)
-                others.Add(north as StickyBox);
-            if (south != null && south is StickyBox)
-                others.Add(south as StickyBox);
-            if (west != null && west is StickyBox)
-                others.Add(west as StickyBox);
-            if (east != null && east is StickyBox)
-                others.Add(east as StickyBox);
+            var boxes = GetConnectedStickyBoxes(box);
+            boxes.Remove(box);
+            foreach (var s in boxes)
+                others.Add(s);
 
             // sort by movement direction
             others.Sort(delegate (StickyBox b1, StickyBox b2) {
-                // TODO: add comparisons for different movement dirs
+                if (dir == IntVec.Up)
+                    return b1.Pos.Y - b2.Pos.Y;
+                if (dir == IntVec.Down)
+                    return b2.Pos.Y - b1.Pos.Y;
+                if (dir == IntVec.Left)
+                    return b1.Pos.X - b2.Pos.X;
+                if (dir == IntVec.Right)
+                    return b2.Pos.X - b1.Pos.X;
                 return 0;
             });
 
@@ -146,6 +143,10 @@ namespace SokobanGame.Logic
 
             // try to move each box
             foreach (var sbox in others)
+                // TODO: BUG!!!
+                //    b           b
+                //    b w   =>  b w   
+                // -> b           b
                 TryMoveEntity(sbox, dir);
 
             return true;
@@ -157,6 +158,41 @@ namespace SokobanGame.Logic
                 if (s == pos)
                     return true;
             return false;
+        }
+
+        private HashSet<StickyBox> GetConnectedStickyBoxes(StickyBox box, HashSet<StickyBox> sboxes = null)
+        {
+            if (sboxes == null)
+                sboxes = new HashSet<StickyBox>();
+
+            var north = CurrentState.EntityAt(box.Pos + IntVec.Up);
+            var south = CurrentState.EntityAt(box.Pos + IntVec.Down);
+            var west = CurrentState.EntityAt(box.Pos + IntVec.Left);
+            var east = CurrentState.EntityAt(box.Pos + IntVec.Right);
+
+            // TODO: add direction ignore parameter (don't need to add box from before)
+            if (north != null && north is StickyBox)
+            {
+                if (sboxes.Add(north as StickyBox))
+                    GetConnectedStickyBoxes(north as StickyBox, sboxes);
+            }
+            if (south != null && south is StickyBox)
+            {
+                if (sboxes.Add(south as StickyBox))
+                    GetConnectedStickyBoxes(south as StickyBox, sboxes);
+            }
+            if (west != null && west is StickyBox)
+            {
+                if (sboxes.Add(west as StickyBox))
+                    GetConnectedStickyBoxes(west as StickyBox, sboxes);
+            }
+            if (east != null && east is StickyBox)
+            {
+                if (sboxes.Add(east as StickyBox))
+                    GetConnectedStickyBoxes(east as StickyBox, sboxes);
+            }
+
+            return sboxes;
         }
     }
 }
