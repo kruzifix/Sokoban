@@ -49,22 +49,22 @@ namespace SokobanGame.Screen
 
         public override void Update(GameTime gameTime)
         {
-            if (InputManager.Instance.KeyPress(Keys.Escape))
+            if (KeyPress(Keys.Escape))
             {
                 ScreenManager.Instance.RemoveScreen();
             }
 
-            if (InputManager.Instance.KeyPress(Keys.F1))
+            if (KeyPress(Keys.F1))
             {
                 debugMode = !debugMode;
             }
 
-            if (InputManager.Instance.KeyPress(Keys.R))
+            if (KeyPress(Keys.R))
             {
                 map.Room.Reset();
             }
 
-            if (InputManager.Instance.KeyPress(Keys.Z))
+            if (KeyPress(Keys.Z))
             {
                 map.Room.Undo();
             }
@@ -72,22 +72,22 @@ namespace SokobanGame.Screen
             if (map.Room.IsSolved())
                 return;
 
-            if (InputManager.Instance.KeyPress(Keys.Up))
+            if (KeyPress(Keys.Up))
             {
                 map.Room.Update(new IntVec(0, -1));
             }
 
-            if (InputManager.Instance.KeyPress(Keys.Down))
+            if (KeyPress(Keys.Down))
             {
                 map.Room.Update(new IntVec(0, 1));
             }
 
-            if (InputManager.Instance.KeyPress(Keys.Left))
+            if (KeyPress(Keys.Left))
             {
                 map.Room.Update(new IntVec(-1, 0));
             }
 
-            if (InputManager.Instance.KeyPress(Keys.Right))
+            if (KeyPress(Keys.Right))
             {
                 map.Room.Update(new IntVec(1, 0));
             }

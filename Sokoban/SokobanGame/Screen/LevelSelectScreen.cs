@@ -79,24 +79,24 @@ namespace SokobanGame.Screen
 
         public override void Update(GameTime gameTime)
         {
-            if (InputManager.Instance.KeyPress(Keys.Escape))
+            if (KeyPress(Keys.Escape))
             {
                 ScreenManager.Instance.RemoveScreen();
             }
 
-            if (InputManager.Instance.KeyPress(Keys.Enter))
+            if (KeyPress(Keys.Enter))
             {
                 ScreenManager.Instance.AddScreen(new GameScreen(selectedLevel));
             }
 
-            if (InputManager.Instance.KeyPress(Keys.Right))
+            if (KeyPress(Keys.Right))
             {
                 selectedLevel++;
                 if (selectedLevel >= Assets.Levels.Length)
                     selectedLevel = 0;
             }
 
-            if (InputManager.Instance.KeyPress(Keys.Left))
+            if (KeyPress(Keys.Left))
             {
                 selectedLevel--;
                 if (selectedLevel < 0)
