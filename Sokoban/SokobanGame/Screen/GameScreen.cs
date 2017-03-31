@@ -51,7 +51,7 @@ namespace SokobanGame.Screen
         {
             if (KeyPress(Keys.Escape))
             {
-                ScreenManager.Instance.RemoveScreen();
+                ScreenManager.RemoveScreen();
             }
 
             if (KeyPress(Keys.F1))

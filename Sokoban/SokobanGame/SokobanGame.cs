@@ -34,7 +34,7 @@ namespace SokobanGame
 
             base.Initialize();
 
-            ScreenManager.CreateScreenManager(new MenuScreen());
+            ScreenManager.Initialize(new MenuScreen());
         }
 
         protected override void LoadContent()
@@ -53,7 +53,7 @@ namespace SokobanGame
         {
             InputManager.Instance.Update();
 
-            ScreenManager.Instance.Update(gameTime);
+            ScreenManager.Update(gameTime);
             
             base.Update(gameTime);
         }
@@ -62,7 +62,7 @@ namespace SokobanGame
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            ScreenManager.Instance.Draw(gameTime);
+            ScreenManager.Draw(gameTime);
 
             base.Draw(gameTime);
         }

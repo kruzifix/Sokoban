@@ -10,28 +10,15 @@ namespace SokobanGame.Screen
 {
     public class ScreenManager
     {
-        private static ScreenManager instance = null;
+        private static Stack<Screen> activeScreens;
 
-        public static void CreateScreenManager(Screen startupScreen)
-        {
-            if (instance != null)
-            {
-                throw new ApplicationException("ScreenManager.CreateScreenManager(Screen): Only one instance of ScreenManager is allowed!");
-            }
-            instance = new ScreenManager(startupScreen);
-        }
-
-        public static ScreenManager Instance { get { return instance; } }
-        
-        private Stack<Screen> activeScreens;
-
-        private ScreenManager(Screen startupScreen)
+        public static void Initialize(Screen startupScreen)
         {
             activeScreens = new Stack<Screen>();
             activeScreens.Push(startupScreen);
         }
-
-        public Screen RemoveScreen()
+        
+        public static Screen RemoveScreen()
         {
             if (activeScreens.Count == 0)
                 return null;
@@ -43,7 +30,7 @@ namespace SokobanGame.Screen
             return top;
         }
 
-        public void AddScreen(Screen screen)
+        public static void AddScreen(Screen screen)
         {
             if (activeScreens.Count > 0)
                 activeScreens.Peek().Disabled();
@@ -51,7 +38,7 @@ namespace SokobanGame.Screen
             activeScreens.Push(screen);
         }
 
-        public void Update(GameTime gameTime)
+        public static void Update(GameTime gameTime)
         {
             foreach (var screen in activeScreens)
             {
@@ -61,7 +48,7 @@ namespace SokobanGame.Screen
             }
         }
 
-        public void Draw(GameTime gameTime)
+        public static void Draw(GameTime gameTime)
         {
             List<Screen> screensToDraw = new List<Screen>();
             foreach (var screen in activeScreens)

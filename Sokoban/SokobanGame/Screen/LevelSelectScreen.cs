@@ -81,12 +81,12 @@ namespace SokobanGame.Screen
         {
             if (KeyPress(Keys.Escape))
             {
-                ScreenManager.Instance.RemoveScreen();
+                ScreenManager.RemoveScreen();
             }
 
             if (KeyPress(Keys.Enter))
             {
-                ScreenManager.Instance.AddScreen(new GameScreen(selectedLevel));
+                ScreenManager.AddScreen(new GameScreen(selectedLevel));
             }
 
             if (KeyPress(Keys.Right))

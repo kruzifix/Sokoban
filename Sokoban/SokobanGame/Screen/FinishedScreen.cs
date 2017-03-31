@@ -25,13 +25,13 @@ namespace SokobanGame.Screen
             if (KeyPress(Keys.Escape))
             {
                 // HACK
-                ScreenManager.Instance.RemoveScreen();
-                ScreenManager.Instance.RemoveScreen();
+                ScreenManager.RemoveScreen();
+                ScreenManager.RemoveScreen();
             }
 
             if (KeyPress(Keys.R))
             {
-                ScreenManager.Instance.RemoveScreen();
+                ScreenManager.RemoveScreen();
                 
             }
         }

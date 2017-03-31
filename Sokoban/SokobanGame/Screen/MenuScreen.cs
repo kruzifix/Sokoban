@@ -76,7 +76,7 @@ namespace SokobanGame.Screen
                 switch (selectedOption)
                 {
                     case 0:
-                        ScreenManager.Instance.AddScreen(new LevelSelectScreen());
+                        ScreenManager.AddScreen(new LevelSelectScreen());
                         break;
                     case 4:
                         SokobanGame.Instance.Exit();
