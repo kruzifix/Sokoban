@@ -44,6 +44,8 @@
     <Reference Include="System.Xml.Serialization" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Output\EntityProcessorOutput.cs" />
     <Compile Include="Output\RoomProcessorOutput.cs" />
     <Compile Include="Output\RoomStateProcessorOutput.cs" />
     <Compile Include="Output\TiledMapTilesetOutput.cs" />

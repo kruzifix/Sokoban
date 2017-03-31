@@ -26,8 +26,7 @@ namespace SokobanContentPipeline.Output
             output.Write(Switches.Length);
             for (int i = 0; i < Switches.Length; i++)
             {
-                output.Write(Switches[i].X);
-                output.Write(Switches[i].Y);
+                output.Write(Switches[i]);
             }
 
             output.Write(Width);
