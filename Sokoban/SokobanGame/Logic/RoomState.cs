@@ -41,11 +41,11 @@ namespace SokobanGame.Logic
             return new RoomState(PlayerPosition, Entities.ConvertAll(e => e.Copy()));
         }
 
-        public Box BoxAt(IntVec pos)
+        public Entity EntityAt(IntVec pos)
         {
-            foreach (var b in Boxes)
-                if (b.Pos == pos)
-                    return b;
+            foreach (var e in Entities)
+                if (e.Pos == pos)
+                    return e;
             return null;
         }
     }

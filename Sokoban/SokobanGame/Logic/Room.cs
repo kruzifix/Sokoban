@@ -88,24 +88,40 @@ namespace SokobanGame.Logic
             if (GetWall(pos) > 0)
                 return;
 
-            Box box = CurrentState.BoxAt(pos);
-            if (box != null)
+            var ent = CurrentState.EntityAt(pos);
+            if (ent != null)
             {
-                if (!TryMoveBox(box, dir))
-                    return;
+                if (ent is Box)
+                    if (!TryMoveBox(ent as Box, dir))
+                        return;
+                if (ent is StickyBox)
+                    if (!TryMoveStickyBox(ent as StickyBox, dir))
+                        return;
             }
             
             CurrentState.PlayerPosition = pos;
 
             history.Push(oldState);
         }
-
+        
         private bool TryMoveBox(Box box, IntVec dir)
         {
             IntVec pos = box.Pos + dir;
             if (GetWall(pos) > 0)
                 return false;
-            if (CurrentState.BoxAt(pos) != null)
+            if (CurrentState.EntityAt(pos) != null)
+                return false;
+            box.Pos = pos;
+            return true;
+        }
+
+        private bool TryMoveStickyBox(StickyBox box, IntVec dir)
+        {
+            // TODO: add sticky box movement logic (currently same as normal Box)
+            IntVec pos = box.Pos + dir;
+            if (GetWall(pos) > 0)
+                return false;
+            if (CurrentState.EntityAt(pos) != null)
                 return false;
             box.Pos = pos;
             return true;
