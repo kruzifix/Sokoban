@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using SokobanGame.Tiled;
+using System;
 
 namespace SokobanGame.Screen
 {
@@ -16,14 +17,14 @@ namespace SokobanGame.Screen
             this.map = map;
             this.map.Room.Reset();
 
-            // TODO: calc tile size from screen size!
-            map.SetTileSize(64, 64);
-
-            int totalMapWidth = map.Width * map.TileWidth;
-            int totalMapHeight = map.Height * map.TileHeight;
-
             int width = SokobanGame.Instance.Graphics.GraphicsDevice.Viewport.Width;
             int height = SokobanGame.Instance.Graphics.GraphicsDevice.Viewport.Height;
+            
+            int tileSize = (int)Math.Min(width / (float)(map.Width + 1), height / (float)(map.Height + 1));
+            map.SetTileSize(tileSize, tileSize);
+            
+            int totalMapWidth = map.Width * map.TileWidth;
+            int totalMapHeight = map.Height * map.TileHeight;
             
             map.RenderOffset = new IntVec((width - totalMapWidth) / 2, (height - totalMapHeight) / 2);
         }
