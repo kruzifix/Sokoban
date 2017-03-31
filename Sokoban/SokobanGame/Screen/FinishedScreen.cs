@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace SokobanGame.Screen
 {
@@ -21,7 +22,18 @@ namespace SokobanGame.Screen
 
         public override void Update(GameTime gameTime)
         {
-            
+            if (KeyPress(Keys.Escape))
+            {
+                // HACK
+                ScreenManager.Instance.RemoveScreen();
+                ScreenManager.Instance.RemoveScreen();
+            }
+
+            if (KeyPress(Keys.R))
+            {
+                ScreenManager.Instance.RemoveScreen();
+                
+            }
         }
     }
 }
