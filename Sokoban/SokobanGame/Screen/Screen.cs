@@ -12,6 +12,8 @@ namespace SokobanGame.Screen
         public bool BlocksDraw { get; private set; }
         public bool BlocksUpdate { get; private set; }
 
+        public bool OnTop { get { return ScreenManager.TopScreen == this; } }
+
         public Screen(bool blocksDraw, bool blocksUpdate)
         {
             BlocksDraw = blocksDraw;

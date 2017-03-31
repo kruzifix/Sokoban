@@ -12,6 +12,8 @@ namespace SokobanGame.Screen
     {
         private static Stack<Screen> activeScreens;
 
+        public static Screen TopScreen { get { return activeScreens.Peek(); } }
+
         public static void Initialize(Screen startupScreen)
         {
             activeScreens = new Stack<Screen>();

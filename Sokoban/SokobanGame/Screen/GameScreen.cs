@@ -41,7 +41,8 @@ namespace SokobanGame.Screen
             if (debugMode)
                 map.DrawDebug();
 
-            SokobanGame.Instance.DrawDebugMessage("Game Screen", new Vector2(10, 10), Color.Black);
+            if (OnTop)
+                SokobanGame.Instance.DrawDebugMessage("Game Screen", new Vector2(10, 10), Color.Black);
 
             SokobanGame.Instance.DrawDebugMessage(string.Format("History: {0}", map.Room.Moves), new Vector2(200, 10), Color.Black);
             SokobanGame.Instance.DrawDebugMessage(string.Format("Solved: {0}", map.Room.IsSolved()), new Vector2(200, 30), Color.Black);
@@ -68,10 +69,7 @@ namespace SokobanGame.Screen
             {
                 map.Room.Undo();
             }
-
-            if (map.Room.IsSolved())
-                return;
-
+            
             if (KeyPress(Keys.Up))
             {
                 map.Room.Update(new IntVec(0, -1));
@@ -90,6 +88,11 @@ namespace SokobanGame.Screen
             if (KeyPress(Keys.Right))
             {
                 map.Room.Update(new IntVec(1, 0));
+            }
+
+            if (map.Room.IsSolved())
+            {
+                ScreenManager.AddScreen(new FinishedScreen(Level));
             }
         }
     }
