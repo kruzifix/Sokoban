@@ -97,10 +97,19 @@ namespace SokobanGame.Tiled
         private void DrawRoomState(RoomState rs)
         {
             sb.Begin();
+            
+            Rectangle dest = new Rectangle(0, 0, TileWidth, TileHeight);
+
+            foreach (Hole h in rs.Holes)
+            {
+                dest.X = h.Pos.X * TileWidth + RenderOffset.X;
+                dest.Y = h.Pos.Y * TileHeight + RenderOffset.Y;
+                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(h.Filled ? 58 : 11), Color.White);
+            }
 
             int boxPad = 0;
-
-            Rectangle dest = new Rectangle(0, 0, TileWidth-boxPad*2, TileHeight-boxPad*2);
+            dest.Width = TileWidth - boxPad * 2;
+            dest.Height = TileHeight - boxPad * 2;
 
             foreach (Box b in rs.Boxes)
             {
@@ -122,14 +131,6 @@ namespace SokobanGame.Tiled
 
             dest.Width = TileWidth;
             dest.Height = TileHeight;
-
-            foreach (Hole h in rs.Holes)
-            {
-                dest.X = h.Pos.X * TileWidth + RenderOffset.X;
-                dest.Y = h.Pos.Y * TileHeight + RenderOffset.Y;
-                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(11), Color.White);
-            }
-
             dest.X = rs.PlayerPosition.X * TileWidth + RenderOffset.X;
             dest.Y = rs.PlayerPosition.Y * TileHeight + RenderOffset.Y;
             sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(65), Color.White);

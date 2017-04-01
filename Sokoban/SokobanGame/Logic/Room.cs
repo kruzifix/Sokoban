@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace SokobanGame.Logic
 {
@@ -91,7 +90,7 @@ namespace SokobanGame.Logic
             var ent = CurrentState.EntityAt(pos);
             if (ent != null)
             {
-                if (ent is Box && !TryMoveEntity(ent, dir))
+                if (ent is Box && !TryMoveBox(ent as Box, dir))
                     return;
                 if (ent is StickyBox && !TryMoveStickyBox(ent as StickyBox, dir))
                     return;
@@ -116,6 +115,34 @@ namespace SokobanGame.Logic
                 return false;
             ent.Pos += dir;
             return true;
+        }
+
+        private bool TryMoveBox(Box box, IntVec dir)
+        {
+            IntVec pos = box.Pos + dir;
+            if (GetWall(pos) > 0)
+                return false;
+            var ent = CurrentState.EntityAt(pos);
+            if (ent == null)
+            {
+                box.Pos = pos;
+                return true;
+            }
+            if (ent != null && ent is Hole)
+            {
+                Hole h = ent as Hole;
+                if (h.Filled)
+                {
+                    box.Pos = pos;
+                    return true;
+                }
+                else
+                {
+                    h.Filled = true;
+                    CurrentState.Entities.Remove(box);
+                }
+            }
+            return false;
         }
 
         private bool TryMoveStickyBox(StickyBox box, IntVec dir)
