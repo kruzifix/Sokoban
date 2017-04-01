@@ -18,8 +18,11 @@ namespace SokobanContentPipeline
         public string WallSwitchesLayerName { get; set; } = "Walls_Switches";
 
         public int PlayerId { get; set; } = 72;
+
         public int BoxId { get; set; } = 6;
         public int StickyBoxId { get; set; } = 9;
+        public int HoleId { get; set; } = 11;
+
         public int WallId { get; set; } = 99;
         public int SwitchId { get; set; } = 25;
 
@@ -104,12 +107,15 @@ namespace SokobanContentPipeline
                         {
                             for (int j = 0; j < output.Height; j++)
                             {
-                                if (layer.Data[i, j] - 1 == PlayerId)
+                                int id = layer.Data[i, j] - 1;
+                                if (id == PlayerId)
                                     output.Room.InitialState.PlayerPosition = new IntVec(i, j);
-                                else if (layer.Data[i, j] - 1 == BoxId)
+                                else if (id == BoxId)
                                     ents.Add(new EntityProcessorOutput() { Type = "box", Pos = new IntVec(i, j) });
-                                else if (layer.Data[i, j] - 1 == StickyBoxId)
+                                else if (id == StickyBoxId)
                                     ents.Add(new EntityProcessorOutput() { Type = "sbox", Pos = new IntVec(i, j) });
+                                else if (id == HoleId)
+                                    ents.Add(new EntityProcessorOutput() { Type = "hole", Pos = new IntVec(i, j) });
                             }
                         }
                         output.Room.InitialState.Entities = ents.ToArray();
