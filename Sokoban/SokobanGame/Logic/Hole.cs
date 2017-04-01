@@ -6,7 +6,7 @@
 
         public override Entity Copy()
         {
-            return new Hole() { Pos = Pos };
+            return new Hole() { Pos = Pos, Filled = Filled };
         }
     }
 }
