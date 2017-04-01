@@ -59,6 +59,12 @@ namespace Sokoban
                             ents.Add(new StickyBox() { Pos = pos });
                             break;
                         }
+                    case "hole":
+                        {
+                            IntVec pos = new IntVec(input.ReadInt32(), input.ReadInt32());
+                            ents.Add(new Hole() { Pos = pos });
+                            break;
+                        }
                 }
             }
 
