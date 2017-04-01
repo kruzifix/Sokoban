@@ -17,6 +17,11 @@ namespace SokobanGame.Logic
             PlayerPosition = playerPosition;
             Entities = new List<Entity>(ents);
 
+            HashEntities();
+        }
+
+        private void HashEntities()
+        {
             Boxes = Entities.Where(e => e is Box).Cast<Box>().ToList();
             StickyBoxes = Entities.Where(e => e is StickyBox).Cast<StickyBox>().ToList();
             Holes = Entities.Where(e => e is Hole).Cast<Hole>().ToList();
@@ -42,6 +47,12 @@ namespace SokobanGame.Logic
             if (ent != null && ent is T)
                 return ent as T;
             return null;
+        }
+
+        public void RemoveEntity(Entity ent)
+        {
+            Entities.Remove(ent);
+            HashEntities();
         }
     }
 }

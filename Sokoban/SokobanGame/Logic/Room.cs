@@ -139,7 +139,8 @@ namespace SokobanGame.Logic
                 else
                 {
                     h.Filled = true;
-                    CurrentState.Entities.Remove(box);
+                    CurrentState.RemoveEntity(box);
+                    return true;
                 }
             }
             return false;
