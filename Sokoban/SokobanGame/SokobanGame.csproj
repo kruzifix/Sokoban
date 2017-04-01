@@ -44,6 +44,7 @@
     <Compile Include="IntVec.cs" />
     <Compile Include="Logic\Box.cs" />
     <Compile Include="Logic\Entity.cs" />
+    <Compile Include="Logic\Hole.cs" />
     <Compile Include="Logic\Room.cs" />
     <Compile Include="Logic\RoomState.cs" />
     <Compile Include="Logic\StickyBox.cs" />
