@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using SokobanGame.Logic;
 using SokobanGame.Tiled;
 using System;
 
@@ -46,6 +47,15 @@ namespace SokobanGame.Screen
 
             SokobanGame.Instance.DrawDebugMessage(string.Format("History: {0}", map.Room.Moves), new Vector2(200, 10), Color.Black);
             SokobanGame.Instance.DrawDebugMessage(string.Format("Solved: {0}", map.Room.IsSolved()), new Vector2(200, 30), Color.Black);
+
+            SokobanGame.Instance.DrawDebugMessage(string.Format("Entities: {0}", map.Room.CurrentState.Entities.Count), new Vector2(400, 10), Color.Black);
+            int i = 0;
+            foreach (Entity e in map.Room.CurrentState.Entities)
+            {
+                string info = string.Format("{0} => {1}", e.Pos, e.GetType().Name);
+                SokobanGame.Instance.DrawDebugMessage(info, new Vector2(400, 30 + i * 15), Color.Black);
+                i++;
+            }
         }
 
         public override void Update(GameTime gameTime)
