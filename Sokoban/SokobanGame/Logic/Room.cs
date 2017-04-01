@@ -94,6 +94,12 @@ namespace SokobanGame.Logic
                     return;
                 if (ent is StickyBox && !TryMoveStickyBox(ent as StickyBox, dir))
                     return;
+                if (ent is Hole)
+                {
+                    Hole h = ent as Hole;
+                    if (!h.Filled)
+                        return;
+                }
             }
             
             CurrentState.PlayerPosition = pos;
@@ -122,28 +128,25 @@ namespace SokobanGame.Logic
             IntVec pos = box.Pos + dir;
             if (GetWall(pos) > 0)
                 return false;
-            var ent = CurrentState.EntityAt(pos);
+            var ent = CurrentState.EntityAt<Hole>(pos);
             if (ent == null)
             {
                 box.Pos = pos;
-                return true;
             }
-            if (ent != null && ent is Hole)
+            else
             {
                 Hole h = ent as Hole;
                 if (h.Filled)
                 {
                     box.Pos = pos;
-                    return true;
                 }
                 else
                 {
                     h.Filled = true;
                     CurrentState.RemoveEntity(box);
-                    return true;
                 }
             }
-            return false;
+            return true;
         }
 
         private bool TryMoveStickyBox(StickyBox box, IntVec dir)

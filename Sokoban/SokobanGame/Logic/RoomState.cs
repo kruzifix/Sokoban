@@ -34,7 +34,16 @@ namespace SokobanGame.Logic
 
         public Entity EntityAt(IntVec pos)
         {
-            foreach (var e in Entities)
+            // TODO: multiple entities at same position?
+
+            // TODO: kinda hacky fix for box movement on holes
+            foreach (var e in Boxes)
+                if (e.Pos == pos)
+                    return e;
+            foreach (var e in StickyBoxes)
+                if (e.Pos == pos)
+                    return e;
+            foreach (var e in Holes)
                 if (e.Pos == pos)
                     return e;
             return null;
