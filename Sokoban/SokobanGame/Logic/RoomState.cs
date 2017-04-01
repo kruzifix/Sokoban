@@ -30,6 +30,17 @@ namespace SokobanGame.Logic
             }
         }
 
+        private List<Hole> holes;
+        public List<Hole> Holes
+        {
+            get
+            {
+                if (holes == null)
+                    holes = Entities.Where(e => e is Hole).Cast<Hole>().ToList();
+                return holes;
+            }
+        }
+
         public RoomState(IntVec playerPosition, IEnumerable<Entity> ents)
         {
             PlayerPosition = playerPosition;

@@ -98,7 +98,7 @@ namespace SokobanGame.Tiled
         {
             sb.Begin();
 
-            int boxPad = 5;
+            int boxPad = 0;
 
             Rectangle dest = new Rectangle(0, 0, TileWidth-boxPad*2, TileHeight-boxPad*2);
 
@@ -120,10 +120,18 @@ namespace SokobanGame.Tiled
                 sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(boxOnSwitch ? 22: 9), Color.White);
             }
 
-            dest.X = rs.PlayerPosition.X * TileWidth + RenderOffset.X;
-            dest.Y = rs.PlayerPosition.Y * TileHeight + RenderOffset.Y;
             dest.Width = TileWidth;
             dest.Height = TileHeight;
+
+            foreach (Hole h in rs.Holes)
+            {
+                dest.X = h.Pos.X * TileWidth + RenderOffset.X;
+                dest.Y = h.Pos.Y * TileHeight + RenderOffset.Y;
+                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(11), Color.White);
+            }
+
+            dest.X = rs.PlayerPosition.X * TileWidth + RenderOffset.X;
+            dest.Y = rs.PlayerPosition.Y * TileHeight + RenderOffset.Y;
             sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(65), Color.White);
             
             sb.End();
