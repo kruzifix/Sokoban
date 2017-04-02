@@ -13,6 +13,8 @@ namespace SokobanGame
 
         public GraphicsDeviceManager Graphics { get; private set; }
         public SpriteBatch SpriteBatch { get; private set; }
+
+        Color clearColor = new Color(117, 140, 142);
                      
         public SokobanGame()
         {
@@ -60,7 +62,7 @@ namespace SokobanGame
         
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(clearColor);
 
             ScreenManager.Draw(gameTime);
 
