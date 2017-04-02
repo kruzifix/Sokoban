@@ -59,13 +59,15 @@ namespace SokobanGame.Logic
         
         public bool IsSolved()
         {
-            List<Box> boxes = CurrentState.Boxes;
+            List<Entity> boxes = new List<Entity>();
+            boxes.AddRange(CurrentState.Boxes);
+            boxes.AddRange(CurrentState.StickyBoxes);
 
             for (int i = 0; i < Switches.Length; i++)
             {
                 bool boxFound = false;
 
-                foreach (Box b in boxes)
+                foreach (Entity b in boxes)
                 {
                     if (Switches[i] == b.Pos)
                     {
