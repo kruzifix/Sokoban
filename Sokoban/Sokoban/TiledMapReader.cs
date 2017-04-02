@@ -73,10 +73,14 @@ namespace Sokoban
             for (int i = 0; i < switches.Length; i++)
                 switches[i] = new IntVec(input.ReadInt32(), input.ReadInt32());
 
+            Teleporter[] teles = new Teleporter[input.ReadInt32()];
+            for (int i = 0; i < teles.Length; i++)
+                teles[i] = new Teleporter(new IntVec(input.ReadInt32(), input.ReadInt32()), new IntVec(input.ReadInt32(), input.ReadInt32()));
+
             int roomWidth = input.ReadInt32();
             int roomHeight = input.ReadInt32();
             
-            Room room = new Room(roomWidth, roomHeight, switches, new RoomState(playerPos, ents));
+            Room room = new Room(roomWidth, roomHeight, switches, teles, new RoomState(playerPos, ents));
             
             for (int j = 0; j < roomHeight; j++)
             {

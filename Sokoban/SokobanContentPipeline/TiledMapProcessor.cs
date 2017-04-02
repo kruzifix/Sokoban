@@ -32,14 +32,34 @@ namespace SokobanContentPipeline
             {
                 context.Logger.LogMessage("Processing TiledMap ...");
 
-                foreach (var p in input.Properties)
-                {
-                    context.Logger.LogMessage("Property: {0} => {1}", p.Key, p.Value);
-                }
-
                 context.Logger.LogMessage("Tileset Name: {0}", input.TileSet.Name);
                 context.Logger.LogMessage("Layer Count: {0}", input.Layers.Count);
 
+                List<IntVec> telePos = new List<IntVec>();
+                List<IntVec> teleTarget = new List<IntVec>();
+
+                foreach (var p in input.Properties)
+                {
+                    context.Logger.LogMessage("Property: {0} => {1}", p.Key, p.Value);
+
+                    // parse teleporter stuff from properties
+                    if (p.Key == "Teleporters")
+                    {
+                        context.Logger.LogMessage("\tParsing Teleporters ...");
+                        string[] teles = p.Value.Split(';');
+                        // 2 4 to 11 3
+                        for (int i = 0; i < teles.Length; i++)
+                        {
+                            string[] tokens = teles[i].Split(' ');
+                            if (tokens.Length != 5)
+                                throw new FormatException("Wrong Teleporter definition format at: " + teles[i]);
+                            telePos.Add(new IntVec(int.Parse(tokens[0]), int.Parse(tokens[1])));
+                            teleTarget.Add(new IntVec(int.Parse(tokens[3]), int.Parse(tokens[4])));
+                        }
+                        context.Logger.LogMessage("\tTeleporters: {0}", telePos.Count);
+                    }
+                }
+                
                 int lastDot = input.TileSet.Image.Source.LastIndexOf('.');
 
                 // HACK!!!
@@ -66,6 +86,9 @@ namespace SokobanContentPipeline
                     Properties = input.Properties
                 };
                 output.Room.InitialState = new RoomStateProcessorOutput();
+                
+                output.Room.TeleporterPos = telePos.ToArray();
+                output.Room.TeleporterTarget = teleTarget.ToArray();
                 
                 foreach (var layerData in input.Layers)
                 {

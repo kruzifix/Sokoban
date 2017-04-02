@@ -10,6 +10,10 @@ namespace SokobanContentPipeline.Output
         public int[,] Walls { get; set; }
         public IntVec[] Switches { get; set; }
 
+        // TODO: encapsulate in own data structure!!
+        public IntVec[] TeleporterPos { get; set; }
+        public IntVec[] TeleporterTarget { get; set; }
+
         public RoomStateProcessorOutput InitialState { get; set; }
 
         public RoomProcessorOutput(int width, int height)
@@ -29,11 +33,18 @@ namespace SokobanContentPipeline.Output
                 output.Write(Switches[i]);
             }
 
+            output.Write(TeleporterPos.Length);
+            for (int i = 0; i < TeleporterPos.Length; i++)
+            {
+                output.Write(TeleporterPos[i]);
+                output.Write(TeleporterTarget[i]);
+            }
+
             output.Write(Width);
             output.Write(Height);
             for (int j = 0; j < Height; j++)
             {
-                for(int i = 0; i < Width; i++)
+                for (int i = 0; i < Width; i++)
                 {
                     output.Write(Walls[i, j]);
                 }
