@@ -184,7 +184,7 @@ namespace SokobanGame.Logic
             while (nextBox != null)
             {
                 var left = CurrentState.EntityAt<StickyBox>(nextBox.Pos - ortho);
-                if (left != null && !visited.Contains(left))
+                if (left != null)
                     branches.Add(left);
                 var right = CurrentState.EntityAt<StickyBox>(nextBox.Pos + ortho);
                 if (right != null)
@@ -200,7 +200,7 @@ namespace SokobanGame.Logic
             while (nextBox != null)
             {
                 var left = CurrentState.EntityAt<StickyBox>(nextBox.Pos - ortho);
-                if (left != null && !visited.Contains(left))
+                if (left != null)
                     branches.Add(left);
                 var right = CurrentState.EntityAt<StickyBox>(nextBox.Pos + ortho);
                 if (right != null)
