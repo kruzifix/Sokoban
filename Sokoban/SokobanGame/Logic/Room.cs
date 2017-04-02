@@ -9,6 +9,7 @@ namespace SokobanGame.Logic
 
         private int[,] walls;
         public IntVec[] Switches { get; private set; }
+        public Teleporter[] Teleporters { get; private set; }
 
         private RoomState initialState;
         public RoomState CurrentState { get; private set; }
@@ -16,12 +17,13 @@ namespace SokobanGame.Logic
         
         public int Moves { get { return history.Count; } }
 
-        public Room(int width, int height, IntVec[] switches, RoomState initialState)
+        public Room(int width, int height, IntVec[] switches, Teleporter[] teleporters, RoomState initialState)
         {
             Width = width;
             Height = height;
             walls = new int[Width, Height];
             Switches = switches;
+            Teleporters = teleporters;
 
             this.initialState = initialState.Copy();
             history = new Stack<RoomState>();
