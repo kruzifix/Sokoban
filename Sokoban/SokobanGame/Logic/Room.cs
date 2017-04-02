@@ -135,6 +135,10 @@ namespace SokobanGame.Logic
             var ent = CurrentState.EntityAt<Hole>(pos);
             if (ent == null)
             {
+                var tele = TeleporterAt(pos);
+                if (tele != null)
+                    pos = tele.Target;
+
                 box.Pos = pos;
             }
             else
@@ -234,6 +238,14 @@ namespace SokobanGame.Logic
                 if (s == pos)
                     return true;
             return false;
+        }
+
+        public Teleporter TeleporterAt(IntVec pos)
+        {
+            foreach (Teleporter t in Teleporters)
+                if (t.Pos == pos)
+                    return t;
+            return null;
         }
     }
 }
