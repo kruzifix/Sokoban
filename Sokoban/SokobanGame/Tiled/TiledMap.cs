@@ -60,16 +60,29 @@ namespace SokobanGame.Tiled
             {
                 layer.Draw(RenderOffset);
             }
+            
+            // TODO: replace with teleporter tiles!!
+            Color[] teleporterColors = new Color[] {
+                Color.SlateBlue,
+                Color.Magenta
+            };
 
-            //sb.Begin();
-            //Rectangle dest = new Rectangle(0, 0, TileWidth, TileHeight);
-            //foreach (var s in Room.Switches)
-            //{
-            //    dest.X = s.X * TileWidth + RenderOffset.X;
-            //    dest.Y = s.Y * TileHeight + RenderOffset.Y;
-            //    sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(25), Color.White);
-            //}
-            //sb.End();
+            sb.Begin();
+            Rectangle dest = new Rectangle(0, 0, TileWidth, TileHeight);
+            int col = 0;
+            foreach (var t in Room.Teleporters)
+            {
+                dest.X = t.Pos.X * TileWidth + RenderOffset.X;
+                dest.Y = t.Pos.Y * TileHeight + RenderOffset.Y;
+                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(39), teleporterColors[col]);
+
+                dest.X = t.Target.X * TileWidth + RenderOffset.X;
+                dest.Y = t.Target.Y * TileHeight + RenderOffset.Y;
+                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(44), teleporterColors[col]);
+
+                col++;
+            }
+            sb.End();
 
             DrawRoomState(Room.CurrentState);
         }
@@ -106,7 +119,7 @@ namespace SokobanGame.Tiled
                 dest.Y = h.Pos.Y * TileHeight + RenderOffset.Y;
                 sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(h.Filled ? 58 : 11), Color.White);
             }
-
+            
             int boxPad = 0;
             dest.Width = TileWidth - boxPad * 2;
             dest.Height = TileHeight - boxPad * 2;
