@@ -2,6 +2,8 @@
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="15" height="8" tilewidth="128" tileheight="128" nextobjectid="3">
  <properties>
   <property name="Name" value="Third Level"/>
+  <property name="Teleporters">2 4 to 11 3
+</property>
  </properties>
  <tileset firstgid="1" name="sokoban_tilesheet" tilewidth="128" tileheight="128" tilecount="104" columns="13">
   <image source="../sokoban_tilesheet.png" width="1664" height="1024"/>
@@ -35,8 +37,8 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,12,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,7,73,0,0,0,0,0,0,
+0,0,0,0,0,0,12,0,0,0,0,42,0,0,0,
+0,0,47,0,0,0,0,7,73,0,0,0,0,0,0,
 0,0,0,0,0,7,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
