@@ -19,9 +19,10 @@ namespace SokobanGame.Screen
         {
             SokobanGame.Instance.DrawDebugMessage("Finished Screen", new Vector2(10, 10), Color.Black);
             
-            SokobanGame.Instance.DrawDebugMessage("Press ESC for Level Selection", new Vector2(300, 90), Color.Black);
-            SokobanGame.Instance.DrawDebugMessage("Press Z to Undo", new Vector2(300, 110), Color.Black);
-            SokobanGame.Instance.DrawDebugMessage("Press R to Reset", new Vector2(300, 130), Color.Black);
+            SokobanGame.Instance.DrawDebugMessage("Press ESC for Level Selection", new Vector2(300, 150), Color.Black);
+            SokobanGame.Instance.DrawDebugMessage("Press Z to Undo", new Vector2(300, 170), Color.Black);
+            SokobanGame.Instance.DrawDebugMessage("Press R to Reset", new Vector2(300, 190), Color.Black);
+            SokobanGame.Instance.DrawDebugMessage("Press ENTER for next Level", new Vector2(300, 210), Color.Black);
         }
 
         public override void Update(GameTime gameTime)
@@ -32,6 +33,13 @@ namespace SokobanGame.Screen
                 // TODO: add function to screenmanager to remove screens until specific is found
                 ScreenManager.RemoveScreen();
                 ScreenManager.RemoveScreen();
+            }
+
+            if (KeyPress(Keys.Enter))
+            {
+                ScreenManager.RemoveScreen();
+                ScreenManager.RemoveScreen();
+                ScreenManager.AddScreen(new GameScreen( (finishedLevel + 1) % Assets.Levels.Length));
             }
 
             if (KeyPress(Keys.R))
