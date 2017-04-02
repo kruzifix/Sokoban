@@ -29,6 +29,7 @@
 #begin debug_font.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
 /processorParam:TextureFormat=Compressed
 /build:debug_font.spritefont
 
@@ -39,6 +40,8 @@
 /processorParam:WallSwitchesLayerName=Walls_Switches
 /processorParam:PlayerId=72
 /processorParam:BoxId=6
+/processorParam:StickyBoxId=9
+/processorParam:HoleId=11
 /processorParam:WallId=99
 /processorParam:SwitchId=25
 /build:Levels/01_first_level.tmx
@@ -50,6 +53,8 @@
 /processorParam:WallSwitchesLayerName=Walls_Switches
 /processorParam:PlayerId=72
 /processorParam:BoxId=6
+/processorParam:StickyBoxId=9
+/processorParam:HoleId=11
 /processorParam:WallId=99
 /processorParam:SwitchId=25
 /build:Levels/02_second_level.tmx
@@ -61,7 +66,22 @@
 /processorParam:WallSwitchesLayerName=Walls_Switches
 /processorParam:PlayerId=72
 /processorParam:BoxId=6
+/processorParam:StickyBoxId=9
+/processorParam:HoleId=11
 /processorParam:WallId=99
 /processorParam:SwitchId=25
 /build:Levels/03_third_level.tmx
+
+#begin Levels/04_fourth_level.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/processorParam:ObjectLayerName=Objects
+/processorParam:WallSwitchesLayerName=Walls_Switches
+/processorParam:PlayerId=72
+/processorParam:BoxId=6
+/processorParam:StickyBoxId=9
+/processorParam:HoleId=11
+/processorParam:WallId=99
+/processorParam:SwitchId=25
+/build:Levels/04_fourth_level.tmx
 

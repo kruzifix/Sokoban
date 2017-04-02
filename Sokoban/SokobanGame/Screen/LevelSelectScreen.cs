@@ -39,8 +39,8 @@ namespace SokobanGame.Screen
                 int centerX = (displayWidth - lvl.Width * tileSize) / 2;
                 int centerY = (displayHeight - lvl.Height * tileSize) / 2;
 
-                int x = padding + i * (displayWidth + padding) + centerX;
-                int y = (height - displayHeight) / 2 + centerY;
+                int x = padding + (i%3) * (displayWidth + padding) + centerX;
+                int y = (height - displayHeight) / 4 + centerY + (i/3) * (displayHeight + padding);
 
                 lvl.RenderOffset = new IntVec(x, y);
             }
@@ -69,7 +69,7 @@ namespace SokobanGame.Screen
 
                 Vector2 textPos = lvl.RenderOffset.ToVector2();
                 int height = SokobanGame.Instance.Graphics.GraphicsDevice.Viewport.Height;
-                textPos.Y = (height - displayHeight) / 2 - 35;
+                textPos.Y -= 35;
                 
                 Vector2 textSize = Assets.DebugFont.MeasureString(lvlName);
                 textPos.X += (int)(displayWidth - textSize.X) / 2;
