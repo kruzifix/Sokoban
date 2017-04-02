@@ -137,7 +137,11 @@ namespace SokobanGame.Logic
             {
                 var tele = TeleporterAt(pos);
                 if (tele != null)
-                    pos = tele.Target;
+                {
+                    // teleporter blocked?
+                    if (CurrentState.EntityAt(tele.Target) == null)
+                        pos = tele.Target;
+                }
 
                 box.Pos = pos;
             }
