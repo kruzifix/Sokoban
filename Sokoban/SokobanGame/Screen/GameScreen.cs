@@ -58,7 +58,9 @@ namespace SokobanGame.Screen
             SokobanGame.Instance.DrawDebugMessage("R to reset", new Vector2(40, height - 60), Color.Black);
             SokobanGame.Instance.DrawDebugMessage("Z to undo", new Vector2(40, height - 40), Color.Black);
 
-            SokobanGame.Instance.DrawDebugMessage(string.Format("History: {0}", map.Room.Moves), new Vector2(200, 10), Color.Black);
+            SokobanGame.Instance.DrawDebugMessage(string.Format("Moves: {0}", map.Room.Moves), new Vector2(200, 10), Color.Black);
+            if (!debugMode)
+                return;
             SokobanGame.Instance.DrawDebugMessage(string.Format("Solved: {0}", map.Room.IsSolved()), new Vector2(200, 30), Color.Black);
 
             SokobanGame.Instance.DrawDebugMessage(string.Format("Entities: {0}", map.Room.CurrentState.Entities.Count), new Vector2(400, 10), Color.Black);

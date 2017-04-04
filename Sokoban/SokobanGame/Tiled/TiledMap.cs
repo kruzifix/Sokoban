@@ -99,9 +99,32 @@ namespace SokobanGame.Tiled
                     if (Room.GetWall(i, j) == 0)
                         continue;
 
-                    dest.X = i * TileWidth;
-                    dest.Y = j * TileHeight;
+                    dest.X = i * TileWidth + RenderOffset.X;
+                    dest.Y = j * TileHeight + RenderOffset.Y;
                     sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(41), Color.White);
+                }
+            }
+            foreach (var e in Room.CurrentState.Entities)
+            {
+                string txt = e.Pos.ToString();
+                Vector2 size = Assets.DebugFont.MeasureString(txt);
+
+                Vector2 pos = new Vector2(e.Pos.X * TileWidth, e.Pos.Y * TileHeight) + RenderOffset.ToVector2();
+                pos.X += (TileWidth - size.X) * 0.5f;
+                pos.Y += 10;
+
+                sb.DrawString(Assets.DebugFont, txt, pos, Color.White);
+                if (e is Hole)
+                {
+                    Hole h = e as Hole;
+                    txt = h.Filled.ToString();
+                    size = Assets.DebugFont.MeasureString(txt);
+
+                    pos = new Vector2(e.Pos.X * TileWidth, e.Pos.Y * TileHeight) + RenderOffset.ToVector2();
+                    pos.X += (TileWidth - size.X) * 0.5f;
+                    pos.Y += 30;
+
+                    sb.DrawString(Assets.DebugFont, txt, pos, Color.White);
                 }
             }
             sb.End();
