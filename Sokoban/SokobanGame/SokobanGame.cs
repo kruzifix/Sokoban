@@ -15,7 +15,11 @@ namespace SokobanGame
         public SpriteBatch SpriteBatch { get; private set; }
 
         Color clearColor = new Color(117, 140, 142);
-                     
+
+        bool fullscreened = false;
+        int windowedWidth = 720;
+        int windowedHeight = 720;
+
         public SokobanGame()
         {
             if (Instance != null)
@@ -23,8 +27,9 @@ namespace SokobanGame
             Instance = this;
 
             Graphics = new GraphicsDeviceManager(this);
-            Graphics.PreferredBackBufferWidth = 720;
-            Graphics.PreferredBackBufferHeight = 720;
+            Graphics.PreferredBackBufferWidth = windowedWidth;
+            Graphics.PreferredBackBufferHeight = windowedHeight;
+            Graphics.IsFullScreen = false;
             Graphics.ApplyChanges();
 
             Content.RootDirectory = "Content";
@@ -54,6 +59,28 @@ namespace SokobanGame
         protected override void Update(GameTime gameTime)
         {
             InputManager.Instance.Update();
+
+            if (InputManager.Instance.KeyPress(Keys.F))
+            {
+                int fullWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+                int fullHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+
+                if (fullscreened)
+                {
+                    Graphics.PreferredBackBufferWidth = windowedWidth;
+                    Graphics.PreferredBackBufferHeight = windowedHeight;
+                }
+                else
+                {
+                    Graphics.PreferredBackBufferWidth = fullWidth;
+                    Graphics.PreferredBackBufferHeight = fullHeight;
+                }
+                Graphics.ApplyChanges();
+
+                fullscreened = !fullscreened;
+                Window.IsBorderless = fullscreened;
+                Window.Position = fullscreened ? Point.Zero : new Point((fullWidth - windowedWidth) / 2, (fullHeight - windowedHeight) / 2);
+            }
 
             ScreenManager.Update(gameTime);
             
