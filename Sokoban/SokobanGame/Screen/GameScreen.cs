@@ -50,7 +50,7 @@ namespace SokobanGame.Screen
 
             if (OnTop)
                 SokobanGame.Instance.DrawDebugMessage("Game Screen", new Vector2(10, 10), Color.Black);
-
+            
             SokobanGame.Instance.DrawDebugMessage(string.Format("History: {0}", map.Room.Moves), new Vector2(200, 10), Color.Black);
             SokobanGame.Instance.DrawDebugMessage(string.Format("Solved: {0}", map.Room.IsSolved()), new Vector2(200, 30), Color.Black);
 
@@ -59,7 +59,7 @@ namespace SokobanGame.Screen
             foreach (Entity e in map.Room.CurrentState.Entities)
             {
                 string info = string.Format("{0} => {1}", e.Pos, e.GetType().Name);
-                SokobanGame.Instance.DrawDebugMessage(info, new Vector2(400, 30 + i * 15), Color.Black);
+                SokobanGame.Instance.DrawDebugMessage(info, new Vector2(400, 30 + i * 20), Color.Black);
                 i++;
             }
         }

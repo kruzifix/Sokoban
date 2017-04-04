@@ -54,7 +54,7 @@ namespace SokobanGame.Screen
         public override void Draw(GameTime gameTime)
         {
             SokobanGame.Instance.DrawDebugMessage("Level Select Screen", new Vector2(10, 10), Color.Black);
-            SokobanGame.Instance.DrawDebugMessage(string.Format("selected Level: {0}", selectedLevel), new Vector2(200, 10), Color.Black);
+            SokobanGame.Instance.DrawDebugMessage(string.Format("selected Level: {0}", selectedLevel), new Vector2(260, 10), Color.Black);
 
             for (int i = 0; i < Assets.Levels.Length; i++)
             {

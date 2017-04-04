@@ -19,10 +19,10 @@ namespace SokobanGame.Screen
         {
             SokobanGame.Instance.DrawDebugMessage("Finished Screen", new Vector2(10, 10), Color.Black);
             
-            SokobanGame.Instance.DrawDebugMessage("Press ESC for Level Selection", new Vector2(300, 150), Color.Black);
-            SokobanGame.Instance.DrawDebugMessage("Press Z to Undo", new Vector2(300, 170), Color.Black);
-            SokobanGame.Instance.DrawDebugMessage("Press R to Reset", new Vector2(300, 190), Color.Black);
-            SokobanGame.Instance.DrawDebugMessage("Press ENTER for next Level", new Vector2(300, 210), Color.Black);
+            SokobanGame.Instance.DrawDebugMessage("Press ESC for Level Selection", new Vector2(30, 150), Color.Black);
+            SokobanGame.Instance.DrawDebugMessage("Press Z to Undo", new Vector2(30, 170), Color.Black);
+            SokobanGame.Instance.DrawDebugMessage("Press R to Reset", new Vector2(30, 190), Color.Black);
+            SokobanGame.Instance.DrawDebugMessage("Press ENTER for next Level", new Vector2(30, 210), Color.Black);
         }
 
         public override void Update(GameTime gameTime)
