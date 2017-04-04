@@ -20,15 +20,21 @@ namespace SokobanGame.Screen
             map = Assets.Levels[level];
             map.Room.Reset();
 
-            int width = SokobanGame.Instance.Graphics.GraphicsDevice.Viewport.Width;
-            int height = SokobanGame.Instance.Graphics.GraphicsDevice.Viewport.Height;
-            
+            CalcPositions();
+        }
+
+        private void CalcPositions()
+        {
+            int width = SokobanGame.Instance.Graphics.PreferredBackBufferWidth;
+            int height = SokobanGame.Instance.Graphics.PreferredBackBufferHeight;
+
             int tileSize = (int)Math.Min(width / (float)(map.Width + 1), height / (float)(map.Height + 1));
+            Console.WriteLine("Level: {0} Tilesize: {1}", Level, tileSize);
             map.SetTileSize(tileSize, tileSize);
-            
+
             int totalMapWidth = map.Width * map.TileWidth;
             int totalMapHeight = map.Height * map.TileHeight;
-            
+
             map.RenderOffset = new IntVec((width - totalMapWidth) / 2, (height - totalMapHeight) / 2);
         }
 
@@ -104,6 +110,11 @@ namespace SokobanGame.Screen
             {
                 ScreenManager.AddScreen(new FinishedScreen(Level));
             }
+        }
+
+        public override void Resized(int width, int height)
+        {
+            CalcPositions();
         }
     }
 }

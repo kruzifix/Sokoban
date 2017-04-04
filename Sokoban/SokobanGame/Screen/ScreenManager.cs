@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 
 /*
@@ -63,6 +62,14 @@ namespace SokobanGame.Screen
             for (int i = screensToDraw.Count - 1; i >= 0; i--)
             {
                 screensToDraw[i].Draw(gameTime);
+            }
+        }
+
+        public static void Resized(int width, int height)
+        {
+            foreach (var screen in activeScreens)
+            {
+                screen.Resized(width, height);
             }
         }
     }
