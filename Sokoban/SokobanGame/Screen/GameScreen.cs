@@ -50,7 +50,14 @@ namespace SokobanGame.Screen
 
             if (OnTop)
                 SokobanGame.Instance.DrawDebugMessage("Game Screen", new Vector2(10, 10), Color.Black);
-            
+
+            int width = SokobanGame.Instance.Graphics.PreferredBackBufferWidth;
+            int height = SokobanGame.Instance.Graphics.PreferredBackBufferHeight;
+
+            SokobanGame.Instance.DrawDebugMessage("Arrow keys to move", new Vector2(40, height - 80), Color.Black);
+            SokobanGame.Instance.DrawDebugMessage("R to reset", new Vector2(40, height - 60), Color.Black);
+            SokobanGame.Instance.DrawDebugMessage("Z to undo", new Vector2(40, height - 40), Color.Black);
+
             SokobanGame.Instance.DrawDebugMessage(string.Format("History: {0}", map.Room.Moves), new Vector2(200, 10), Color.Black);
             SokobanGame.Instance.DrawDebugMessage(string.Format("Solved: {0}", map.Room.IsSolved()), new Vector2(200, 30), Color.Black);
 
