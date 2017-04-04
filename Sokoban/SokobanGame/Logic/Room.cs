@@ -132,7 +132,7 @@ namespace SokobanGame.Logic
             IntVec pos = box.Pos + dir;
             if (GetWall(pos) > 0)
                 return false;
-            var ent = CurrentState.EntityAt<Hole>(pos);
+            var ent = CurrentState.EntityAt(pos);
             if (ent == null)
             {
                 var tele = TeleporterAt(pos);
@@ -144,8 +144,9 @@ namespace SokobanGame.Logic
                 }
 
                 box.Pos = pos;
+                return true;
             }
-            else
+            else if (ent is Hole)
             {
                 Hole h = ent as Hole;
                 if (h.Filled)
@@ -157,8 +158,9 @@ namespace SokobanGame.Logic
                     h.Filled = true;
                     CurrentState.RemoveEntity(box);
                 }
+                return true;
             }
-            return true;
+            return false;
         }
 
         private bool TryMoveStickyBox(StickyBox box, IntVec dir)
