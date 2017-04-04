@@ -28,6 +28,8 @@ namespace SokobanGame.Screen
         public virtual void Activated() { }
         public virtual void Disabled() { }
 
+        public virtual void Resized(int width, int height) { }
+
         public abstract void Update(GameTime gameTime);
         public abstract void Draw(GameTime gameTime);
     }
