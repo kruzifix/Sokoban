@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace SokobanGame.Screen
 {
@@ -13,10 +14,16 @@ namespace SokobanGame.Screen
         int displayWidth;
         int displayHeight;
 
+        private SpriteFont font;
+        private SpriteBatch sb;
+
         public LevelSelectScreen()
             : base(true, true)
         {
             PositionLevels();
+
+            sb = SokobanGame.Instance.SpriteBatch;
+            font = Assets.SpacePortFont;
         }
 
         private void PositionLevels()
@@ -55,7 +62,7 @@ namespace SokobanGame.Screen
         {
             SokobanGame.Instance.DrawDebugMessage("Level Select Screen", new Vector2(10, 10), Color.Black);
             SokobanGame.Instance.DrawDebugMessage(string.Format("selected Level: {0}", selectedLevel), new Vector2(260, 10), Color.Black);
-
+            
             for (int i = 0; i < Assets.Levels.Length; i++)
             {
                 var lvl = Assets.Levels[i];
@@ -71,9 +78,12 @@ namespace SokobanGame.Screen
                 int height = SokobanGame.Instance.Graphics.GraphicsDevice.Viewport.Height;
                 textPos.Y -= 35;
                 
-                Vector2 textSize = Assets.DebugFont.MeasureString(lvlName);
+                Vector2 textSize = font.MeasureString(lvlName);
                 textPos.X += (int)(displayWidth - textSize.X) / 2;
-                SokobanGame.Instance.DrawDebugMessage(lvlName, textPos, Color.Black);
+                //SokobanGame.Instance.DrawDebugMessage(lvlName, textPos, Color.Black);
+                sb.Begin();
+                sb.DrawString(font, lvlName, textPos, Color.Black);
+                sb.End();
             }
         }
 

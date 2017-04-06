@@ -8,11 +8,13 @@ namespace SokobanGame
     public static class Assets
     {
         public static SpriteFont DebugFont { get; private set; }
+        public static SpriteFont SpacePortFont { get; private set; }
         public static TiledMap[] Levels { get; private set; }
 
         public static void LoadAssets(ContentManager content)
         {
             DebugFont = content.Load<SpriteFont>("debug_font");
+            SpacePortFont = content.Load<SpriteFont>("spaceport_font");
 
             string levelsPath = "Levels";
             DirectoryInfo dir = new DirectoryInfo(content.RootDirectory + "/" + levelsPath);

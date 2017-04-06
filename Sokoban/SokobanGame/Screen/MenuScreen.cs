@@ -23,7 +23,7 @@ namespace SokobanGame.Screen
         {
             selectedOption = 0;
 
-            font = Assets.DebugFont;
+            font = Assets.SpacePortFont;
             sb = SokobanGame.Instance.SpriteBatch;
         }
 
