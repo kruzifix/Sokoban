@@ -215,8 +215,8 @@ namespace SokobanGame.Logic
             }
                         
             // can only move 1 wide groups!
-            if (firstBox && group.Count > 1)
-                return false;
+            //if (firstBox && group.Count > 1)
+            //    return false;
 
             StickyBox farthest = group[group.Count - 1];
             if (!CanMoveEntity(farthest, dir))

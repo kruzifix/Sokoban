@@ -31,14 +31,14 @@ namespace SokobanGame.Screen
             {
                 // HACK
                 // TODO: add function to screenmanager to remove screens until specific is found
-                ScreenManager.RemoveScreen();
-                ScreenManager.RemoveScreen();
+                ScreenManager.RemoveScreen(); // finished
+                ScreenManager.RemoveScreen(); // gamescreen
             }
 
             if (KeyPress(Keys.Enter))
             {
-                ScreenManager.RemoveScreen();
-                ScreenManager.RemoveScreen();
+                ScreenManager.RemoveScreen(); // finished
+                ScreenManager.RemoveScreen(); // gamescreen
                 ScreenManager.AddScreen(new GameScreen( (finishedLevel + 1) % Assets.Levels.Length));
             }
 
