@@ -76,7 +76,8 @@ namespace SokobanGame.Screen
 
                 Vector2 txtSize = font.MeasureString(lvlName);
                 Vector2 txtPos = new Vector2(tlx + (dw - txtSize.X) * 0.5f, tly + 10);
-
+                txtPos.Round();
+                
                 sb.Begin();
                 sb.DrawString(font, lvlName, txtPos, i == selectedLevel ? Color.GreenYellow : Color.White);
                 sb.End();

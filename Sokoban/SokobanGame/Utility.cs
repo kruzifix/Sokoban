@@ -21,5 +21,11 @@ namespace SokobanGame
             sb.Draw(Assets.PixelTexture, rect, color);
             sb.End();
         }
+
+        public static void Round(this Vector2 vec)
+        {
+            vec.X = (int)vec.X;
+            vec.Y = (int)vec.Y;
+        }
     }
 }

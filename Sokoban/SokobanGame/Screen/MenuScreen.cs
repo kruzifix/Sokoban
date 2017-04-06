@@ -15,6 +15,9 @@ namespace SokobanGame.Screen
             "Exit"
         };
 
+        private string title = "Sokoban";
+
+        private SpriteFont titleFont;
         private SpriteFont font;
         private SpriteBatch sb;
 
@@ -23,6 +26,7 @@ namespace SokobanGame.Screen
         {
             selectedOption = 0;
 
+            titleFont = Assets.GreenwichFont;
             font = Assets.SpacePortFont;
             sb = SokobanGame.Instance.SpriteBatch;
         }
@@ -34,6 +38,14 @@ namespace SokobanGame.Screen
             int width = SokobanGame.Instance.GraphicsDevice.Viewport.Width;
             int height = SokobanGame.Instance.GraphicsDevice.Viewport.Height;
 
+            Vector2 titleSize = titleFont.MeasureString(title);
+            Vector2 titlePos = new Vector2((width - titleSize.X) * 0.5f, 50);
+            titlePos.Round();
+
+            sb.Begin();
+            sb.DrawString(titleFont, title, titlePos, Color.White);
+            sb.End();
+
             int textPadding = 60;
             int topOffset = height / 2 - options.Length * textPadding / 2;
             int btnWidth = 220;
@@ -44,6 +56,7 @@ namespace SokobanGame.Screen
 
                 Vector2 txtSize = font.MeasureString(opt);
                 Vector2 txtPos = new Vector2((width - txtSize.X) * 0.5f, topOffset + i * textPadding);
+                txtPos.Round();
 
                 int pa = i == selectedOption ? 5 : 0;
 
