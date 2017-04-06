@@ -117,3 +117,10 @@
 /processorParam:TextureFormat=Color
 /build:pixel_1x1.png
 
+#begin greenwich_font.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:greenwich_font.spritefont
+

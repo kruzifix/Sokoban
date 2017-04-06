@@ -9,6 +9,7 @@ namespace SokobanGame
     {
         public static SpriteFont DebugFont { get; private set; }
         public static SpriteFont SpacePortFont { get; private set; }
+        public static SpriteFont GreenwichFont { get; private set; }
 
         public static Texture2D PixelTexture { get; private set; }
 
@@ -18,6 +19,7 @@ namespace SokobanGame
         {
             DebugFont = content.Load<SpriteFont>("debug_font");
             SpacePortFont = content.Load<SpriteFont>("spaceport_font");
+            GreenwichFont = content.Load<SpriteFont>("greenwich_font");
 
             PixelTexture = content.Load<Texture2D>("pixel_1x1");
 
