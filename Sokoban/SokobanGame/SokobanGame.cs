@@ -82,6 +82,7 @@ namespace SokobanGame
 
                 fullscreened = !fullscreened;
                 Window.IsBorderless = fullscreened;
+                IsMouseVisible = !fullscreened;
                 // TODO: Window always fullscreens to primary monitor!
                 Window.Position = fullscreened ? Point.Zero : new Point((fullWidth - windowedWidth) / 2, (fullHeight - windowedHeight) / 2);
 
