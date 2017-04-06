@@ -35,13 +35,13 @@ namespace SokobanGame.Screen
 
             int width = SokobanGame.Width;
             int height = SokobanGame.Height;
-            
+
             sb.Begin();
-            sb.DrawString(titleFont, title, new Vector2(width*0.5f, 120), Color.White, Align.Center);
+            sb.DrawString(titleFont, title, new Vector2(width * 0.5f, 120), Color.White, Align.Center);
             sb.End();
 
             int textPadding = 60;
-            int topOffset = height / 2 - options.Length * textPadding / 2+50;
+            int topOffset = height / 2 - options.Length * textPadding / 2 + 50;
             int btnWidth = 250;
 
             for (int i = 0; i < options.Length; i++)
@@ -49,10 +49,11 @@ namespace SokobanGame.Screen
                 int y = topOffset + i * textPadding;
                 int pa = i == selectedOption ? 10 : 0;
 
+                sb.DrawRect(width * 0.5f, y, btnWidth + pa * 2 + 10, 50 + pa, i == selectedOption ? Color.LightGray : Color.DimGray, Align.Center);
                 sb.DrawRect(width * 0.5f, y, btnWidth + pa * 2, 40 + pa, i == selectedOption ? Color.DarkOliveGreen : Color.Gray, Align.Center);
 
                 sb.Begin();
-                sb.DrawString(font, options[i], new Vector2(width*0.5f, y), i == selectedOption ? Color.GreenYellow : Color.White, Align.Center);
+                sb.DrawString(font, options[i], new Vector2(width * 0.5f, y), i == selectedOption ? Color.GreenYellow : Color.White, Align.Center);
                 sb.End();
             }
         }

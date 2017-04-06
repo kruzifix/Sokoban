@@ -56,6 +56,9 @@ namespace SokobanGame.Screen
             int height = SokobanGame.Height;
 
             Color ggray = new Color(51, 51, 51, 255);
+            sb.DrawRect(0, 0, width, 50, Color.LightGray);
+            sb.DrawRect(0, height - 50, width, 50, Color.LightGray);
+
             sb.DrawRect(0, 0, width, 40, ggray);
             sb.DrawRect(0, height - 40, width, 40, ggray);
 

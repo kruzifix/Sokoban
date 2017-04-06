@@ -11,7 +11,7 @@ namespace SokobanGame.Screen
 
         private SpriteFont font;
 
-        public FinishedScreen(int finishedLevel) 
+        public FinishedScreen(int finishedLevel)
             : base(false, true)
         {
             this.finishedLevel = finishedLevel;
@@ -24,13 +24,15 @@ namespace SokobanGame.Screen
         {
             int width = SokobanGame.Width;
             int height = SokobanGame.Height;
-            Color bgCol = new Color(0, 0, 0, 128);
+            Color bgCol = new Color(51, 51, 51, 200);
+            sb.DrawRect(width * 0.5f, height * 0.5f, 520, 220, Color.DarkOliveGreen, Align.Center);
             sb.DrawRect(width * 0.5f, height * 0.5f, 500, 200, bgCol, Align.Center);
-            sb.DrawRect(width * 0.5f, height * 0.5f - 75, 500, 50, bgCol, Align.Center);
+            sb.DrawRect(width * 0.5f, height * 0.5f - 75, 500, 50, Color.DarkGray, Align.Center);
 
             string msg = "Level finished";
             sb.Begin();
-            sb.DrawString(font, msg, new Vector2(width * 0.5f, height * 0.5f-75), Color.White, Align.Center);
+            Color ggray = new Color(51, 51, 51, 255);
+            sb.DrawString(font, msg, new Vector2(width * 0.5f, height * 0.5f - 75), Color.GreenYellow, Align.Center);
             sb.DrawString(font, moveCount + " Moves", new Vector2(width * 0.5f, height * 0.5f - 25), Color.LightGray, Align.Center);
             sb.DrawString(font, "ESC - back to Level-Select", new Vector2(width * 0.5f, height * 0.5f + 20), Color.LightGray, Align.Center);
             sb.DrawString(font, "ENTER - next Level", new Vector2(width * 0.5f, height * 0.5f + 65), Color.LightGray, Align.Center);
@@ -52,7 +54,9 @@ namespace SokobanGame.Screen
             {
                 ScreenManager.RemoveScreen(); // finished
                 ScreenManager.RemoveScreen(); // gamescreen
-                ScreenManager.AddScreen(new GameScreen((finishedLevel + 1) % Assets.Levels.Length));
+                int newLevel = (finishedLevel + 1) % Assets.Levels.Length;
+                (ScreenManager.TopScreen as LevelSelectScreen).SelectedLevel = newLevel;
+                ScreenManager.AddScreen(new GameScreen(newLevel));
             }
 
             if (KeyPress(Keys.R))

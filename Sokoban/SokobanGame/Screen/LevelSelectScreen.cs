@@ -10,7 +10,7 @@ namespace SokobanGame.Screen
         public int SelectedLevel { get; set; }
 
         int columns = 3;
-        int padding = 10;
+        int padding = 20;
 
         private SpriteFont font;
 
@@ -62,6 +62,7 @@ namespace SokobanGame.Screen
                 int tlx = xo + (dw + padding) * x + padding;
                 int tly = yo + (dw + padding) * y + padding;
                 Color ggray = new Color(51, 51, 51, 255);
+                sb.DrawRect(tlx - 5, tly - 5, dw + 10, dw + 10, i == SelectedLevel ? ggray : Color.LightGray);
                 sb.DrawRect(tlx, tly, dw, dw, i == SelectedLevel ? Color.DimGray : ggray);
                 sb.DrawRect(tlx, tly, dw, 40, i == SelectedLevel ? Color.DarkOliveGreen : Color.Gray);
                 
