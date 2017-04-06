@@ -17,12 +17,8 @@ namespace SokobanGame.Screen
 
         public override void Draw(GameTime gameTime)
         {
-            SokobanGame.Instance.DrawDebugMessage("Finished Screen", new Vector2(10, 10), Color.Black);
+            string msg = "You did it!";
             
-            SokobanGame.Instance.DrawDebugMessage("Press ESC for Level Selection", new Vector2(30, 150), Color.Black);
-            SokobanGame.Instance.DrawDebugMessage("Press Z to Undo", new Vector2(30, 170), Color.Black);
-            SokobanGame.Instance.DrawDebugMessage("Press R to Reset", new Vector2(30, 190), Color.Black);
-            SokobanGame.Instance.DrawDebugMessage("Press ENTER for next Level", new Vector2(30, 210), Color.Black);
         }
 
         public override void Update(GameTime gameTime)

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 /*
@@ -14,10 +15,14 @@ namespace SokobanGame.Screen
 
         public bool OnTop { get { return ScreenManager.TopScreen == this; } }
 
+        protected SpriteBatch sb { get; private set; }
+
         public Screen(bool blocksDraw, bool blocksUpdate)
         {
             BlocksDraw = blocksDraw;
             BlocksUpdate = blocksUpdate;
+
+            sb = SokobanGame.Instance.SpriteBatch;
         }
 
         protected bool KeyPress(Keys key)

@@ -13,7 +13,6 @@ namespace SokobanGame.Screen
         private bool debugMode = false;
 
         private SpriteFont font;
-        private SpriteBatch sb;
 
         public int Level { get; private set; }
 
@@ -21,7 +20,6 @@ namespace SokobanGame.Screen
             : base(true, true)
         {
             font = Assets.SpacePortFont;
-            sb = SokobanGame.Instance.SpriteBatch;
 
             Level = level;
             map = Assets.Levels[level];

@@ -13,14 +13,12 @@ namespace SokobanGame.Screen
         int padding = 10;
 
         private SpriteFont font;
-        private SpriteBatch sb;
 
         public LevelSelectScreen()
             : base(true, true)
         {
             ResetAllLevels();
 
-            sb = SokobanGame.Instance.SpriteBatch;
             font = Assets.SpacePortFont;
         }
 

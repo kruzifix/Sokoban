@@ -19,7 +19,6 @@ namespace SokobanGame.Screen
 
         private SpriteFont titleFont;
         private SpriteFont font;
-        private SpriteBatch sb;
 
         public MenuScreen()
             : base(true, true)
@@ -28,7 +27,6 @@ namespace SokobanGame.Screen
 
             titleFont = Assets.GreenwichFont;
             font = Assets.SpacePortFont;
-            sb = SokobanGame.Instance.SpriteBatch;
         }
 
         public override void Draw(GameTime gameTime)
