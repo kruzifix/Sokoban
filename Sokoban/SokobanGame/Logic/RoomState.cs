@@ -22,9 +22,9 @@ namespace SokobanGame.Logic
 
         private void HashEntities()
         {
-            Boxes = Entities.Where(e => e is Box).Cast<Box>().ToList();
-            StickyBoxes = Entities.Where(e => e is StickyBox).Cast<StickyBox>().ToList();
-            Holes = Entities.Where(e => e is Hole).Cast<Hole>().ToList();
+            Boxes = Entities.OfType<Box>().ToList();
+            StickyBoxes = Entities.OfType<StickyBox>().ToList();
+            Holes = Entities.OfType<Hole>().ToList();
         }
 
         public RoomState Copy()
