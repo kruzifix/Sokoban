@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SokobanGame.Logic;
 using SokobanGame.Tiled;
@@ -11,11 +12,17 @@ namespace SokobanGame.Screen
         private TiledMap map;
         private bool debugMode = false;
 
+        private SpriteFont font;
+        private SpriteBatch sb;
+
         public int Level { get; private set; }
 
         public GameScreen(int level)
             : base(true, true)
         {
+            font = Assets.SpacePortFont;
+            sb = SokobanGame.Instance.SpriteBatch;
+
             Level = level;
             map = Assets.Levels[level];
             map.Room.Reset();
@@ -50,11 +57,25 @@ namespace SokobanGame.Screen
             int width = SokobanGame.Width;
             int height = SokobanGame.Height;
 
+            string lvlName;
+            if (!map.Properties.TryGetValue("Name", out lvlName))
+                lvlName = "noname";
+
+            Vector2 txtSize = font.MeasureString(lvlName);
+            Vector2 txtPos = new Vector2((width - txtSize.X) * 0.5f, (40 - txtSize.Y)*0.5f);
+            txtPos.Round();
+
+            sb.DrawRect(0, 0, width, 40, Color.Black);
+
+            sb.Begin();
+            sb.DrawString(font, lvlName, txtPos, Color.White);
+            sb.End();
+
             SokobanGame.Instance.DrawDebugMessage("Arrow keys to move", new Vector2(40, height - 80), Color.Black);
             SokobanGame.Instance.DrawDebugMessage("R to reset", new Vector2(40, height - 60), Color.Black);
             SokobanGame.Instance.DrawDebugMessage("Z to undo", new Vector2(40, height - 40), Color.Black);
 
-            SokobanGame.Instance.DrawDebugMessage(string.Format("Moves: {0}", map.Room.Moves), new Vector2(200, 10), Color.Black);
+
             if (!debugMode)
                 return;
             SokobanGame.Instance.DrawDebugMessage(string.Format("Solved: {0}", map.Room.IsSolved()), new Vector2(200, 30), Color.Black);
