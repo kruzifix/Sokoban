@@ -15,6 +15,9 @@ namespace SokobanGame.Tiled
         public int TileWidth { get; private set; }
         public int TileHeight { get; private set; }
 
+        public int PixelWidth { get { return Width * TileWidth; } }
+        public int PixelHeight { get { return Height * TileHeight; } }
+
         public IntVec RenderOffset { get; set; }
 
         public TiledTileset Tileset { get; private set; }

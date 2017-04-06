@@ -43,8 +43,8 @@ namespace SokobanGame.Screen
                 int tileSize = (int)MathHelper.Min(displayWidth / (float)lvl.Width, displayHeight / (float)lvl.Height);
                 lvl.SetTileSize(tileSize, tileSize);
 
-                int centerX = (displayWidth - lvl.Width * tileSize) / 2;
-                int centerY = (displayHeight - lvl.Height * tileSize) / 2;
+                int centerX = (displayWidth - lvl.PixelWidth) / 2;
+                int centerY = (displayHeight - lvl.PixelHeight) / 2;
 
                 int x = padding + (i%3) * (displayWidth + padding) + centerX;
                 int y = (height - displayHeight) / 4 + centerY + (i/3) * (displayHeight + padding);
@@ -66,6 +66,11 @@ namespace SokobanGame.Screen
             for (int i = 0; i < Assets.Levels.Length; i++)
             {
                 var lvl = Assets.Levels[i];
+
+                sb.Begin();
+                sb.Draw(Assets.PixelTexture, new Rectangle(lvl.RenderOffset.X, lvl.RenderOffset.Y, lvl.PixelWidth, lvl.PixelHeight), Color.Black);
+                sb.End();
+
                 lvl.Draw();
                 
                 string lvlName;
