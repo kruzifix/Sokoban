@@ -67,17 +67,15 @@ namespace SokobanGame.Screen
             {
                 var lvl = Assets.Levels[i];
 
-                sb.Begin();
-                sb.Draw(Assets.PixelTexture, new Rectangle(lvl.RenderOffset.X, lvl.RenderOffset.Y, lvl.PixelWidth, lvl.PixelHeight), Color.Black);
-                sb.End();
+                sb.DrawRect(lvl.RenderOffset.X-5, lvl.RenderOffset.Y-5, lvl.PixelWidth+10, lvl.PixelHeight+10, Color.White);
 
                 lvl.Draw();
                 
                 string lvlName;
                 if (!lvl.Properties.TryGetValue("Name", out lvlName))
                     lvlName = "noname";
-                if (i == selectedLevel)
-                    lvlName = "--[ " + lvlName + " ]--";
+                //if (i == selectedLevel)
+                //    lvlName = "--[ " + lvlName + " ]--";
 
                 Vector2 textPos = lvl.RenderOffset.ToVector2();
                 int height = SokobanGame.Instance.Graphics.GraphicsDevice.Viewport.Height;
@@ -86,8 +84,10 @@ namespace SokobanGame.Screen
                 Vector2 textSize = font.MeasureString(lvlName);
                 textPos.X += (int)(displayWidth - textSize.X) / 2;
                 //SokobanGame.Instance.DrawDebugMessage(lvlName, textPos, Color.Black);
-                sb.Begin();
-                sb.DrawString(font, lvlName, textPos, Color.Black);
+                if (i == selectedLevel)
+                    sb.DrawRect(textPos.X-5, textPos.Y-5, textSize.X+10, textSize.Y+10, Color.Black);
+                sb.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
+                sb.DrawString(font, lvlName, textPos, i == selectedLevel ? Color.White : Color.Black);
                 sb.End();
             }
         }

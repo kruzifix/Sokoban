@@ -60,6 +60,7 @@
     <Compile Include="Tiled\TiledLayer.cs" />
     <Compile Include="Tiled\TiledMap.cs" />
     <Compile Include="Tiled\TiledTileset.cs" />
+    <Compile Include="Utility.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
