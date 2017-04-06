@@ -13,13 +13,13 @@ namespace SokobanGame
 
         public static int Width { get { return Instance.GraphicsDevice.Viewport.Width; } }
         public static int Height { get { return Instance.GraphicsDevice.Viewport.Height; } }
+        public static bool FullScreened { get; private set; } = false;
 
         public GraphicsDeviceManager Graphics { get; private set; }
         public SpriteBatch SpriteBatch { get; private set; }
 
         Color clearColor = new Color(117, 140, 142);
 
-        bool fullscreened = false;
         int windowedWidth = 720;
         int windowedHeight = 720;
 
@@ -68,7 +68,7 @@ namespace SokobanGame
                 int fullWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
                 int fullHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 
-                if (fullscreened)
+                if (FullScreened)
                 {
                     Graphics.PreferredBackBufferWidth = windowedWidth;
                     Graphics.PreferredBackBufferHeight = windowedHeight;
@@ -80,11 +80,11 @@ namespace SokobanGame
                 }
                 Graphics.ApplyChanges();
 
-                fullscreened = !fullscreened;
-                Window.IsBorderless = fullscreened;
-                IsMouseVisible = !fullscreened;
+                FullScreened = !FullScreened;
+                Window.IsBorderless = FullScreened;
+                IsMouseVisible = !FullScreened;
                 // TODO: Window always fullscreens to primary monitor!
-                Window.Position = fullscreened ? Point.Zero : new Point((fullWidth - windowedWidth) / 2, (fullHeight - windowedHeight) / 2);
+                Window.Position = FullScreened ? Point.Zero : new Point((fullWidth - windowedWidth) / 2, (fullHeight - windowedHeight) / 2);
 
                 ScreenManager.Resized(Graphics.PreferredBackBufferWidth, Graphics.PreferredBackBufferHeight);
             }

@@ -71,7 +71,7 @@ namespace SokobanGame.Screen
             sb.Begin();
             sb.DrawString(font, lvlName, new Vector2(width * 0.5f, 20), Color.White, Align.Center);
             sb.DrawString(font, "Arrow keys to move", new Vector2(40, height - 20), Color.White, Align.MidLeft);
-            sb.DrawString(font, "R to reset", new Vector2(width * 0.5f, height - 20), Color.White, Align.Center);
+            sb.DrawString(font, "R to reset", new Vector2(width * 0.5f, height - 20), Color.White, SokobanGame.FullScreened ? Align.Center : Align.MidLeft);
             sb.DrawString(font, "Z to Undo", new Vector2(width - 40, height - 20), Color.White, Align.MidRight);
             sb.End();
 
