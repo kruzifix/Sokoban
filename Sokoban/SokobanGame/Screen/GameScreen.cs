@@ -60,9 +60,6 @@ namespace SokobanGame.Screen
             Color ggray = new Color(51, 51, 51, 255);
             sb.DrawRect(0, 0, width, 40, ggray);
             sb.DrawRect(0, height - 40, width, 40, ggray);
-            int w = 25;
-            int h = 35;
-            sb.DrawRect((width - w) * 0.5f, height - ( 30 - h)*0.5f, w, h, Color.Gray);
 
             string lvlName;
             if (!map.Properties.TryGetValue("Name", out lvlName))
