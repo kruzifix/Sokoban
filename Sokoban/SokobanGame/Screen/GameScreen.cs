@@ -48,31 +48,33 @@ namespace SokobanGame.Screen
         public override void Draw(GameTime gameTime)
         {
             SokobanGame.Instance.GraphicsDevice.Clear(Color.LightSlateGray);
-            
+
             map.Draw();
 
             if (debugMode)
                 map.DrawDebug();
-            
+
             int width = SokobanGame.Width;
             int height = SokobanGame.Height;
 
             Color ggray = new Color(51, 51, 51, 255);
             sb.DrawRect(0, 0, width, 40, ggray);
             sb.DrawRect(0, height - 40, width, 40, ggray);
+            int w = 25;
+            int h = 35;
+            sb.DrawRect((width - w) * 0.5f, height - ( 30 - h)*0.5f, w, h, Color.Gray);
 
             string lvlName;
             if (!map.Properties.TryGetValue("Name", out lvlName))
                 lvlName = "noname";
-                        
+
             sb.Begin();
-            sb.DrawString(font, lvlName, new Vector2(width*0.5f, 20), Color.White, TAlign.Center);
-            
-            sb.DrawString(font, "Arrow keys to move", new Vector2(40, height-20), Color.White, TAlign.MidLeft);
-            sb.DrawString(font, "R to reset", new Vector2(width*0.5f, height - 20), Color.White, TAlign.Center);
-            sb.DrawString(font, "Z to Undo", new Vector2(width-40, height - 20), Color.White, TAlign.MidRight);
+            sb.DrawString(font, lvlName, new Vector2(width * 0.5f, 20), Color.White, Align.Center);
+            sb.DrawString(font, "Arrow keys to move", new Vector2(40, height - 20), Color.White, Align.MidLeft);
+            sb.DrawString(font, "R to reset", new Vector2(width * 0.5f, height - 20), Color.White, Align.Center);
+            sb.DrawString(font, "Z to Undo", new Vector2(width - 40, height - 20), Color.White, Align.MidRight);
             sb.End();
-            
+
             if (!debugMode)
                 return;
             SokobanGame.Instance.DrawDebugMessage(string.Format("Solved: {0}", map.Room.IsSolved()), new Vector2(200, 30), Color.Black);
@@ -108,7 +110,7 @@ namespace SokobanGame.Screen
             {
                 map.Room.Undo();
             }
-            
+
             if (KeyPress(Keys.Up))
             {
                 map.Room.Update(new IntVec(0, -1));

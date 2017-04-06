@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SokobanGame
 {
-    public enum TAlign
+    public enum Align
     {
         TopLeft,
         MidLeft,
@@ -13,37 +13,45 @@ namespace SokobanGame
 
     public static class Utility
     {
-        public static void DrawRect(this SpriteBatch sb, float x, float y, float width, float height, Color color)
+        public static void DrawRect(this SpriteBatch sb, float x, float y, float width, float height, Color color, Align align = Align.TopLeft)
         {
-            DrawRect(sb, (int)x, (int)y, (int)width, (int)height, color);
+            DrawRect(sb, (int)x, (int)y, (int)width, (int)height, color, align);
         }
 
-        public static void DrawRect(this SpriteBatch sb, int x, int y, int width, int height, Color color)
+        public static void DrawRect(this SpriteBatch sb, int x, int y, int width, int height, Color color, Align align = Align.TopLeft)
         {
-            DrawRect(sb, new Rectangle(x, y, width, height), color);
+            DrawRect(sb, new Rectangle(x, y, width, height), color, align);
         }
 
-        public static void DrawRect(this SpriteBatch sb, Rectangle rect, Color color)
+        public static void DrawRect(this SpriteBatch sb, Rectangle rect, Color color, Align align = Align.TopLeft)
         {
+            switch (align)
+            {
+                case Align.Center:
+                    rect.X -= rect.Width / 2;
+                    rect.Y -= rect.Height / 2;
+                    break;
+            }
+
             sb.Begin();
             sb.Draw(Assets.PixelTexture, rect, color);
             sb.End();
         }
 
-        public static void DrawString(this SpriteBatch sb, SpriteFont font, string txt, Vector2 position, Color color, TAlign align)
+        public static void DrawString(this SpriteBatch sb, SpriteFont font, string txt, Vector2 position, Color color, Align align)
         {
             Vector2 txtSize = font.MeasureString(txt);
             Vector2 pos = position;
             switch (align)
             {
-                case TAlign.MidLeft:
+                case Align.MidLeft:
                     pos.Y -= txtSize.Y * 0.5f;
                     break;
-                case TAlign.Center:
+                case Align.Center:
                     pos.X -= txtSize.X * 0.5f;
                     pos.Y -= txtSize.Y * 0.5f;
                     break;
-                case TAlign.MidRight:
+                case Align.MidRight:
                     pos.X -= txtSize.X;
                     pos.Y -= txtSize.Y * 0.5f;
                     break;

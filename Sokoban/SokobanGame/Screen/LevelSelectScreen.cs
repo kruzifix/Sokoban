@@ -75,7 +75,7 @@ namespace SokobanGame.Screen
                 lvl.Draw();
                 
                 sb.Begin();
-                sb.DrawString(font, lvlName, new Vector2(tlx+dw*0.5f, tly + 20), i == selectedLevel ? Color.GreenYellow : Color.White, TAlign.Center);
+                sb.DrawString(font, lvlName, new Vector2(tlx+dw*0.5f, tly + 20), i == selectedLevel ? Color.GreenYellow : Color.White, Align.Center);
                 sb.End();
             }
         }
