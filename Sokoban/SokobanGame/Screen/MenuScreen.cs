@@ -35,8 +35,8 @@ namespace SokobanGame.Screen
         {
             SokobanGame.Instance.GraphicsDevice.Clear(Color.LightSlateGray);
 
-            int width = SokobanGame.Instance.GraphicsDevice.Viewport.Width;
-            int height = SokobanGame.Instance.GraphicsDevice.Viewport.Height;
+            int width = SokobanGame.Width;
+            int height = SokobanGame.Height;
 
             Vector2 titleSize = titleFont.MeasureString(title);
             Vector2 titlePos = new Vector2((width - titleSize.X) * 0.5f, 50);

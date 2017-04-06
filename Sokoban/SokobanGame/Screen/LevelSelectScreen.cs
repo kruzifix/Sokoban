@@ -42,8 +42,8 @@ namespace SokobanGame.Screen
         {
             SokobanGame.Instance.GraphicsDevice.Clear(Color.LightSlateGray);
             
-            int w = SokobanGame.Instance.Graphics.GraphicsDevice.Viewport.Width;
-            int h = SokobanGame.Instance.Graphics.GraphicsDevice.Viewport.Height;
+            int w = SokobanGame.Width;
+            int h = SokobanGame.Height;
 
             int s = Math.Min(w, h);
 

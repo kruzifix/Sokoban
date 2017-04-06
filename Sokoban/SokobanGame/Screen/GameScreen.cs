@@ -25,8 +25,8 @@ namespace SokobanGame.Screen
 
         private void CalcPositions()
         {
-            int width = SokobanGame.Instance.Graphics.PreferredBackBufferWidth;
-            int height = SokobanGame.Instance.Graphics.PreferredBackBufferHeight;
+            int width = SokobanGame.Width;
+            int height = SokobanGame.Height;
 
             int tileSize = (int)Math.Min(width / (float)(map.Width + 1), height / (float)(map.Height + 1));
             Console.WriteLine("Level: {0} Tilesize: {1}", Level, tileSize);
@@ -40,19 +40,15 @@ namespace SokobanGame.Screen
 
         public override void Draw(GameTime gameTime)
         {
-            if (map.Room.IsSolved())
-                SokobanGame.Instance.GraphicsDevice.Clear(Color.Green);
-
+            SokobanGame.Instance.GraphicsDevice.Clear(Color.LightSlateGray);
+            
             map.Draw();
 
             if (debugMode)
                 map.DrawDebug();
-
-            if (OnTop)
-                SokobanGame.Instance.DrawDebugMessage("Game Screen", new Vector2(10, 10), Color.Black);
-
-            int width = SokobanGame.Instance.Graphics.PreferredBackBufferWidth;
-            int height = SokobanGame.Instance.Graphics.PreferredBackBufferHeight;
+            
+            int width = SokobanGame.Width;
+            int height = SokobanGame.Height;
 
             SokobanGame.Instance.DrawDebugMessage("Arrow keys to move", new Vector2(40, height - 80), Color.Black);
             SokobanGame.Instance.DrawDebugMessage("R to reset", new Vector2(40, height - 60), Color.Black);

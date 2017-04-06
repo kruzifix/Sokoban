@@ -11,6 +11,9 @@ namespace SokobanGame
     {
         public static SokobanGame Instance { get; private set; }
 
+        public static int Width { get { return Instance.GraphicsDevice.Viewport.Width; } }
+        public static int Height { get { return Instance.GraphicsDevice.Viewport.Height; } }
+
         public GraphicsDeviceManager Graphics { get; private set; }
         public SpriteBatch SpriteBatch { get; private set; }
 
