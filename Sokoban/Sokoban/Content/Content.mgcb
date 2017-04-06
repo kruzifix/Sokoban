@@ -98,3 +98,10 @@
 /processorParam:SwitchId=25
 /build:Levels/05_level.tmx
 
+#begin spaceport_font.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:spaceport_font.spritefont
+
