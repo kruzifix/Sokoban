@@ -47,23 +47,20 @@ namespace SokobanGame.Screen
             sb.End();
 
             int textPadding = 60;
-            int topOffset = height / 2 - options.Length * textPadding / 2;
-            int btnWidth = 220;
+            int topOffset = height / 2 - options.Length * textPadding / 2+50;
+            int btnWidth = 250;
 
             for (int i = 0; i < options.Length; i++)
             {
                 string opt = options[i];
 
-                Vector2 txtSize = font.MeasureString(opt);
-                Vector2 txtPos = new Vector2((width - txtSize.X) * 0.5f, topOffset + i * textPadding);
-                txtPos.Round();
-
+                int y = topOffset + i * textPadding;
                 int pa = i == selectedOption ? 5 : 0;
 
-                sb.DrawRect((width - btnWidth) * 0.5f - pa, txtPos.Y - 10 - pa, btnWidth + pa * 2, txtSize.Y + 20 + pa * 2, i == selectedOption ? Color.DarkOliveGreen : Color.Gray);
+                sb.DrawRect((width - btnWidth) * 0.5f - pa, y - 20 - pa, btnWidth + pa * 2, 40 + pa * 2, i == selectedOption ? Color.DarkOliveGreen : Color.Gray);
 
                 sb.Begin();
-                sb.DrawString(font, opt, txtPos, i == selectedOption ? Color.GreenYellow : Color.White);
+                sb.DrawString(font, opt, new Vector2(width*0.5f, y), i == selectedOption ? Color.GreenYellow : Color.White, TAlign.Center);
                 sb.End();
             }
         }

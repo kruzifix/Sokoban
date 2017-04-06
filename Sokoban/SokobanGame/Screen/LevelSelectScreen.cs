@@ -73,13 +73,9 @@ namespace SokobanGame.Screen
                 float cy = (dw - lvl.PixelHeight) * 0.5f;
                 lvl.RenderOffset = new IntVec(tlx + (int)cx, tly + 20 + (int)cy);
                 lvl.Draw();
-
-                Vector2 txtSize = font.MeasureString(lvlName);
-                Vector2 txtPos = new Vector2(tlx + (dw - txtSize.X) * 0.5f, tly + 10);
-                txtPos.Round();
                 
                 sb.Begin();
-                sb.DrawString(font, lvlName, txtPos, i == selectedLevel ? Color.GreenYellow : Color.White);
+                sb.DrawString(font, lvlName, new Vector2(tlx+dw*0.5f, tly + 20), i == selectedLevel ? Color.GreenYellow : Color.White, TAlign.Center);
                 sb.End();
             }
         }

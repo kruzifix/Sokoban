@@ -57,25 +57,22 @@ namespace SokobanGame.Screen
             int width = SokobanGame.Width;
             int height = SokobanGame.Height;
 
+            Color ggray = new Color(51, 51, 51, 255);
+            sb.DrawRect(0, 0, width, 40, ggray);
+            sb.DrawRect(0, height - 40, width, 40, ggray);
+
             string lvlName;
             if (!map.Properties.TryGetValue("Name", out lvlName))
                 lvlName = "noname";
-
-            Vector2 txtSize = font.MeasureString(lvlName);
-            Vector2 txtPos = new Vector2((width - txtSize.X) * 0.5f, (40 - txtSize.Y)*0.5f);
-            txtPos.Round();
-
-            sb.DrawRect(0, 0, width, 40, Color.Black);
-
+                        
             sb.Begin();
-            sb.DrawString(font, lvlName, txtPos, Color.White);
+            sb.DrawString(font, lvlName, new Vector2(width*0.5f, 20), Color.White, TAlign.Center);
+            
+            sb.DrawString(font, "Arrow keys to move", new Vector2(40, height-20), Color.White, TAlign.MidLeft);
+            sb.DrawString(font, "R to reset", new Vector2(width*0.5f, height - 20), Color.White, TAlign.Center);
+            sb.DrawString(font, "Z to Undo", new Vector2(width-40, height - 20), Color.White, TAlign.MidRight);
             sb.End();
-
-            SokobanGame.Instance.DrawDebugMessage("Arrow keys to move", new Vector2(40, height - 80), Color.Black);
-            SokobanGame.Instance.DrawDebugMessage("R to reset", new Vector2(40, height - 60), Color.Black);
-            SokobanGame.Instance.DrawDebugMessage("Z to undo", new Vector2(40, height - 40), Color.Black);
-
-
+            
             if (!debugMode)
                 return;
             SokobanGame.Instance.DrawDebugMessage(string.Format("Solved: {0}", map.Room.IsSolved()), new Vector2(200, 30), Color.Black);
