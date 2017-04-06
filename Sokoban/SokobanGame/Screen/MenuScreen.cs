@@ -29,26 +29,30 @@ namespace SokobanGame.Screen
 
         public override void Draw(GameTime gameTime)
         {
-            SokobanGame.Instance.DrawDebugMessage("Menu Screen", new Vector2(10, 10), Color.Black);
+            SokobanGame.Instance.GraphicsDevice.Clear(Color.LightSlateGray);
 
-            sb.Begin();
+            int width = SokobanGame.Instance.GraphicsDevice.Viewport.Width;
+            int height = SokobanGame.Instance.GraphicsDevice.Viewport.Height;
 
-            int topOffset = 180;
-            int textPadding = 35;
-            int width = sb.GraphicsDevice.Viewport.Width;
+            int textPadding = 60;
+            int topOffset = height / 2 - options.Length * textPadding / 2;
+            int btnWidth = 220;
+
             for (int i = 0; i < options.Length; i++)
             {
                 string opt = options[i];
-                if (i == selectedOption)
-                    opt = "--{ " + opt + " }--";
 
-                Vector2 size = font.MeasureString(opt);
-                Vector2 pos = new Vector2(width / 2 - size.X / 2, topOffset + i * textPadding);
+                Vector2 txtSize = font.MeasureString(opt);
+                Vector2 txtPos = new Vector2((width - txtSize.X) * 0.5f, topOffset + i * textPadding);
 
-                sb.DrawString(font, opt, pos, Color.Black);
+                int pa = i == selectedOption ? 5 : 0;
+
+                sb.DrawRect((width - btnWidth) * 0.5f - pa, txtPos.Y - 10 - pa, btnWidth + pa * 2, txtSize.Y + 20 + pa * 2, i == selectedOption ? Color.DarkOliveGreen : Color.Gray);
+
+                sb.Begin();
+                sb.DrawString(font, opt, txtPos, i == selectedOption ? Color.GreenYellow : Color.White);
+                sb.End();
             }
-
-            sb.End();
         }
 
         public override void Update(GameTime gameTime)
