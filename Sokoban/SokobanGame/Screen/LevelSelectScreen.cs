@@ -7,7 +7,7 @@ namespace SokobanGame.Screen
 {
     public class LevelSelectScreen : Screen
     {
-        int selectedLevel = 0;
+        public int SelectedLevel { get; set; }
 
         int columns = 3;
         int padding = 10;
@@ -62,8 +62,8 @@ namespace SokobanGame.Screen
                 int tlx = xo + (dw + padding) * x + padding;
                 int tly = yo + (dw + padding) * y + padding;
                 Color ggray = new Color(51, 51, 51, 255);
-                sb.DrawRect(tlx, tly, dw, dw, i == selectedLevel ? Color.DimGray : ggray);
-                sb.DrawRect(tlx, tly, dw, 40, i == selectedLevel ? Color.DarkOliveGreen : Color.Gray);
+                sb.DrawRect(tlx, tly, dw, dw, i == SelectedLevel ? Color.DimGray : ggray);
+                sb.DrawRect(tlx, tly, dw, 40, i == SelectedLevel ? Color.DarkOliveGreen : Color.Gray);
                 
                 int tSize = (int)Math.Min((dw-20) / (float)lvl.Width, (dw - 40) / (float)lvl.Height);
                 lvl.SetTileSize(tSize, tSize);
@@ -73,7 +73,7 @@ namespace SokobanGame.Screen
                 lvl.Draw();
                 
                 sb.Begin();
-                sb.DrawString(font, lvlName, new Vector2(tlx+dw*0.5f, tly + 20), i == selectedLevel ? Color.GreenYellow : Color.White, Align.Center);
+                sb.DrawString(font, lvlName, new Vector2(tlx+dw*0.5f, tly + 20), i == SelectedLevel ? Color.GreenYellow : Color.White, Align.Center);
                 sb.End();
             }
         }
@@ -87,21 +87,21 @@ namespace SokobanGame.Screen
 
             if (KeyPress(Keys.Enter))
             {
-                ScreenManager.AddScreen(new GameScreen(selectedLevel));
+                ScreenManager.AddScreen(new GameScreen(SelectedLevel));
             }
 
             if (KeyPress(Keys.Right))
             {
-                selectedLevel++;
-                if (selectedLevel >= Assets.Levels.Length)
-                    selectedLevel = 0;
+                SelectedLevel++;
+                if (SelectedLevel >= Assets.Levels.Length)
+                    SelectedLevel = 0;
             }
 
             if (KeyPress(Keys.Left))
             {
-                selectedLevel--;
-                if (selectedLevel < 0)
-                    selectedLevel = Assets.Levels.Length - 1;
+                SelectedLevel--;
+                if (SelectedLevel < 0)
+                    SelectedLevel = Assets.Levels.Length - 1;
             }
         }
     }
