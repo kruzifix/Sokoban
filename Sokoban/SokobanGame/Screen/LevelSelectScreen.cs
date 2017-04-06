@@ -10,9 +10,7 @@ namespace SokobanGame.Screen
         int selectedLevel = 0;
 
         int columns = 3;
-        int padding = 20;
-        int displayWidth;
-        int displayHeight;
+        int padding = 10;
 
         private SpriteFont font;
         private SpriteBatch sb;
@@ -20,74 +18,67 @@ namespace SokobanGame.Screen
         public LevelSelectScreen()
             : base(true, true)
         {
-            PositionLevels();
+            ResetAllLevels();
 
             sb = SokobanGame.Instance.SpriteBatch;
             font = Assets.SpacePortFont;
         }
 
-        private void PositionLevels()
+        private void ResetAllLevels()
         {
-            int width = SokobanGame.Instance.Graphics.GraphicsDevice.Viewport.Width;
-            int height = SokobanGame.Instance.Graphics.GraphicsDevice.Viewport.Height;
-            
-            displayWidth = (width - columns * padding) / columns;
-            displayHeight = displayWidth;
-
-            // set level tilesizes for displaying
             for (int i = 0; i < Assets.Levels.Length; i++)
             {
                 var lvl = Assets.Levels[i];
                 lvl.Room.Reset();
-
-                int tileSize = (int)MathHelper.Min(displayWidth / (float)lvl.Width, displayHeight / (float)lvl.Height);
-                lvl.SetTileSize(tileSize, tileSize);
-
-                int centerX = (displayWidth - lvl.PixelWidth) / 2;
-                int centerY = (displayHeight - lvl.PixelHeight) / 2;
-
-                int x = padding + (i%3) * (displayWidth + padding) + centerX;
-                int y = (height - displayHeight) / 4 + centerY + (i/3) * (displayHeight + padding);
-
-                lvl.RenderOffset = new IntVec(x, y);
             }
         }
 
         public override void Activated()
         {
-            PositionLevels();
+            ResetAllLevels();
         }
         
         public override void Draw(GameTime gameTime)
         {
-            SokobanGame.Instance.DrawDebugMessage("Level Select Screen", new Vector2(10, 10), Color.Black);
-            SokobanGame.Instance.DrawDebugMessage(string.Format("selected Level: {0}", selectedLevel), new Vector2(260, 10), Color.Black);
+            SokobanGame.Instance.GraphicsDevice.Clear(Color.LightSlateGray);
             
+            int w = SokobanGame.Instance.Graphics.GraphicsDevice.Viewport.Width;
+            int h = SokobanGame.Instance.Graphics.GraphicsDevice.Viewport.Height;
+
+            int s = Math.Min(w, h);
+
+            int dw = (s - (columns+1) * padding) / columns;
+            int xo = (w - s) / 2;
+            int yo = (h - s) / 2;
+
             for (int i = 0; i < Assets.Levels.Length; i++)
             {
+                int x = i % columns;
+                int y = i / columns;
+
                 var lvl = Assets.Levels[i];
 
-                sb.DrawRect(lvl.RenderOffset.X-5, lvl.RenderOffset.Y-5, lvl.PixelWidth+10, lvl.PixelHeight+10, Color.White);
-
-                lvl.Draw();
-                
                 string lvlName;
                 if (!lvl.Properties.TryGetValue("Name", out lvlName))
                     lvlName = "noname";
-                //if (i == selectedLevel)
-                //    lvlName = "--[ " + lvlName + " ]--";
-
-                Vector2 textPos = lvl.RenderOffset.ToVector2();
-                int height = SokobanGame.Instance.Graphics.GraphicsDevice.Viewport.Height;
-                textPos.Y -= 35;
+                int tlx = xo + (dw + padding) * x + padding;
+                int tly = yo + (dw + padding) * y + padding;
+                Color ggray = new Color(51, 51, 51, 255);
+                sb.DrawRect(tlx, tly, dw, dw, i == selectedLevel ? Color.DimGray : ggray);
+                sb.DrawRect(tlx, tly, dw, 40, i == selectedLevel ? Color.DarkOliveGreen : Color.Gray);
                 
-                Vector2 textSize = font.MeasureString(lvlName);
-                textPos.X += (int)(displayWidth - textSize.X) / 2;
-                //SokobanGame.Instance.DrawDebugMessage(lvlName, textPos, Color.Black);
-                if (i == selectedLevel)
-                    sb.DrawRect(textPos.X-5, textPos.Y-5, textSize.X+10, textSize.Y+10, Color.Black);
-                sb.Begin(SpriteSortMode.Deferred, null, SamplerState.PointClamp);
-                sb.DrawString(font, lvlName, textPos, i == selectedLevel ? Color.White : Color.Black);
+                int tSize = (int)Math.Min((dw-20) / (float)lvl.Width, (dw - 40) / (float)lvl.Height);
+                lvl.SetTileSize(tSize, tSize);
+                float cx = (dw - lvl.PixelWidth) * 0.5f;
+                float cy = (dw - lvl.PixelHeight) * 0.5f;
+                lvl.RenderOffset = new IntVec(tlx + (int)cx, tly + 20 + (int)cy);
+                lvl.Draw();
+
+                Vector2 txtSize = font.MeasureString(lvlName);
+                Vector2 txtPos = new Vector2(tlx + (dw - txtSize.X) * 0.5f, tly + 10);
+
+                sb.Begin();
+                sb.DrawString(font, lvlName, txtPos, i == selectedLevel ? Color.GreenYellow : Color.White);
                 sb.End();
             }
         }
