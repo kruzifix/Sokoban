@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace SokobanGame.Screen
 {
@@ -19,6 +20,8 @@ namespace SokobanGame.Screen
 
         private SpriteFont titleFont;
         private SpriteFont font;
+
+        float animProg = 0f;
 
         public MenuScreen()
             : base(true, true)
@@ -46,20 +49,31 @@ namespace SokobanGame.Screen
 
             for (int i = 0; i < options.Length; i++)
             {
-                int y = topOffset + i * textPadding;
+                float y = topOffset + i * textPadding;
                 int pa = i == selectedOption ? 10 : 0;
 
-                sb.DrawRect(width * 0.5f, y, btnWidth + pa * 2 + 10, 50 + pa, i == selectedOption ? Color.LightGray : Color.DimGray, Align.Center);
-                sb.DrawRect(width * 0.5f, y, btnWidth + pa * 2, 40 + pa, i == selectedOption ? Color.DarkOliveGreen : Color.Gray, Align.Center);
+                float x = width * 0.5f;
+                float k = MathHelper.Clamp(animProg * animProg * (3 - 2 * animProg), 0f, 1f);
+                y += (1-k) * (height * 0.5f + i * 80);
+                Color bBorder = i == selectedOption ? Color.LightGray : Color.DimGray;
+                bBorder *= k;
+                Color bBackg = i == selectedOption ? Color.DarkOliveGreen : Color.Gray;
+                bBackg *= k;
+
+                sb.DrawRect(x, y, btnWidth + pa * 2 + 10, 50 + pa, bBorder, Align.Center);
+                sb.DrawRect(x, y, btnWidth + pa * 2, 40 + pa, bBackg, Align.Center);
 
                 sb.Begin();
-                sb.DrawString(font, options[i], new Vector2(width * 0.5f, y), i == selectedOption ? Color.GreenYellow : Color.White, Align.Center);
+                sb.DrawString(font, options[i], new Vector2(x, y), i == selectedOption ? Color.GreenYellow : Color.White, Align.Center);
                 sb.End();
             }
         }
 
         public override void Update(GameTime gameTime)
         {
+            animProg += (float)gameTime.ElapsedGameTime.TotalSeconds * 1.5f;
+            animProg = Math.Min(animProg, 1f);
+
             if (InputManager.Instance.KeyPress(Keys.Escape))
             {
                 SokobanGame.Instance.Exit();
@@ -90,6 +104,11 @@ namespace SokobanGame.Screen
                         return;
                 }
             }
+        }
+
+        public override void Activated()
+        {
+            animProg = 0f;
         }
     }
 }

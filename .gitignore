@@ -52,3 +52,5 @@ monodroid*.msi
 
 #Unix temporary files
 *~
+
+*.lnk
