@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SokobanGame.Screen;
-using SokobanGame.Tiled;
+using SokobanGame.Input;
 
 namespace SokobanGame
 {
@@ -63,7 +63,7 @@ namespace SokobanGame
         {
             InputManager.Update();
 
-            if (InputManager.KeyPress(Keys.F))
+            if (InputManager.KeyPressed(Keys.F))
             {
                 int fullWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
                 int fullHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;

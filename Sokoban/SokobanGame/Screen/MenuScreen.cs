@@ -1,7 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using System;
+using SokobanGame.Input;
 
 namespace SokobanGame.Screen
 {
@@ -86,25 +85,25 @@ namespace SokobanGame.Screen
             }
             animProg = MathHelper.Clamp(animProg, 0f, 1f);
 
-            if (InputManager.KeyPress(Keys.Escape))
+            if (InputManager.Pressed("back"))
             {
                 exiting = true;
                 return;
             }
 
-            if (InputManager.KeyPress(Keys.Down))
+            if (InputManager.Pressed("down"))
             {
                 selectedOption = (selectedOption + 1) % options.Length;
             }
 
-            if (InputManager.KeyPress(Keys.Up))
+            if (InputManager.Pressed("up"))
             {
                 selectedOption--;
                 if (selectedOption < 0)
                     selectedOption = options.Length - 1;
             }
 
-            if (InputManager.KeyPress(Keys.Enter))
+            if (InputManager.Pressed("confirm"))
             {
                 switch (selectedOption)
                 {

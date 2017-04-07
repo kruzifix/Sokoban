@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using SokobanGame.Input;
 using SokobanGame.Logic;
 using SokobanGame.Tiled;
 using System;
@@ -89,42 +90,42 @@ namespace SokobanGame.Screen
 
         public override void Update(GameTime gameTime)
         {
-            if (KeyPress(Keys.Escape))
+            if (InputManager.Pressed("back"))
             {
                 ScreenManager.RemoveScreen();
             }
 
-            if (KeyPress(Keys.F1))
+            if (InputManager.KeyPressed(Keys.F1))
             {
                 debugMode = !debugMode;
             }
 
-            if (KeyPress(Keys.R))
+            if (InputManager.Pressed("reset"))
             {
                 map.Room.Reset();
             }
 
-            if (KeyPress(Keys.Z))
+            if (InputManager.Pressed("undo"))
             {
                 map.Room.Undo();
             }
 
-            if (KeyPress(Keys.Up))
+            if (InputManager.Pressed("up"))
             {
                 map.Room.Update(new IntVec(0, -1));
             }
 
-            if (KeyPress(Keys.Down))
+            if (InputManager.Pressed("down"))
             {
                 map.Room.Update(new IntVec(0, 1));
             }
 
-            if (KeyPress(Keys.Left))
+            if (InputManager.Pressed("left"))
             {
                 map.Room.Update(new IntVec(-1, 0));
             }
 
-            if (KeyPress(Keys.Right))
+            if (InputManager.Pressed("right"))
             {
                 map.Room.Update(new IntVec(1, 0));
             }

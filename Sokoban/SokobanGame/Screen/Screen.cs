@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
 
 /*
  * Reference: https://blogs.msdn.microsoft.com/etayrien/2006/12/12/basic-game-engine-structure/
@@ -24,12 +23,7 @@ namespace SokobanGame.Screen
 
             sb = SokobanGame.Instance.SpriteBatch;
         }
-
-        protected bool KeyPress(Keys key)
-        {
-            return InputManager.KeyPress(key);
-        }
-
+        
         public virtual void Activated() { }
         public virtual void Disabled() { }
 

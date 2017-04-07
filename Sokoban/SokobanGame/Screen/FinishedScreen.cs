@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+using SokobanGame.Input;
 
 namespace SokobanGame.Screen
 {
@@ -41,7 +41,7 @@ namespace SokobanGame.Screen
 
         public override void Update(GameTime gameTime)
         {
-            if (KeyPress(Keys.Escape))
+            if (InputManager.Pressed("back"))
             {
                 // HACK
                 // TODO: add function to screenmanager to remove screens until specific is found
@@ -50,7 +50,7 @@ namespace SokobanGame.Screen
                 (ScreenManager.TopScreen as LevelSelectScreen).SelectedLevel = finishedLevel;
             }
 
-            if (KeyPress(Keys.Enter))
+            if (InputManager.Pressed("confirm"))
             {
                 ScreenManager.RemoveScreen(); // finished
                 ScreenManager.RemoveScreen(); // gamescreen
@@ -59,13 +59,13 @@ namespace SokobanGame.Screen
                 ScreenManager.AddScreen(new GameScreen(newLevel));
             }
 
-            if (KeyPress(Keys.R))
+            if (InputManager.Pressed("reset"))
             {
                 ScreenManager.RemoveScreen();
                 Assets.Levels[finishedLevel].Room.Reset();
             }
 
-            if (KeyPress(Keys.Z))
+            if (InputManager.Pressed("undo"))
             {
                 ScreenManager.RemoveScreen();
                 Assets.Levels[finishedLevel].Room.Undo();

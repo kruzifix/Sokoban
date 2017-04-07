@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
+using SokobanGame.Input;
 
 namespace SokobanGame.Screen
 {
@@ -81,24 +81,24 @@ namespace SokobanGame.Screen
 
         public override void Update(GameTime gameTime)
         {
-            if (KeyPress(Keys.Escape))
+            if (InputManager.Pressed("back"))
             {
                 ScreenManager.RemoveScreen();
             }
 
-            if (KeyPress(Keys.Enter))
+            if (InputManager.Pressed("confirm"))
             {
                 ScreenManager.AddScreen(new GameScreen(SelectedLevel));
             }
 
-            if (KeyPress(Keys.Right))
+            if (InputManager.Pressed("right"))
             {
                 SelectedLevel++;
                 if (SelectedLevel >= Assets.Levels.Length)
                     SelectedLevel = 0;
             }
 
-            if (KeyPress(Keys.Left))
+            if (InputManager.Pressed("left"))
             {
                 SelectedLevel--;
                 if (SelectedLevel < 0)
