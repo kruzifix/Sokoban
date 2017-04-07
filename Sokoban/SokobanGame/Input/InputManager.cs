@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -11,6 +12,14 @@ namespace SokobanGame.Input
 
         private static GamePadState lastPadState;
         private static GamePadState currentPadState;
+
+        public static Vector2 LeftThumb
+        {
+            get
+            {
+                return (currentPadState.ThumbSticks.Left + lastPadState.ThumbSticks.Left)*0.5f;
+            }
+        }
 
         private static Dictionary<string, InputState> inputStates;
 
@@ -34,7 +43,7 @@ namespace SokobanGame.Input
 
             Dictionary<string, List<InputState>> states = new Dictionary<string, List<InputState>>();
 
-            states.Add("up", new List<InputState>(){ GetKeyState(Keys.Up), GetKeyState(Keys.W) });
+            states.Add("up", new List<InputState>() { GetKeyState(Keys.Up), GetKeyState(Keys.W) });
             states.Add("down", new List<InputState>() { GetKeyState(Keys.Down), GetKeyState(Keys.S) });
             states.Add("left", new List<InputState>() { GetKeyState(Keys.Left), GetKeyState(Keys.A) });
             states.Add("right", new List<InputState>() { GetKeyState(Keys.Right), GetKeyState(Keys.D) });
@@ -50,16 +59,16 @@ namespace SokobanGame.Input
                 currentPadState = GamePad.GetState(0);
 
                 states["up"].Add(GetButtonState(Buttons.DPadUp));
-                states["up"].Add(GetButtonState(Buttons.LeftThumbstickUp));
+                // states["up"].Add(GetButtonState(Buttons.LeftThumbstickUp));
 
                 states["down"].Add(GetButtonState(Buttons.DPadDown));
-                states["down"].Add(GetButtonState(Buttons.LeftThumbstickDown));
+                // states["down"].Add(GetButtonState(Buttons.LeftThumbstickDown));
 
                 states["left"].Add(GetButtonState(Buttons.DPadLeft));
-                states["left"].Add(GetButtonState(Buttons.LeftThumbstickLeft));
+                // states["left"].Add(GetButtonState(Buttons.LeftThumbstickLeft));
 
                 states["right"].Add(GetButtonState(Buttons.DPadRight));
-                states["right"].Add(GetButtonState(Buttons.LeftThumbstickRight));
+                // states["right"].Add(GetButtonState(Buttons.LeftThumbstickRight));
 
                 states["back"].Add(GetButtonState(Buttons.B));
                 states["confirm"].Add(GetButtonState(Buttons.A));
