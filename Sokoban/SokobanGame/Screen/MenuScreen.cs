@@ -88,7 +88,7 @@ namespace SokobanGame.Screen
 
             if (InputManager.KeyPress(Keys.Escape))
             {
-                SokobanGame.Instance.Exit();
+                exiting = true;
                 return;
             }
 

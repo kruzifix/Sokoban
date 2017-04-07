@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Input;
 
-namespace SokobanGame
+namespace SokobanGame.Input
 {
     public class InputManager
     {
