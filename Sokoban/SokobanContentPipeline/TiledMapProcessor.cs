@@ -46,11 +46,18 @@ namespace SokobanContentPipeline
                     if (p.Key == "Teleporters")
                     {
                         context.Logger.LogMessage("\tParsing Teleporters ...");
-                        string[] teles = p.Value.Split(';');
+
+                        string val = p.Text;
+                        if (val == null)
+                            val = p.Value;
+                        if (val == null)
+                            continue;
+
+                        string[] teles = val.Split(new string[] { "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
                         // 2 4 to 11 3
                         for (int i = 0; i < teles.Length; i++)
                         {
-                            string[] tokens = teles[i].Split(' ');
+                            string[] tokens = teles[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                             if (tokens.Length != 5)
                                 throw new FormatException("Wrong Teleporter definition format at: " + teles[i]);
                             telePos.Add(new IntVec(int.Parse(tokens[0]), int.Parse(tokens[1])));

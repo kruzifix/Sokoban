@@ -39,5 +39,8 @@ namespace SokobanContentPipeline
 
         [XmlAttribute("value")]
         public string Value { get; set; }
+
+        [XmlText]
+        public string Text { get; set; }
     }
 }
