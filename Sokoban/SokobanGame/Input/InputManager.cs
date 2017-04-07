@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SokobanGame.Input
 {
@@ -7,6 +8,9 @@ namespace SokobanGame.Input
     {
         private static KeyboardState lastState;
         private static KeyboardState currentState;
+
+        private static GamePadState lastPadState;
+        private static GamePadState currentPadState;
 
         private static Dictionary<string, InputState> inputStates;
 
@@ -28,15 +32,45 @@ namespace SokobanGame.Input
             lastState = currentState;
             currentState = Keyboard.GetState();
 
-            inputStates["up"] = GetKeyState(Keys.Up);
-            inputStates["down"] = GetKeyState(Keys.Down);
-            inputStates["left"] = GetKeyState(Keys.Left);
-            inputStates["right"] = GetKeyState(Keys.Right);
+            Dictionary<string, List<InputState>> states = new Dictionary<string, List<InputState>>();
 
-            inputStates["back"] = GetKeyState(Keys.Escape);
-            inputStates["confirm"] = GetKeyState(Keys.Enter);
-            inputStates["reset"] = GetKeyState(Keys.R);
-            inputStates["undo"] = GetKeyState(Keys.Z);
+            states.Add("up", new List<InputState>(){ GetKeyState(Keys.Up), GetKeyState(Keys.W) });
+            states.Add("down", new List<InputState>() { GetKeyState(Keys.Down), GetKeyState(Keys.S) });
+            states.Add("left", new List<InputState>() { GetKeyState(Keys.Left), GetKeyState(Keys.A) });
+            states.Add("right", new List<InputState>() { GetKeyState(Keys.Right), GetKeyState(Keys.D) });
+
+            states.Add("back", new List<InputState>() { GetKeyState(Keys.Escape) });
+            states.Add("confirm", new List<InputState>() { GetKeyState(Keys.Enter) });
+            states.Add("reset", new List<InputState>() { GetKeyState(Keys.R) });
+            states.Add("undo", new List<InputState>() { GetKeyState(Keys.Z) });
+
+            if (GamePad.GetCapabilities(0).IsConnected)
+            {
+                lastPadState = currentPadState;
+                currentPadState = GamePad.GetState(0);
+
+                states["up"].Add(GetButtonState(Buttons.DPadUp));
+                states["up"].Add(GetButtonState(Buttons.LeftThumbstickUp));
+
+                states["down"].Add(GetButtonState(Buttons.DPadDown));
+                states["down"].Add(GetButtonState(Buttons.LeftThumbstickDown));
+
+                states["left"].Add(GetButtonState(Buttons.DPadLeft));
+                states["left"].Add(GetButtonState(Buttons.LeftThumbstickLeft));
+
+                states["right"].Add(GetButtonState(Buttons.DPadRight));
+                states["right"].Add(GetButtonState(Buttons.LeftThumbstickRight));
+
+                states["back"].Add(GetButtonState(Buttons.B));
+                states["confirm"].Add(GetButtonState(Buttons.A));
+                states["reset"].Add(GetButtonState(Buttons.Y));
+                states["undo"].Add(GetButtonState(Buttons.X));
+            }
+
+            foreach (var kvp in states)
+            {
+                inputStates[kvp.Key] = ResolveStates(kvp.Value);
+            }
         }
 
         private static InputState GetKeyState(Keys key)
@@ -55,6 +89,30 @@ namespace SokobanGame.Input
                 else
                     return InputState.Released;
             }
+        }
+
+        private static InputState GetButtonState(Buttons b)
+        {
+            if (lastPadState.IsButtonUp(b) && currentPadState.IsButtonDown(b))
+                return InputState.Pressed;
+            if (lastPadState.IsButtonDown(b) && currentPadState.IsButtonUp(b))
+                return InputState.Released;
+            if (lastPadState.IsButtonDown(b) && currentPadState.IsButtonDown(b))
+                return InputState.Down;
+            return InputState.Up;
+        }
+
+        private static InputState ResolveStates(IEnumerable<InputState> states)
+        {
+            if (states.All(s => s == InputState.Down))
+                return InputState.Down;
+            if (states.All(s => s == InputState.Up))
+                return InputState.Up;
+            if (states.All(s => s == InputState.Released))
+                return InputState.Released;
+            if (states.Any(s => s == InputState.Pressed))
+                return InputState.Pressed;
+            return InputState.Up;
         }
 
         public static InputState GetInput(string input)

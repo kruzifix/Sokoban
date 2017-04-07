@@ -42,7 +42,7 @@ namespace SokobanGame.Screen
             float k = MathHelper.Clamp(animProg * animProg * (3 - 2 * animProg), 0f, 1f);
 
             sb.Begin();
-            sb.DrawString(titleFont, title, new Vector2(width * 0.5f, -120+240 * k), Color.White, Align.Center);
+            sb.DrawString(titleFont, title, new Vector2(width * 0.5f, -120 + 240 * k), Color.White, Align.Center);
             sb.End();
 
             int textPadding = 60;
@@ -55,7 +55,7 @@ namespace SokobanGame.Screen
                 int pa = i == selectedOption ? 10 : 0;
 
                 float x = width * 0.5f;
-                y += (1-k) * (height * 0.5f + i * 80);
+                y += (1 - k) * (height * 0.5f + i * 80);
 
                 Color bBorder = i == selectedOption ? Color.LightGray : Color.DimGray;
                 bBorder *= k;
@@ -74,7 +74,7 @@ namespace SokobanGame.Screen
         public override void Update(GameTime gameTime)
         {
             float time = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            
+
             if (exiting)
             {
                 animProg -= time * 2f;
