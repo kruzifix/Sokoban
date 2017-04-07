@@ -22,6 +22,7 @@ namespace SokobanGame.Screen
         private SpriteFont font;
 
         float animProg = 0f;
+        bool exiting = false;
 
         public MenuScreen()
             : base(true, true)
@@ -71,8 +72,19 @@ namespace SokobanGame.Screen
 
         public override void Update(GameTime gameTime)
         {
-            animProg += (float)gameTime.ElapsedGameTime.TotalSeconds * 1.5f;
-            animProg = Math.Min(animProg, 1f);
+            float time = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            
+            if (exiting)
+            {
+                animProg -= time * 2f;
+                if (animProg <= 0f)
+                    SokobanGame.Instance.Exit();
+            }
+            else
+            {
+                animProg += time * 2f;
+            }
+            animProg = MathHelper.Clamp(animProg, 0f, 1f);
 
             if (InputManager.Instance.KeyPress(Keys.Escape))
             {
@@ -100,15 +112,10 @@ namespace SokobanGame.Screen
                         ScreenManager.AddScreen(new LevelSelectScreen());
                         break;
                     case 4:
-                        SokobanGame.Instance.Exit();
+                        exiting = true;
                         return;
                 }
             }
-        }
-
-        public override void Activated()
-        {
-            animProg = 0f;
         }
     }
 }
