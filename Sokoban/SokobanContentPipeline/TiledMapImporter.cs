@@ -18,7 +18,15 @@ namespace SokobanContentPipeline
             using (var streamReader = new StreamReader(filename))
             {
                 var deserializer = new XmlSerializer(typeof(TiledMapFile));
-                return (TiledMapFile)deserializer.Deserialize(streamReader);
+                var file = (TiledMapFile)deserializer.Deserialize(streamReader);
+
+                foreach (var p in file.Properties)
+                {
+                    if (p.Value == null)
+                        p.Value = "";
+                }
+
+                return file;
             }
         }
     }

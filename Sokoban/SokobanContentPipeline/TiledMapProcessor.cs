@@ -40,17 +40,17 @@ namespace SokobanContentPipeline
 
                 foreach (var p in input.Properties)
                 {
-                    context.Logger.LogMessage("Property: {0} => {1}", p.Key, p.Value);
+                    // context.Logger.LogMessage("Property: {0} => {1}", p.Key, p.Value);
 
                     // parse teleporter stuff from properties
                     if (p.Key == "Teleporters")
                     {
                         context.Logger.LogMessage("\tParsing Teleporters ...");
 
-                        string val = p.Text;
-                        if (val == null)
-                            val = p.Value;
-                        if (val == null)
+                        string val = p.Value;
+                        if (string.IsNullOrEmpty(val))
+                            val = p.Text;
+                        if (string.IsNullOrEmpty(val))
                             continue;
 
                         string[] teles = val.Split(new string[] { "\n", "\r" }, StringSplitOptions.RemoveEmptyEntries);
