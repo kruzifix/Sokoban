@@ -104,6 +104,20 @@ namespace SokobanGame.Screen
                 if (SelectedLevel < 0)
                     SelectedLevel = Assets.Levels.Length - 1;
             }
+
+            if (InputManager.Pressed("up"))
+            {
+                SelectedLevel -= columns;
+                if (SelectedLevel < 0)
+                    SelectedLevel += Assets.Levels.Length;
+            }
+
+            if (InputManager.Pressed("down"))
+            {
+                SelectedLevel += columns;
+                if (SelectedLevel >= Assets.Levels.Length)
+                    SelectedLevel -= Assets.Levels.Length;
+            }
         }
     }
 }
