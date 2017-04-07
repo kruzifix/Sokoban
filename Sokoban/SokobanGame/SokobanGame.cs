@@ -22,7 +22,7 @@ namespace SokobanGame
 
         int windowedWidth = 720;
         int windowedHeight = 720;
-
+        
         public SokobanGame()
         {
             if (Instance != null)
@@ -30,18 +30,14 @@ namespace SokobanGame
             Instance = this;
 
             Graphics = new GraphicsDeviceManager(this);
-            Graphics.PreferredBackBufferWidth = windowedWidth;
-            Graphics.PreferredBackBufferHeight = windowedHeight;
-            Graphics.IsFullScreen = false;
-            Graphics.ApplyChanges();
+
+            SetFullScreen(true);
 
             Content.RootDirectory = "Content";
         }
 
         protected override void Initialize()
         {
-            IsMouseVisible = true;
-
             base.Initialize();
 
             ScreenManager.Initialize(new MenuScreen());
@@ -54,52 +50,26 @@ namespace SokobanGame
             Assets.LoadAssets(Content);
         }
 
-        protected override void UnloadContent()
-        {
-
-        }
-        
         protected override void Update(GameTime gameTime)
         {
             InputManager.Update();
 
             if (InputManager.KeyPressed(Keys.F))
             {
-                int fullWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-                int fullHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
-
-                if (FullScreened)
-                {
-                    Graphics.PreferredBackBufferWidth = windowedWidth;
-                    Graphics.PreferredBackBufferHeight = windowedHeight;
-                }
-                else
-                {
-                    Graphics.PreferredBackBufferWidth = fullWidth;
-                    Graphics.PreferredBackBufferHeight = fullHeight;
-                }
-                Graphics.ApplyChanges();
-
-                FullScreened = !FullScreened;
-                Window.IsBorderless = FullScreened;
-                IsMouseVisible = !FullScreened;
-                // TODO: Window always fullscreens to primary monitor!
-                Window.Position = FullScreened ? Point.Zero : new Point((fullWidth - windowedWidth) / 2, (fullHeight - windowedHeight) / 2);
-
-                ScreenManager.Resized(Graphics.PreferredBackBufferWidth, Graphics.PreferredBackBufferHeight);
+                SetFullScreen(!FullScreened);
             }
 
             ScreenManager.Update(gameTime);
-            
+
             base.Update(gameTime);
         }
-        
+
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(clearColor);
 
             ScreenManager.Draw(gameTime);
-
+            
             base.Draw(gameTime);
         }
 
@@ -108,6 +78,32 @@ namespace SokobanGame
             SpriteBatch.Begin();
             SpriteBatch.DrawString(Assets.DebugFont, message, position, color);
             SpriteBatch.End();
+        }
+
+        private void SetFullScreen(bool fullscreen)
+        {
+            int fullWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+            int fullHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+
+            if (fullscreen)
+            {
+                Graphics.PreferredBackBufferWidth = fullWidth;
+                Graphics.PreferredBackBufferHeight = fullHeight;
+            }
+            else
+            {
+                Graphics.PreferredBackBufferWidth = windowedWidth;
+                Graphics.PreferredBackBufferHeight = windowedHeight;
+            }
+            Graphics.ApplyChanges();
+
+            FullScreened = fullscreen;
+            IsMouseVisible = !fullscreen;
+            Window.IsBorderless = fullscreen;
+            // TODO: Window always fullscreens to primary monitor!
+            Window.Position = fullscreen ? Point.Zero : new Point((fullWidth - windowedWidth) / 2, (fullHeight - windowedHeight) / 2);
+
+            ScreenManager.Resized(Width, Height);
         }
     }
 }

@@ -67,6 +67,8 @@ namespace SokobanGame.Screen
 
         public static void Resized(int width, int height)
         {
+            if (activeScreens == null)
+                return;
             foreach (var screen in activeScreens)
             {
                 screen.Resized(width, height);
