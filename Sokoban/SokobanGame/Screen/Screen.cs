@@ -27,7 +27,7 @@ namespace SokobanGame.Screen
 
         protected bool KeyPress(Keys key)
         {
-            return InputManager.Instance.KeyPress(key);
+            return InputManager.KeyPress(key);
         }
 
         public virtual void Activated() { }

@@ -86,25 +86,25 @@ namespace SokobanGame.Screen
             }
             animProg = MathHelper.Clamp(animProg, 0f, 1f);
 
-            if (InputManager.Instance.KeyPress(Keys.Escape))
+            if (InputManager.KeyPress(Keys.Escape))
             {
                 SokobanGame.Instance.Exit();
                 return;
             }
 
-            if (InputManager.Instance.KeyPress(Keys.Down))
+            if (InputManager.KeyPress(Keys.Down))
             {
                 selectedOption = (selectedOption + 1) % options.Length;
             }
 
-            if (InputManager.Instance.KeyPress(Keys.Up))
+            if (InputManager.KeyPress(Keys.Up))
             {
                 selectedOption--;
                 if (selectedOption < 0)
                     selectedOption = options.Length - 1;
             }
 
-            if (InputManager.Instance.KeyPress(Keys.Enter))
+            if (InputManager.KeyPress(Keys.Enter))
             {
                 switch (selectedOption)
                 {

@@ -61,9 +61,9 @@ namespace SokobanGame
         
         protected override void Update(GameTime gameTime)
         {
-            InputManager.Instance.Update();
+            InputManager.Update();
 
-            if (InputManager.Instance.KeyPress(Keys.F))
+            if (InputManager.KeyPress(Keys.F))
             {
                 int fullWidth = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
                 int fullHeight = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
