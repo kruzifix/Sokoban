@@ -39,8 +39,10 @@ namespace SokobanGame.Screen
             int width = SokobanGame.Width;
             int height = SokobanGame.Height;
 
+            float k = MathHelper.Clamp(animProg * animProg * (3 - 2 * animProg), 0f, 1f);
+
             sb.Begin();
-            sb.DrawString(titleFont, title, new Vector2(width * 0.5f, 120), Color.White, Align.Center);
+            sb.DrawString(titleFont, title, new Vector2(width * 0.5f, -120+240 * k), Color.White, Align.Center);
             sb.End();
 
             int textPadding = 60;
@@ -53,8 +55,8 @@ namespace SokobanGame.Screen
                 int pa = i == selectedOption ? 10 : 0;
 
                 float x = width * 0.5f;
-                float k = MathHelper.Clamp(animProg * animProg * (3 - 2 * animProg), 0f, 1f);
                 y += (1-k) * (height * 0.5f + i * 80);
+
                 Color bBorder = i == selectedOption ? Color.LightGray : Color.DimGray;
                 bBorder *= k;
                 Color bBackg = i == selectedOption ? Color.DarkOliveGreen : Color.Gray;
