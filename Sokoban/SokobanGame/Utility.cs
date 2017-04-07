@@ -8,7 +8,9 @@ namespace SokobanGame
         TopLeft,
         MidLeft,
         Center,
-        MidRight
+        MidRight,
+        TopMid,
+        BotMid
     }
 
     public static class Utility
@@ -30,6 +32,20 @@ namespace SokobanGame
                 case Align.Center:
                     rect.X -= rect.Width / 2;
                     rect.Y -= rect.Height / 2;
+                    break;
+                case Align.MidLeft:
+                    rect.Y -= rect.Height / 2;
+                    break;
+                case Align.MidRight:
+                    rect.X -= rect.Width;
+                    rect.Y -= rect.Height / 2;
+                    break;
+                case Align.TopMid:
+                    rect.X -= rect.Width / 2;
+                    break;
+                case Align.BotMid:
+                    rect.X -= rect.Width / 2;
+                    rect.Y -= rect.Height;
                     break;
             }
 
