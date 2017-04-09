@@ -7,7 +7,21 @@ namespace SokobanGame.Screen
 {
     public class LevelSelectScreen : Screen
     {
-        public int SelectedLevel { get; set; }
+        private int selectedLevel;
+        private int selectedPage;
+
+        public int SelectedLevel
+        {
+            get
+            {
+                return selectedPage * columns * rows + selectedLevel;
+            }
+            set
+            {
+                selectedPage = value / (columns * rows);
+                selectedLevel = value - selectedPage * columns * rows;
+            }
+        }
 
         int columns = 3;
         int rows = 2;
@@ -36,13 +50,13 @@ namespace SokobanGame.Screen
         {
             ResetAllLevels();
         }
-        
+
         public override void Draw(GameTime gameTime)
         {
             SokobanGame.Instance.GraphicsDevice.Clear(Color.LightSlateGray);
 
             int top = 70;
-            
+
             int w = SokobanGame.Width;
             int h = SokobanGame.Height - top;
 
@@ -65,12 +79,18 @@ namespace SokobanGame.Screen
             float cos = (float)Math.Cos(gameTime.TotalGameTime.TotalSeconds * 3.5);
             float op = 0.65f + 0.35f * cos;
 
+            int lvlStart = selectedPage * columns * rows;
+            int lvlEnd = Math.Min((selectedPage + 1) * columns * rows, Assets.Levels.Length);
+
             for (int i = 0; i < Math.Min(columns * rows, Assets.Levels.Length); i++)
             {
                 int x = i % columns;
                 int y = i / columns;
 
-                var lvl = Assets.Levels[i];
+                int j = lvlStart + i;
+                if (j >= Assets.Levels.Length)
+                    break;
+                var lvl = Assets.Levels[j];
 
                 string lvlName;
                 if (!lvl.Properties.TryGetValue("Name", out lvlName))
@@ -78,26 +98,26 @@ namespace SokobanGame.Screen
                 int tlx = xo + (dw + padding) * x + padding;
                 int tly = top + yo + (dw + padding) * y + padding;
 
-                sb.DrawRect(tlx - 5, tly - 5, dw + 10, dw + 10, i == SelectedLevel ? ggray : Color.LightGray);
-                Color bg = (i == SelectedLevel ? Color.DimGray : ggray);
-                if (i == SelectedLevel)
+                sb.DrawRect(tlx - 5, tly - 5, dw + 10, dw + 10, i == selectedLevel ? ggray : Color.LightGray);
+                Color bg = (i == selectedLevel ? Color.DimGray : ggray);
+                if (i == selectedLevel)
                     bg *= op;
                 sb.DrawRect(tlx, tly, dw, dw, bg);
 
-                sb.DrawRect(tlx, tly, dw, 40, i == SelectedLevel ? Color.DarkOliveGreen : Color.Gray);
-                
-                int tSize = (int)Math.Min((dw-20) / (float)lvl.Width, (dw - 40) / (float)lvl.Height);
+                sb.DrawRect(tlx, tly, dw, 40, i == selectedLevel ? Color.DarkOliveGreen : Color.Gray);
+
+                int tSize = (int)Math.Min((dw - 20) / (float)lvl.Width, (dw - 40) / (float)lvl.Height);
                 lvl.SetTileSize(tSize, tSize);
                 float cx = (dw - lvl.PixelWidth) * 0.5f;
                 float cy = (dw - lvl.PixelHeight) * 0.5f;
                 lvl.RenderOffset = new IntVec(tlx + (int)cx, tly + 20 + (int)cy);
                 lvl.Draw();
 
-                Color txtCol = i == SelectedLevel ? Color.GreenYellow : Color.White;
+                Color txtCol = i == selectedLevel ? Color.GreenYellow : Color.White;
                 sb.Begin();
                 Vector2 size = font.MeasureString(lvlName);
                 float scale = 1f;
-                if (i == SelectedLevel)
+                if (i == selectedLevel)
                     scale = 0.97f - 0.03f * cos;
                 sb.DrawString(font, lvlName, new Vector2(tlx + dw * 0.5f, tly + 20),
                                txtCol, 0f, size * 0.5f, scale, SpriteEffects.None, 0);
@@ -121,27 +141,39 @@ namespace SokobanGame.Screen
 
             if (InputManager.Pressed("right"))
             {
-                if ((SelectedLevel % columns) < columns - 1 && SelectedLevel < maxIndex - 1)
-                    SelectedLevel++;
+                if ((selectedLevel % columns) == columns - 1)
+                {
+                    selectedPage++;
+                    selectedLevel -= (columns - 1);
+                }
+                else if ((selectedLevel % columns) < columns - 1 && selectedLevel < maxIndex - 1)
+                    selectedLevel++;
             }
 
             if (InputManager.Pressed("left"))
             {
-                if ((SelectedLevel % columns) > 0 && SelectedLevel > 0)
-                    SelectedLevel--;
+                if ((selectedLevel % columns) == 0 && selectedPage > 0)
+                {
+                    selectedPage--;
+                    selectedLevel += (columns - 1);
+                }
+                else if ((selectedLevel % columns) > 0)
+                    selectedLevel--;
             }
 
             if (InputManager.Pressed("up"))
             {
-                if (SelectedLevel >= columns)
-                    SelectedLevel -= columns;
+                if (selectedLevel >= columns)
+                    selectedLevel -= columns;
             }
 
             if (InputManager.Pressed("down"))
             {
-                if (SelectedLevel / columns < columns && SelectedLevel + columns < maxIndex)
-                    SelectedLevel += columns;
+                if (selectedLevel / columns < columns && selectedLevel + columns < maxIndex)
+                    selectedLevel += columns;
             }
+            if (SelectedLevel >= Assets.Levels.Length)
+                SelectedLevel = Assets.Levels.Length - 1;
         }
     }
 }
