@@ -57,7 +57,7 @@ namespace SokobanGame.Tiled
             layers.Add(layer);
         }
 
-        public void Draw()
+        public void Draw(MovementDir playerMoveDir)
         {
             foreach (var layer in layers)
             {
@@ -88,7 +88,7 @@ namespace SokobanGame.Tiled
             }
             sb.End();
 
-            DrawRoomState(Room.CurrentState);
+            DrawRoomState(Room.CurrentState, playerMoveDir);
         }
 
         public void DrawDebug()
@@ -134,7 +134,7 @@ namespace SokobanGame.Tiled
             sb.End();
         }
 
-        private void DrawRoomState(RoomState rs)
+        private void DrawRoomState(RoomState rs, MovementDir playerMoveDir)
         {
             sb.Begin();
             
@@ -173,7 +173,8 @@ namespace SokobanGame.Tiled
             dest.Height = TileHeight;
             dest.X = rs.PlayerPosition.X * TileWidth + RenderOffset.X;
             dest.Y = rs.PlayerPosition.Y * TileHeight + RenderOffset.Y;
-            sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(65), Color.White);
+            int[] tiles = { 68, 65, 94, 91 };
+            sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(tiles[(int)playerMoveDir]), Color.White);
             
             sb.End();
         }

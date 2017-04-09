@@ -12,6 +12,7 @@ namespace SokobanGame.Screen
     {
         private TiledMap map;
         private bool debugMode = false;
+        private MovementDir lastPlayerMoveDir = MovementDir.Down;
 
         private SpriteFont font;
 
@@ -47,7 +48,7 @@ namespace SokobanGame.Screen
         {
             SokobanGame.Instance.GraphicsDevice.Clear(Color.LightSlateGray);
 
-            map.Draw();
+            map.Draw(lastPlayerMoveDir);
 
             if (debugMode)
                 map.DrawDebug();
@@ -112,21 +113,25 @@ namespace SokobanGame.Screen
             if (InputManager.Pressed("up"))
             {
                 map.Room.Update(new IntVec(0, -1));
+                lastPlayerMoveDir = MovementDir.Up;
             }
 
             if (InputManager.Pressed("down"))
             {
                 map.Room.Update(new IntVec(0, 1));
+                lastPlayerMoveDir = MovementDir.Down;
             }
 
             if (InputManager.Pressed("left"))
             {
                 map.Room.Update(new IntVec(-1, 0));
+                lastPlayerMoveDir = MovementDir.Left;
             }
 
             if (InputManager.Pressed("right"))
             {
                 map.Room.Update(new IntVec(1, 0));
+                lastPlayerMoveDir = MovementDir.Right;
             }
 
             if (map.Room.IsSolved())
