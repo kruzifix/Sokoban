@@ -10,6 +10,7 @@ namespace SokobanGame.Screen
         public int SelectedLevel { get; set; }
 
         int columns = 3;
+        int rows = 2;
         int padding = 20;
 
         private SpriteFont font;
@@ -39,20 +40,32 @@ namespace SokobanGame.Screen
         public override void Draw(GameTime gameTime)
         {
             SokobanGame.Instance.GraphicsDevice.Clear(Color.LightSlateGray);
+
+            int top = 70;
             
             int w = SokobanGame.Width;
-            int h = SokobanGame.Height;
+            int h = SokobanGame.Height - top;
 
-            int s = Math.Min(w, h);
+            Color ggray = new Color(51, 51, 51, 255);
+            sb.DrawRect(0, 0, w, 50, Color.LightGray);
+            sb.DrawRect(0, 0, w, 40, ggray);
 
-            int dw = (s - (columns+1) * padding) / columns;
-            int xo = (w - s) / 2;
-            int yo = (h - s) / 2;
+            sb.Begin();
+            sb.DrawString(font, "Select a Level with ENTER", new Vector2(w * 0.5f, 20), Color.White, Align.Center);
+            sb.End();
+
+            int dwi = (w - (columns + 1) * padding) / columns;
+            int dhe = (h - (rows + 1) * padding) / rows;
+
+            int dw = Math.Min(dwi, dhe);
+
+            int xo = (w - dw * columns - (columns + 1) * padding) / 2;
+            int yo = (h - dw * rows - (rows + 1) * padding) / 2;
 
             float cos = (float)Math.Cos(gameTime.TotalGameTime.TotalSeconds * 3.5);
             float op = 0.65f + 0.35f * cos;
 
-            for (int i = 0; i < Assets.Levels.Length; i++)
+            for (int i = 0; i < Math.Min(columns * rows, Assets.Levels.Length); i++)
             {
                 int x = i % columns;
                 int y = i / columns;
@@ -63,8 +76,8 @@ namespace SokobanGame.Screen
                 if (!lvl.Properties.TryGetValue("Name", out lvlName))
                     lvlName = "noname";
                 int tlx = xo + (dw + padding) * x + padding;
-                int tly = yo + (dw + padding) * y + padding;
-                Color ggray = new Color(51, 51, 51, 255);
+                int tly = top + yo + (dw + padding) * y + padding;
+
                 sb.DrawRect(tlx - 5, tly - 5, dw + 10, dw + 10, i == SelectedLevel ? ggray : Color.LightGray);
                 Color bg = (i == SelectedLevel ? Color.DimGray : ggray);
                 if (i == SelectedLevel)
@@ -104,9 +117,11 @@ namespace SokobanGame.Screen
                 ScreenManager.AddScreen(new GameScreen(SelectedLevel));
             }
 
+            int maxIndex = columns * rows;
+
             if (InputManager.Pressed("right"))
             {
-                if ((SelectedLevel % columns) < columns - 1 && SelectedLevel < Assets.Levels.Length - 1)
+                if ((SelectedLevel % columns) < columns - 1 && SelectedLevel < maxIndex - 1)
                     SelectedLevel++;
             }
 
@@ -124,7 +139,7 @@ namespace SokobanGame.Screen
 
             if (InputManager.Pressed("down"))
             {
-                if (SelectedLevel / columns < columns && SelectedLevel + columns < Assets.Levels.Length)
+                if (SelectedLevel / columns < columns && SelectedLevel + columns < maxIndex)
                     SelectedLevel += columns;
             }
         }
