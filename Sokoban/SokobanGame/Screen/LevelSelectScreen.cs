@@ -25,6 +25,8 @@ namespace SokobanGame.Screen
 
         public int UnlockedLevel { get; set; }
 
+        public bool LockLevels { get; set; } = false;
+
         int columns = 3;
         int rows = 2;
         int padding = 20;
@@ -125,7 +127,7 @@ namespace SokobanGame.Screen
                                txtCol, 0f, size * 0.5f, scale, SpriteEffects.None, 0);
                 sb.End();
 
-                if (j > UnlockedLevel)
+                if (LockLevels && j > UnlockedLevel)
                 {
                     // draw lock
                     Color back = new Color(27, 27, 27, 158);
@@ -143,7 +145,7 @@ namespace SokobanGame.Screen
 
             if (InputManager.Pressed("confirm"))
             {
-                if (SelectedLevel <= UnlockedLevel)
+                if (!LockLevels || (SelectedLevel <= UnlockedLevel))
                     ScreenManager.AddScreen(new GameScreen(SelectedLevel));
             }
 
@@ -185,6 +187,8 @@ namespace SokobanGame.Screen
                 if (selectedLevel / columns < columns && selectedLevel + columns < max)
                     selectedLevel += columns;
             }
+            if (SelectedLevel >= Assets.Levels.Length)
+                SelectedLevel = Assets.Levels.Length - 1;
         }
     }
 }
