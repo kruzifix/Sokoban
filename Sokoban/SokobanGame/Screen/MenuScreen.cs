@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SokobanGame.Input;
+using System;
 
 namespace SokobanGame.Screen
 {
@@ -41,11 +42,14 @@ namespace SokobanGame.Screen
 
             float k = MathHelper.Clamp(animProg * animProg * (3 - 2 * animProg), 0f, 1f);
 
+            float cos = (float)Math.Cos(gameTime.TotalGameTime.TotalSeconds * 3.5);
+            float op = 20f + 8f * cos;
+
             sb.Begin();
             sb.DrawString(titleFont, title, new Vector2(width * 0.5f, -120 + 240 * k), Color.White, Align.Center);
             sb.End();
 
-            int textPadding = 60;
+            int textPadding = 70;
             int topOffset = height / 2 - options.Length * textPadding / 2 + 50;
             int btnWidth = 250;
 
@@ -62,11 +66,19 @@ namespace SokobanGame.Screen
                 Color bBackg = i == selectedOption ? Color.DarkOliveGreen : Color.Gray;
                 bBackg *= k;
 
-                sb.DrawRect(x, y, btnWidth + pa * 2 + 10, 50 + pa, bBorder, Align.Center);
-                sb.DrawRect(x, y, btnWidth + pa * 2, 40 + pa, bBackg, Align.Center);
+                float bw = i == selectedOption ? btnWidth + op : btnWidth;
+
+                sb.DrawRect(x, y, bw + pa * 2 + 10, 50 + pa, bBorder, Align.Center);
+                sb.DrawRect(x, y, bw + pa * 2, 40 + pa, bBackg, Align.Center);
 
                 sb.Begin();
-                sb.DrawString(font, options[i], new Vector2(x, y), i == selectedOption ? Color.GreenYellow : Color.White, Align.Center);
+                Vector2 size = font.MeasureString(options[i]);
+                float scale = 1f;
+                if (i == selectedOption)
+                    scale = 1.12f - 0.03f * cos;
+                Color txtCol = i == selectedOption ? Color.GreenYellow : Color.White;
+                sb.DrawString(font, options[i], new Vector2(x, y), txtCol,
+                              0f, size * 0.5f, scale, SpriteEffects.None, 0);
                 sb.End();
             }
         }
