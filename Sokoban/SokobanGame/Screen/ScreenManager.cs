@@ -39,6 +39,17 @@ namespace SokobanGame.Screen
             activeScreens.Push(screen);
         }
 
+        public static T GetScreen<T>()
+            where T : Screen
+        {
+            var arr = activeScreens.ToArray();
+
+            for (int i = arr.Length - 1; i >= 0; i--)
+                if (arr[i] is T)
+                    return arr[i] as T;
+            return null;
+        }
+
         public static void Update(GameTime gameTime)
         {
             foreach (var screen in activeScreens)

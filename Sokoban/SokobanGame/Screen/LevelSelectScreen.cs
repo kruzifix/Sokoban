@@ -23,6 +23,8 @@ namespace SokobanGame.Screen
             }
         }
 
+        public int UnlockedLevel { get; set; }
+
         int columns = 3;
         int rows = 2;
         int padding = 20;
@@ -122,6 +124,13 @@ namespace SokobanGame.Screen
                 sb.DrawString(font, lvlName, new Vector2(tlx + dw * 0.5f, tly + 20),
                                txtCol, 0f, size * 0.5f, scale, SpriteEffects.None, 0);
                 sb.End();
+
+                if (j > UnlockedLevel)
+                {
+                    // draw lock
+                    Color back = new Color(27, 27, 27, 158);
+                    sb.DrawRect(tlx, tly + 40, dw, dw - 40, back);
+                }
             }
         }
 
@@ -134,7 +143,8 @@ namespace SokobanGame.Screen
 
             if (InputManager.Pressed("confirm"))
             {
-                ScreenManager.AddScreen(new GameScreen(SelectedLevel));
+                if (SelectedLevel <= UnlockedLevel)
+                    ScreenManager.AddScreen(new GameScreen(SelectedLevel));
             }
 
             int maxIndex = columns * rows;
@@ -145,6 +155,8 @@ namespace SokobanGame.Screen
                 {
                     selectedPage++;
                     selectedLevel -= (columns - 1);
+                    if (SelectedLevel > Assets.Levels.Length)
+                        selectedLevel = 0;
                 }
                 else if ((selectedLevel % columns) < columns - 1 && selectedLevel < maxIndex - 1)
                     selectedLevel++;
@@ -169,11 +181,10 @@ namespace SokobanGame.Screen
 
             if (InputManager.Pressed("down"))
             {
-                if (selectedLevel / columns < columns && selectedLevel + columns < maxIndex)
+                int max = Math.Min(maxIndex, Assets.Levels.Length - selectedPage * columns * rows);
+                if (selectedLevel / columns < columns && selectedLevel + columns < max)
                     selectedLevel += columns;
             }
-            if (SelectedLevel >= Assets.Levels.Length)
-                SelectedLevel = Assets.Levels.Length - 1;
         }
     }
 }

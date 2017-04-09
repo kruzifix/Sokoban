@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SokobanGame.Input;
+using System;
 
 namespace SokobanGame.Screen
 {
@@ -17,6 +18,9 @@ namespace SokobanGame.Screen
             this.finishedLevel = finishedLevel;
             this.moveCount = Assets.Levels[finishedLevel].Room.Moves;
 
+            var lvlScreen = ScreenManager.GetScreen<LevelSelectScreen>();
+            lvlScreen.UnlockedLevel = Math.Max(lvlScreen.UnlockedLevel, (finishedLevel + 1) % Assets.Levels.Length);
+            
             font = Assets.SpacePortFont;
         }
 
