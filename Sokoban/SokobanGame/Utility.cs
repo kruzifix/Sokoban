@@ -3,15 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace SokobanGame
 {
-    public enum Align
-    {
-        TopLeft,
-        MidLeft,
-        Center,
-        MidRight,
-        TopMid,
-        BotMid
-    }
+
 
     public static class Utility
     {
