@@ -49,6 +49,9 @@ namespace SokobanGame.Screen
             int xo = (w - s) / 2;
             int yo = (h - s) / 2;
 
+            float cos = (float)Math.Cos(gameTime.TotalGameTime.TotalSeconds * 3.5);
+            float op = 0.65f + 0.35f * cos;
+
             for (int i = 0; i < Assets.Levels.Length; i++)
             {
                 int x = i % columns;
@@ -63,7 +66,11 @@ namespace SokobanGame.Screen
                 int tly = yo + (dw + padding) * y + padding;
                 Color ggray = new Color(51, 51, 51, 255);
                 sb.DrawRect(tlx - 5, tly - 5, dw + 10, dw + 10, i == SelectedLevel ? ggray : Color.LightGray);
-                sb.DrawRect(tlx, tly, dw, dw, i == SelectedLevel ? Color.DimGray : ggray);
+                Color bg = (i == SelectedLevel ? Color.DimGray : ggray);
+                if (i == SelectedLevel)
+                    bg *= op;
+                sb.DrawRect(tlx, tly, dw, dw, bg);
+
                 sb.DrawRect(tlx, tly, dw, 40, i == SelectedLevel ? Color.DarkOliveGreen : Color.Gray);
                 
                 int tSize = (int)Math.Min((dw-20) / (float)lvl.Width, (dw - 40) / (float)lvl.Height);
@@ -72,9 +79,15 @@ namespace SokobanGame.Screen
                 float cy = (dw - lvl.PixelHeight) * 0.5f;
                 lvl.RenderOffset = new IntVec(tlx + (int)cx, tly + 20 + (int)cy);
                 lvl.Draw();
-                
+
+                Color txtCol = i == SelectedLevel ? Color.GreenYellow : Color.White;
                 sb.Begin();
-                sb.DrawString(font, lvlName, new Vector2(tlx+dw*0.5f, tly + 20), i == SelectedLevel ? Color.GreenYellow : Color.White, Align.Center);
+                Vector2 size = font.MeasureString(lvlName);
+                float scale = 1f;
+                if (i == SelectedLevel)
+                    scale = 0.97f - 0.03f * cos;
+                sb.DrawString(font, lvlName, new Vector2(tlx + dw * 0.5f, tly + 20),
+                               txtCol, 0f, size * 0.5f, scale, SpriteEffects.None, 0);
                 sb.End();
             }
         }
