@@ -124,6 +124,10 @@ namespace SokobanGame.Screen
                     case 0:
                         ScreenManager.AddScreen(new LevelSelectScreen());
                         break;
+                    case 1:
+                        LevelSelectScreen.LockLevels = false;
+                        options[1] = "Levels unlocked";
+                        break;
                     case 4:
                         exiting = true;
                         return;

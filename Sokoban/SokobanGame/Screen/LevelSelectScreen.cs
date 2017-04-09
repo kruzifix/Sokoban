@@ -7,6 +7,8 @@ namespace SokobanGame.Screen
 {
     public class LevelSelectScreen : Screen
     {
+        public static bool LockLevels { get; set; } = true;
+
         private int selectedLevel;
         private int selectedPage;
 
@@ -24,9 +26,7 @@ namespace SokobanGame.Screen
         }
 
         public int UnlockedLevel { get; set; }
-
-        public bool LockLevels { get; set; } = false;
-
+        
         int columns = 3;
         int rows = 2;
         int padding = 20;
