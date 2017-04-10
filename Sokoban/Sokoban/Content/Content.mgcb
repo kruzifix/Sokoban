@@ -163,3 +163,16 @@
 /processorParam:TextureFormat=Compressed
 /build:title_font.spritefont
 
+#begin Levels/00.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/processorParam:ObjectLayerName=Objects
+/processorParam:WallSwitchesLayerName=Walls_Switches
+/processorParam:PlayerId=72
+/processorParam:BoxId=6
+/processorParam:StickyBoxId=9
+/processorParam:HoleId=11
+/processorParam:WallId=99
+/processorParam:SwitchId=25
+/build:Levels/00.tmx
+
