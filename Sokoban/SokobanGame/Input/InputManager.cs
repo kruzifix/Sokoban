@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace SokobanGame.Input
 {
@@ -12,12 +13,17 @@ namespace SokobanGame.Input
 
         private static GamePadState lastPadState;
         private static GamePadState currentPadState;
+        private static bool thumbWasCenter = false;
+        // TODO: tweak values!
+        private static float centerThreshold = 0.3f;
+        private static float activeThreshold = 0.7f;
+        private static float angleTolerance = 0.35f;
 
         public static Vector2 LeftThumb
         {
             get
             {
-                return (currentPadState.ThumbSticks.Left + lastPadState.ThumbSticks.Left)*0.5f;
+                return (currentPadState.ThumbSticks.Left + lastPadState.ThumbSticks.Left) * 0.5f;
             }
         }
 
@@ -58,17 +64,45 @@ namespace SokobanGame.Input
                 lastPadState = currentPadState;
                 currentPadState = GamePad.GetState(0);
 
+                Vector2 v = LeftThumb;
+                if (v.Length() < centerThreshold)
+                    thumbWasCenter = true;
+                
+                bool active = v.Length() > activeThreshold;
+                float angle = (float)Math.Atan2(v.Y, v.X);
+
+                bool rightActive = active && (Math.Abs(angle) < angleTolerance);
+                bool leftActive = active && (Math.Abs(Math.PI - Math.Abs(angle)) < angleTolerance);
+                bool upActive = active && (Math.Abs(angle - Math.PI * 0.5f) < angleTolerance);
+                bool downActive = active && (Math.Abs(angle + Math.PI * 0.5f) < angleTolerance);
+
                 states["up"].Add(GetButtonState(Buttons.DPadUp));
-                // states["up"].Add(GetButtonState(Buttons.LeftThumbstickUp));
+                if (thumbWasCenter && upActive)
+                {
+                    states["up"].Add(InputState.Pressed);
+                    thumbWasCenter = false;
+                }
 
                 states["down"].Add(GetButtonState(Buttons.DPadDown));
-                // states["down"].Add(GetButtonState(Buttons.LeftThumbstickDown));
+                if (thumbWasCenter && downActive)
+                {
+                    states["down"].Add(InputState.Pressed);
+                    thumbWasCenter = false;
+                }
 
                 states["left"].Add(GetButtonState(Buttons.DPadLeft));
-                // states["left"].Add(GetButtonState(Buttons.LeftThumbstickLeft));
+                if (thumbWasCenter && leftActive)
+                {
+                    states["left"].Add(InputState.Pressed);
+                    thumbWasCenter = false;
+                }
 
                 states["right"].Add(GetButtonState(Buttons.DPadRight));
-                // states["right"].Add(GetButtonState(Buttons.LeftThumbstickRight));
+                if (thumbWasCenter && rightActive)
+                {
+                    states["right"].Add(InputState.Pressed);
+                    thumbWasCenter = false;
+                }
 
                 states["back"].Add(GetButtonState(Buttons.B));
                 states["confirm"].Add(GetButtonState(Buttons.A));
@@ -137,6 +171,37 @@ namespace SokobanGame.Input
         public static bool KeyPressed(Keys key)
         {
             return lastState.IsKeyUp(key) && currentState.IsKeyDown(key);
+        }
+
+        public static void DrawDebugThumbStick(int x, int y, int size)
+        {
+            SokobanGame.Instance.SpriteBatch.DrawRect(x, y, size, size, Color.White, Align.Center);
+            SokobanGame.Instance.SpriteBatch.DrawRect(x, y, size, size * 0.15f, Color.DodgerBlue, Align.Center);
+            SokobanGame.Instance.SpriteBatch.DrawRect(x, y, size * 0.15f, size, Color.DodgerBlue, Align.Center);
+
+            Vector2 v = LeftThumb;
+
+            float angle = (float)Math.Atan2(v.Y, v.X);
+            bool rightActive = v.Length() > activeThreshold && (Math.Abs(angle) < angleTolerance);
+            bool leftActive = v.Length() > activeThreshold && (Math.Abs(Math.PI - Math.Abs(angle)) < angleTolerance);
+
+            bool upActive = v.Length() > activeThreshold && (Math.Abs(angle - Math.PI * 0.5f) < angleTolerance);
+            bool downActive = v.Length() > activeThreshold && (Math.Abs(angle + Math.PI * 0.5f) < angleTolerance);
+
+            float rectSize = (1f - activeThreshold) * size * 0.5f;
+
+            SokobanGame.Instance.SpriteBatch.DrawRect(x + size * 0.5f, y, rectSize, 125, rightActive ? Color.Red : Color.Brown, Align.MidRight);
+            SokobanGame.Instance.SpriteBatch.DrawRect(x - size * 0.5f, y, rectSize, 125, leftActive ? Color.Red : Color.Brown, Align.MidLeft);
+            SokobanGame.Instance.SpriteBatch.DrawRect(x, y - size * 0.5f, 125, rectSize, upActive ? Color.Red : Color.Brown, Align.TopMid);
+            SokobanGame.Instance.SpriteBatch.DrawRect(x, y + size * 0.5f, 125, rectSize, downActive ? Color.Red : Color.Brown, Align.BotMid);
+
+            float centerThreshold = 0.2f;
+            bool center = v.Length() < centerThreshold;
+            SokobanGame.Instance.SpriteBatch.DrawRect(x, y, size * centerThreshold, size * centerThreshold, center ? Color.LawnGreen : Color.ForestGreen, Align.Center);
+
+            SokobanGame.Instance.SpriteBatch.DrawRect(x + v.X * size * 0.5f, y - v.Y * size * 0.5f, 20, 20, Color.Black, Align.Center);
+            SokobanGame.Instance.SpriteBatch.DrawRect(x + v.X * size * 0.5f, y - v.Y * size * 0.5f, 8, 60, Color.Black, Align.Center);
+            SokobanGame.Instance.SpriteBatch.DrawRect(x + v.X * size * 0.5f, y - v.Y * size * 0.5f, 60, 8, Color.Black, Align.Center);
         }
     }
 }
