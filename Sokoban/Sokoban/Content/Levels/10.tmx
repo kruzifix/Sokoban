@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="8" height="7" tilewidth="128" tileheight="128" nextobjectid="5">
+ <properties>
+  <property name="Name" value="Blockslide"/>
+ </properties>
+ <tileset firstgid="1" name="sokoban_tilesheet" tilewidth="128" tileheight="128" tilecount="104" columns="13">
+  <image source="../sokoban_tilesheet.png" width="1664" height="1024"/>
+ </tileset>
+ <layer name="Background" width="8" height="7">
+  <data encoding="csv">
+90,90,90,90,90,90,90,0,
+90,90,90,90,90,90,90,90,
+90,90,90,90,90,90,90,90,
+90,90,90,90,90,90,90,90,
+90,90,90,90,90,90,90,90,
+90,90,90,90,90,90,90,90,
+90,90,90,90,90,90,90,0
+</data>
+ </layer>
+ <layer name="Walls_Switches" width="8" height="7">
+  <data encoding="csv">
+100,100,100,100,100,100,100,0,
+100,26,0,0,0,0,100,100,
+100,100,91,91,91,91,0,100,
+100,91,91,91,91,91,0,100,
+100,91,91,91,91,91,26,100,
+100,26,91,91,91,91,100,100,
+100,100,100,100,100,100,100,0
+</data>
+ </layer>
+ <layer name="Objects" width="8" height="7">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,
+0,0,0,73,0,0,0,0,
+0,0,0,0,7,0,0,0,
+0,0,7,0,0,0,0,0,
+0,0,7,0,0,0,0,0,
+0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>

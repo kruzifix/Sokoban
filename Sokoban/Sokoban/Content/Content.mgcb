@@ -55,7 +55,6 @@
 /processorParam:StickyBoxId=9
 /processorParam:HoleId=11
 /processorParam:WallId=99
-/processorParam:IceGroundId=90
 /processorParam:SwitchId=25
 /build:Levels/01.tmx
 
@@ -69,7 +68,6 @@
 /processorParam:StickyBoxId=9
 /processorParam:HoleId=11
 /processorParam:WallId=99
-/processorParam:IceGroundId=90
 /processorParam:SwitchId=25
 /build:Levels/02.tmx
 
@@ -83,7 +81,6 @@
 /processorParam:StickyBoxId=9
 /processorParam:HoleId=11
 /processorParam:WallId=99
-/processorParam:IceGroundId=90
 /processorParam:SwitchId=25
 /build:Levels/03.tmx
 
@@ -97,7 +94,6 @@
 /processorParam:StickyBoxId=9
 /processorParam:HoleId=11
 /processorParam:WallId=99
-/processorParam:IceGroundId=90
 /processorParam:SwitchId=25
 /build:Levels/04.tmx
 
@@ -111,7 +107,6 @@
 /processorParam:StickyBoxId=9
 /processorParam:HoleId=11
 /processorParam:WallId=99
-/processorParam:IceGroundId=90
 /processorParam:SwitchId=25
 /build:Levels/05.tmx
 
@@ -125,7 +120,6 @@
 /processorParam:StickyBoxId=9
 /processorParam:HoleId=11
 /processorParam:WallId=99
-/processorParam:IceGroundId=90
 /processorParam:SwitchId=25
 /build:Levels/06_sticky_hook.tmx
 
@@ -139,7 +133,6 @@
 /processorParam:StickyBoxId=9
 /processorParam:HoleId=11
 /processorParam:WallId=99
-/processorParam:IceGroundId=90
 /processorParam:SwitchId=25
 /build:Levels/07.tmx
 
@@ -153,7 +146,6 @@
 /processorParam:StickyBoxId=9
 /processorParam:HoleId=11
 /processorParam:WallId=99
-/processorParam:IceGroundId=90
 /processorParam:SwitchId=25
 /build:Levels/08.tmx
 
@@ -181,7 +173,19 @@
 /processorParam:StickyBoxId=9
 /processorParam:HoleId=11
 /processorParam:WallId=99
-/processorParam:IceGroundId=90
 /processorParam:SwitchId=25
 /build:Levels/09.tmx
+
+#begin Levels/10.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/processorParam:ObjectLayerName=Objects
+/processorParam:WallSwitchesLayerName=Walls_Switches
+/processorParam:PlayerId=72
+/processorParam:BoxId=6
+/processorParam:StickyBoxId=9
+/processorParam:HoleId=11
+/processorParam:WallId=99
+/processorParam:SwitchId=25
+/build:Levels/10.tmx
 
