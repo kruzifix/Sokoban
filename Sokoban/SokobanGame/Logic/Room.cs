@@ -104,9 +104,10 @@ namespace SokobanGame.Logic
                     if (!h.Filled)
                         return;
                 }
-            } else
+            }
+            else
             {
-                while (GetObject(pos) == FieldObject.IceGround)
+                while (GetObject(pos) == FieldObject.IceGround && GetObject(pos + dir) != FieldObject.Wall)
                 {
                     var next = CurrentState.EntityAt(pos + dir);
                     if (next != null)
