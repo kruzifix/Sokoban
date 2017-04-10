@@ -21,7 +21,7 @@ namespace SokobanGame.Screen
         public GameScreen(int level)
             : base(true, true)
         {
-            font = Assets.SpacePortFont;
+            font = Assets.TextFont;
 
             Level = level;
             map = Assets.Levels[level];

@@ -21,7 +21,7 @@ namespace SokobanGame.Screen
             var lvlScreen = ScreenManager.GetScreen<LevelSelectScreen>();
             lvlScreen.UnlockedLevel = Math.Max(lvlScreen.UnlockedLevel, (finishedLevel + 1) % Assets.Levels.Length);
             
-            font = Assets.SpacePortFont;
+            font = Assets.TextFont;
         }
 
         public override void Draw(GameTime gameTime)

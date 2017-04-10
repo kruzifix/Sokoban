@@ -29,8 +29,8 @@ namespace SokobanGame.Screen
         {
             selectedOption = 0;
 
-            titleFont = Assets.GreenwichFont;
-            font = Assets.SpacePortFont;
+            titleFont = Assets.TitleFont;
+            font = Assets.TextFont;
         }
 
         public override void Draw(GameTime gameTime)

@@ -33,13 +33,6 @@
 /processorParam:TextureFormat=Compressed
 /build:debug_font.spritefont
 
-#begin spaceport_font.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:spaceport_font.spritefont
-
 #begin pixel_1x1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -51,13 +44,6 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:pixel_1x1.png
-
-#begin greenwich_font.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:greenwich_font.spritefont
 
 #begin Levels/01.tmx
 /importer:TiledMapImporter
@@ -162,4 +148,18 @@
 /processorParam:WallId=99
 /processorParam:SwitchId=25
 /build:Levels/08.tmx
+
+#begin text_font.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:text_font.spritefont
+
+#begin title_font.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:title_font.spritefont
 

@@ -38,7 +38,7 @@ namespace SokobanGame.Screen
         {
             ResetAllLevels();
 
-            font = Assets.SpacePortFont;
+            font = Assets.TextFont;
         }
 
         private void ResetAllLevels()
