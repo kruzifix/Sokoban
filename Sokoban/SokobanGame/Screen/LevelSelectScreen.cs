@@ -157,7 +157,7 @@ namespace SokobanGame.Screen
                 {
                     selectedPage++;
                     selectedLevel -= (columns - 1);
-                    if (SelectedLevel > Assets.Levels.Length)
+                    if (SelectedLevel >= Assets.Levels.Length)
                         selectedLevel = 0;
                 }
                 else if ((selectedLevel % columns) < columns - 1 && selectedLevel < maxIndex - 1)
