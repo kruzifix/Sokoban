@@ -69,7 +69,11 @@ namespace SokobanGame.Screen
             sb.DrawRect(0, 0, w, 40, ggray);
 
             sb.Begin();
+            if (selectedPage > 0)
+                sb.DrawString(font, "<<<", new Vector2(40, 20), Color.White, Align.MidLeft);
             sb.DrawString(font, "Select a Level with ENTER", new Vector2(w * 0.5f, 20), Color.White, Align.Center);
+            if (Assets.Levels.Length > (selectedPage + 1) * columns * rows)
+                sb.DrawString(font, ">>>", new Vector2(w - 40, 20), Color.White, Align.MidRight);
             sb.End();
 
             int dwi = (w - (columns + 1) * padding) / columns;
