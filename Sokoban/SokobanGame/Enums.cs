@@ -10,6 +10,13 @@
         BotMid
     }
 
+    public enum FieldObject
+    {
+        Empty,
+        Wall,
+        IceGround
+    }
+
     public enum InputState
     {
         Pressed,

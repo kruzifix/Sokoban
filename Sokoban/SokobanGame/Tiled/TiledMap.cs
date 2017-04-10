@@ -100,12 +100,15 @@ namespace SokobanGame.Tiled
             {
                 for (int j = 0; j < Room.Height; j++)
                 {
-                    if (Room.GetWall(i, j) == 0)
+                    if (Room.GetObject(i, j) == FieldObject.Empty)
                         continue;
 
                     dest.X = i * TileWidth + RenderOffset.X;
                     dest.Y = j * TileHeight + RenderOffset.Y;
-                    sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(41), Color.White);
+                    int id = 41;
+                    if (Room.GetObject(i, j) == FieldObject.IceGround)
+                        id = 42;
+                    sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(id), Color.White);
                 }
             }
             foreach (var e in Room.CurrentState.Entities)

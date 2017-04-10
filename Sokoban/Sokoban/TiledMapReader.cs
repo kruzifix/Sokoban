@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using SokobanGame;
@@ -86,7 +87,8 @@ namespace Sokoban
             {
                 for (int i = 0; i < roomWidth; i++)
                 {
-                    room.SetWall(i, j, input.ReadInt32());
+                    int f = input.ReadInt32();
+                    room.SetObject(i, j, (FieldObject)f);
                 }
             }
             

@@ -7,7 +7,7 @@ namespace SokobanGame.Logic
         public int Width { get; private set; }
         public int Height { get; private set; }
 
-        private int[,] walls;
+        private FieldObject[,] field;
         public IntVec[] Switches { get; private set; }
         public Teleporter[] Teleporters { get; private set; }
 
@@ -21,7 +21,7 @@ namespace SokobanGame.Logic
         {
             Width = width;
             Height = height;
-            walls = new int[Width, Height];
+            field = new FieldObject[Width, Height];
             Switches = switches;
             Teleporters = teleporters;
 
@@ -30,19 +30,19 @@ namespace SokobanGame.Logic
             Reset();
         }
 
-        public void SetWall(int x, int y, int v)
+        public void SetObject(int x, int y, FieldObject v)
         {
-            walls[x, y] = v;
+            field[x, y] = v;
         }
 
-        public int GetWall(int x, int y)
+        public FieldObject GetObject(int x, int y)
         {
-            return walls[x, y];
+            return field[x, y];
         }
 
-        public int GetWall(IntVec v)
+        public FieldObject GetObject(IntVec v)
         {
-            return GetWall(v.X, v.Y);
+            return GetObject(v.X, v.Y);
         }
 
         public void Reset()
@@ -88,7 +88,7 @@ namespace SokobanGame.Logic
             var oldState = CurrentState.Copy();
 
             IntVec pos = CurrentState.PlayerPosition + dir;
-            if (GetWall(pos) > 0)
+            if (GetObject(pos) == FieldObject.Wall)
                 return;
 
             var ent = CurrentState.EntityAt(pos);
@@ -114,7 +114,7 @@ namespace SokobanGame.Logic
         private bool CanMoveEntity(Entity ent, IntVec dir)
         {
             IntVec pos = ent.Pos + dir;
-            if (GetWall(pos) > 0)
+            if (GetObject(pos) == FieldObject.Wall)
                 return false;
             return CurrentState.EntityAt(pos) == null;
         }
@@ -130,7 +130,7 @@ namespace SokobanGame.Logic
         private bool TryMoveBox(Box box, IntVec dir)
         {
             IntVec pos = box.Pos + dir;
-            if (GetWall(pos) > 0)
+            if (GetObject(pos) == FieldObject.Wall)
                 return false;
             var ent = CurrentState.EntityAt(pos);
             if (ent == null)
