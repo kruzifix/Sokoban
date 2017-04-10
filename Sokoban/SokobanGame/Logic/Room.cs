@@ -147,6 +147,13 @@ namespace SokobanGame.Logic
                         pos = tele.Target;
                 }
 
+                if (GetObject(pos) == FieldObject.IceGround)
+                {
+                    box.Pos = pos;
+                    TryMoveBox(box, dir);
+                    return true;
+                }
+
                 box.Pos = pos;
                 return true;
             }
