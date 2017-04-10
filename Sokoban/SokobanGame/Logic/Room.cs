@@ -106,8 +106,16 @@ namespace SokobanGame.Logic
                 }
             } else
             {
-                while (GetObject(pos) == FieldObject.IceGround && CurrentState.EntityAt(pos + dir) == null)
+                while (GetObject(pos) == FieldObject.IceGround)
+                {
+                    var next = CurrentState.EntityAt(pos + dir);
+                    if (next != null)
+                    {
+                        if (!(next is Hole) || !(next as Hole).Filled)
+                            break;
+                    }
                     pos += dir;
+                }
             }
             
             CurrentState.PlayerPosition = pos;
