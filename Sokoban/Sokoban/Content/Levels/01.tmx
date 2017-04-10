@@ -36,11 +36,4 @@
 0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup name="Info">
-  <object id="3" x="797.333" y="64">
-   <properties>
-    <property name="Text" value="Cover all Switches with Boxes!"/>
-   </properties>
-  </object>
- </objectgroup>
 </map>
