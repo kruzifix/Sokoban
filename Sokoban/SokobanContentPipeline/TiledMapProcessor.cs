@@ -16,6 +16,7 @@ namespace SokobanContentPipeline
     {
         public string ObjectLayerName { get; set; } = "Objects";
         public string WallSwitchesLayerName { get; set; } = "Walls_Switches";
+        public string BackgroundLayerName { get; set; } = "Background";
 
         public int PlayerId { get; set; } = 72;
 
@@ -121,8 +122,6 @@ namespace SokobanContentPipeline
                             {
                                 if (layer.Data[i, j] - 1 == WallId)
                                     output.Room.Walls[i, j] = 1;
-                                if (layer.Data[i, j] - 1 == IceGroundId)
-                                    output.Room.Walls[i, j] = 2;
                                 if (layer.Data[i, j] - 1 == SwitchId)
                                     switches.Add(new IntVec(i, j));
                             }
@@ -155,6 +154,20 @@ namespace SokobanContentPipeline
 
                         context.Logger.LogMessage("\tPlayerPosition: {0}", output.Room.InitialState.PlayerPosition);
                         context.Logger.LogMessage("\tEntities: {0}", output.Room.InitialState.Entities.Length);
+                    }
+                    else if (layer.Name.Equals(BackgroundLayerName))
+                    {
+                        context.Logger.LogMessage("Parsing Background Layer for Ice.");
+                        for (int i = 0; i < output.Width; i++)
+                        {
+                            for (int j = 0; j < output.Height; j++)
+                            {
+                                if (layer.Data[i, j] - 1 == IceGroundId)
+                                    output.Room.Walls[i, j] = 2;
+                            }
+                        }
+
+                        output.Layers.Add(layer);
                     }
                     else
                     {
