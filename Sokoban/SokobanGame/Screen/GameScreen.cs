@@ -76,16 +76,16 @@ namespace SokobanGame.Screen
 
             if (!debugMode)
                 return;
-            SokobanGame.Instance.DrawDebugMessage(string.Format("Solved: {0}", map.Room.IsSolved()), new Vector2(200, 30), Color.Black);
-
-            SokobanGame.Instance.DrawDebugMessage(string.Format("Entities: {0}", map.Room.CurrentState.Entities.Count), new Vector2(400, 10), Color.Black);
+            SokobanGame.Instance.DrawDebugMessage(string.Format("Solved: {0}", map.Room.IsSolved()), new Vector2(300, 60), Color.Black);
+            SokobanGame.Instance.DrawDebugMessage(string.Format("Entities: {0}", map.Room.CurrentState.Entities.Count), new Vector2(SokobanGame.Width - 300, 60), Color.Black);
             int i = 0;
             foreach (Entity e in map.Room.CurrentState.Entities)
             {
                 string info = string.Format("{0} => {1}", e.Pos, e.GetType().Name);
-                SokobanGame.Instance.DrawDebugMessage(info, new Vector2(400, 30 + i * 20), Color.Black);
+                SokobanGame.Instance.DrawDebugMessage(info, new Vector2(SokobanGame.Width - 300, 80 + i * 20), Color.Black);
                 i++;
             }
+            InputManager.DrawDebugThumbStick(100, 100, 200);
         }
 
         public override void Update(GameTime gameTime)
