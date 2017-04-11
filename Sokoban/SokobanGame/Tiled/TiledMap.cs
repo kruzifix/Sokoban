@@ -66,7 +66,7 @@ namespace SokobanGame.Tiled
             
             // TODO: replace with teleporter tiles!!
             Color[] teleporterColors = new Color[] {
-                Color.SlateBlue,
+                new Color(63, 168, 229),
                 Color.Magenta,
                 Color.IndianRed
             };
@@ -78,11 +78,11 @@ namespace SokobanGame.Tiled
             {
                 dest.X = t.Pos.X * TileWidth + RenderOffset.X;
                 dest.Y = t.Pos.Y * TileHeight + RenderOffset.Y;
-                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(39), teleporterColors[col]);
+                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(37), teleporterColors[col]);
 
                 dest.X = t.Target.X * TileWidth + RenderOffset.X;
                 dest.Y = t.Target.Y * TileHeight + RenderOffset.Y;
-                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(44), teleporterColors[col]);
+                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(38), teleporterColors[col]);
 
                 col++;
             }
