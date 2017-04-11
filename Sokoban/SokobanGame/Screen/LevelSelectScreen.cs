@@ -119,7 +119,7 @@ namespace SokobanGame.Screen
                 float cx = (dw - lvl.PixelWidth) * 0.5f;
                 float cy = (dw - lvl.PixelHeight) * 0.5f;
                 lvl.RenderOffset = new IntVec(tlx + (int)cx, tly + 20 + (int)cy);
-                lvl.Draw(MovementDir.Down);
+                lvl.Draw();
 
                 Color txtCol = i == selectedLevel ? Color.GreenYellow : Color.White;
                 sb.Begin();

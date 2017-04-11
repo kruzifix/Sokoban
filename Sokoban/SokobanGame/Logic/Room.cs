@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using SokobanGame.Animation;
+using System.Collections.Generic;
 
 namespace SokobanGame.Logic
 {
@@ -83,26 +84,28 @@ namespace SokobanGame.Logic
             return true;
         }
 
-        public void Update(IntVec dir)
+        public MoveAnimation Update(IntVec dir)
         {
             var oldState = CurrentState.Copy();
 
             IntVec pos = CurrentState.PlayerPosition + dir;
             if (GetObject(pos) == FieldObject.Wall)
-                return;
+                return null;
+
+            float animTime = 0.125f;
 
             var ent = CurrentState.EntityAt(pos);
             if (ent != null)
             {
                 if (ent is Box && !TryMoveBox(ent as Box, dir))
-                    return;
+                    return null;
                 if (ent is StickyBox && !TryMoveStickyBox(ent as StickyBox, dir))
-                    return;
+                    return null;
                 if (ent is Hole)
                 {
                     Hole h = ent as Hole;
                     if (!h.Filled)
-                        return;
+                        return null;
                 }
             }
             else
@@ -115,13 +118,18 @@ namespace SokobanGame.Logic
                         if (!(next is Hole) || !(next as Hole).Filled)
                             break;
                     }
+                    animTime += 0.025f;
                     pos += dir;
                 }
             }
+
+            var anim = new MoveAnimation(CurrentState.PlayerPosition, pos, animTime);
             
             CurrentState.PlayerPosition = pos;
 
             history.Push(oldState);
+
+            return anim;
         }
 
         private bool CanMoveEntity(Entity ent, IntVec dir)

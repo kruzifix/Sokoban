@@ -39,6 +39,7 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animation\MoveAnimation.cs" />
     <Compile Include="Assets.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Input\InputManager.cs" />

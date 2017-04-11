@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using SokobanGame.Animation;
 using SokobanGame.Input;
 using SokobanGame.Logic;
 using SokobanGame.Tiled;
@@ -12,7 +13,9 @@ namespace SokobanGame.Screen
     {
         private TiledMap map;
         private bool debugMode = false;
-        private MovementDir lastPlayerMoveDir = MovementDir.Down;
+        private MoveAnimation currentAnim = null;
+        private Vector2 playerPos;
+        private int playerTile = 65;
 
         private SpriteFont font;
 
@@ -26,6 +29,8 @@ namespace SokobanGame.Screen
             Level = level;
             map = Assets.Levels[level];
             map.Room.Reset();
+
+            playerPos = map.Room.CurrentState.PlayerPosition.ToVector2();
 
             CalcPositions();
         }
@@ -48,7 +53,16 @@ namespace SokobanGame.Screen
         {
             SokobanGame.Instance.GraphicsDevice.Clear(Color.LightSlateGray);
 
-            map.Draw(lastPlayerMoveDir);
+            map.Draw();
+
+            sb.Begin();
+            var tex = map.Tileset.Texture;
+            Rectangle r = new Rectangle((int)(playerPos.X * map.TileWidth + map.RenderOffset.X),
+                                        (int)(playerPos.Y * map.TileHeight + map.RenderOffset.Y),
+                                        map.TileWidth,
+                                        map.TileHeight);
+            sb.Draw(tex, r, map.Tileset.GetSourceRect(playerTile), Color.White);
+            sb.End();
 
             if (debugMode)
                 map.DrawDebug();
@@ -103,40 +117,61 @@ namespace SokobanGame.Screen
             if (InputManager.Pressed("reset"))
             {
                 map.Room.Reset();
+                playerPos = map.Room.CurrentState.PlayerPosition.ToVector2();
             }
 
             if (InputManager.Pressed("undo"))
             {
                 map.Room.Undo();
+                playerPos = map.Room.CurrentState.PlayerPosition.ToVector2();
             }
 
-            if (InputManager.Pressed("up"))
+            if (currentAnim != null)
             {
-                map.Room.Update(new IntVec(0, -1));
-                lastPlayerMoveDir = MovementDir.Up;
-            }
-
-            if (InputManager.Pressed("down"))
-            {
-                map.Room.Update(new IntVec(0, 1));
-                lastPlayerMoveDir = MovementDir.Down;
-            }
-
-            if (InputManager.Pressed("left"))
-            {
-                map.Room.Update(new IntVec(-1, 0));
-                lastPlayerMoveDir = MovementDir.Left;
-            }
-
-            if (InputManager.Pressed("right"))
-            {
-                map.Room.Update(new IntVec(1, 0));
-                lastPlayerMoveDir = MovementDir.Right;
+                currentAnim.Update(gameTime);
+                playerPos = currentAnim.Position;
+                playerTile = currentAnim.TileId;
+                if (currentAnim.Finished)
+                {
+                    currentAnim = null;
+                }
+                else
+                {
+                    return;
+                }
             }
 
             if (map.Room.IsSolved())
             {
                 ScreenManager.AddScreen(new FinishedScreen(Level));
+            }
+
+            if (InputManager.Pressed("up"))
+            {
+                currentAnim = map.Room.Update(new IntVec(0, -1));
+                if (currentAnim != null)
+                    currentAnim.MoveDir = MovementDir.Up;
+            }
+
+            if (InputManager.Pressed("down"))
+            {
+                currentAnim = map.Room.Update(new IntVec(0, 1));
+                if (currentAnim != null)
+                    currentAnim.MoveDir = MovementDir.Down;
+            }
+
+            if (InputManager.Pressed("left"))
+            {
+                currentAnim = map.Room.Update(new IntVec(-1, 0));
+                if (currentAnim != null)
+                    currentAnim.MoveDir = MovementDir.Left;
+            }
+
+            if (InputManager.Pressed("right"))
+            {
+                currentAnim = map.Room.Update(new IntVec(1, 0));
+                if (currentAnim != null)
+                    currentAnim.MoveDir = MovementDir.Right;
             }
         }
 
