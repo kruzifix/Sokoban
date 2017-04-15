@@ -26,10 +26,13 @@ namespace SokobanGame.Screen
         }
 
         public int UnlockedLevel { get; set; }
-        
+
         int columns = 3;
         int rows = 2;
         int padding = 20;
+
+        int topPad = 60;
+        int borderSize = 10;
 
         private SpriteFont font;
 
@@ -59,21 +62,26 @@ namespace SokobanGame.Screen
         {
             SokobanGame.Instance.GraphicsDevice.Clear(Color.LightSlateGray);
 
-            int top = 70;
-
             int w = SokobanGame.Width;
-            int h = SokobanGame.Height - top;
+            int h = SokobanGame.Height - topPad - borderSize;
 
-            Color ggray = new Color(51, 51, 51, 255);
-            sb.DrawRect(0, 0, w, 50, Color.LightGray);
-            sb.DrawRect(0, 0, w, 40, ggray);
+            sb.DrawRect(0, 0, w, topPad, Colors.PadBackground);
+            sb.DrawRect(0, topPad, w, borderSize, Colors.PadBorder);
+
+            float midTopPad = topPad * 0.5f;
 
             sb.Begin();
             if (selectedPage > 0)
-                sb.DrawString(font, "<<<", new Vector2(40, 20), Color.White, Align.MidLeft);
-            sb.DrawString(font, "Select a Level with ENTER", new Vector2(w * 0.5f, 20), Color.White, Align.Center);
+                sb.DrawString(font, "<<<", new Vector2(40, midTopPad), Color.White, Align.MidLeft);
+
+            int s = topPad / 2;
+            var tr = sb.DrawString(font, "Select a Level", new Vector2(w * 0.5f + s, midTopPad), Color.White, Align.Center);
+
+            Rectangle r = new Rectangle(tr.X - s * 2 - 4, (int)(midTopPad - s), s * 2, s * 2);
+            sb.Draw(Assets.Keys, r, Assets.SrcEnter, Color.White);
+
             if (Assets.Levels.Length > (selectedPage + 1) * columns * rows)
-                sb.DrawString(font, ">>>", new Vector2(w - 40, 20), Color.White, Align.MidRight);
+                sb.DrawString(font, ">>>", new Vector2(w - 40, midTopPad), Color.White, Align.MidRight);
             sb.End();
 
             int dwi = (w - (columns + 1) * padding) / columns;
@@ -104,15 +112,16 @@ namespace SokobanGame.Screen
                 if (!lvl.Properties.TryGetValue("Name", out lvlName))
                     lvlName = "noname";
                 int tlx = xo + (dw + padding) * x + padding;
-                int tly = top + yo + (dw + padding) * y + padding;
+                int tly = (topPad + borderSize) + yo + (dw + padding) * y + padding;
 
-                sb.DrawRect(tlx - 5, tly - 5, dw + 10, dw + 10, i == selectedLevel ? ggray : Color.LightGray);
-                Color bg = (i == selectedLevel ? Color.DimGray : ggray);
+                Color ggray = new Color(51, 51, 51);
+                sb.DrawRect(tlx - 5, tly - 5, dw + 10, dw + 10, i == selectedLevel ? Colors.BoxBorderSel : Colors.BoxBorder);
+                Color bg = (i == selectedLevel ? Colors.BoxBackSel : Colors.BoxBack);
                 if (i == selectedLevel)
                     bg *= op;
                 sb.DrawRect(tlx, tly, dw, dw, bg);
 
-                sb.DrawRect(tlx, tly, dw, 40, i == selectedLevel ? Color.DarkOliveGreen : Color.Gray);
+                sb.DrawRect(tlx, tly, dw, 40, i == selectedLevel ? Colors.BoxTextBackSel : Colors.BoxTextBack);
 
                 int tSize = (int)Math.Min((dw - 20) / (float)lvl.Width, (dw - 40) / (float)lvl.Height);
                 lvl.SetTileSize(tSize, tSize);
@@ -121,7 +130,7 @@ namespace SokobanGame.Screen
                 lvl.RenderOffset = new IntVec(tlx + (int)cx, tly + 20 + (int)cy);
                 lvl.Draw();
 
-                Color txtCol = i == selectedLevel ? Color.GreenYellow : Color.White;
+                Color txtCol = i == selectedLevel ? Colors.BoxTextSel : Colors.BoxText;
                 sb.Begin();
                 Vector2 size = font.MeasureString(lvlName);
                 float scale = 1f;
