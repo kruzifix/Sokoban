@@ -41,7 +41,8 @@ namespace SokobanGame.Screen
             int height = SokobanGame.Height;
 
             int tileSize = (int)Math.Min(width / (float)(map.Width + 1), height / (float)(map.Height + 1));
-            map.SetTileSize(tileSize, tileSize);
+
+            map.SetTileSize(Math.Min(tileSize, map.Tileset.TileWidth), Math.Min(tileSize, map.Tileset.TileHeight));
 
             int totalMapWidth = map.Width * map.TileWidth;
             int totalMapHeight = map.Height * map.TileHeight;
