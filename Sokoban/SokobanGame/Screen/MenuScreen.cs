@@ -61,9 +61,9 @@ namespace SokobanGame.Screen
                 float x = width * 0.5f;
                 y += (1 - k) * (height * 0.5f + i * 80);
 
-                Color bBorder = i == selectedOption ? Color.LightGray : Color.DimGray;
+                Color bBorder = i == selectedOption ? Colors.BtnBorderSel : Colors.BtnBorder;
                 bBorder *= k;
-                Color bBackg = i == selectedOption ? Color.DarkOliveGreen : Color.Gray;
+                Color bBackg = i == selectedOption ? Colors.BtnBackSel : Colors.BtnBack;
                 bBackg *= k;
 
                 float bw = i == selectedOption ? btnWidth + op : btnWidth;
@@ -76,7 +76,7 @@ namespace SokobanGame.Screen
                 float scale = 1f;
                 if (i == selectedOption)
                     scale = 1.12f - 0.03f * cos;
-                Color txtCol = i == selectedOption ? Color.GreenYellow : Color.White;
+                Color txtCol = i == selectedOption ? Colors.BtnTextSel : Colors.BtnText;
                 sb.DrawString(font, options[i], new Vector2(x, y), txtCol,
                               0f, size * 0.5f, scale, SpriteEffects.None, 0);
                 sb.End();

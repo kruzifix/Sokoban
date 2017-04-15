@@ -16,5 +16,12 @@ namespace SokobanGame
         public static Color BoxTextBackSel { get { return Color.DarkOliveGreen; } }
         public static Color BoxText { get { return Color.White; } }
         public static Color BoxTextSel { get { return Color.GreenYellow; } }
+
+        public static Color BtnBorder { get { return Color.DimGray; } }
+        public static Color BtnBorderSel { get { return Color.LightGray; } }
+        public static Color BtnBack { get { return Color.Gray; } }
+        public static Color BtnBackSel { get { return Color.DarkOliveGreen; } }
+        public static Color BtnText { get { return Color.White; } }
+        public static Color BtnTextSel { get { return Color.GreenYellow; } }
     }
 }

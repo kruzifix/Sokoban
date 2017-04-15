@@ -102,7 +102,7 @@ namespace SokobanGame.Screen
             float midBotPad = height - botPad * 0.5f;
             s = botPad / 2 + 4;
             
-            r.X = width / 2 - s * 2;
+            r.X = width / 2;
             r.Y = (int)(midBotPad - s);
             r.Width = s * 2;
             r.Height = s * 2;
