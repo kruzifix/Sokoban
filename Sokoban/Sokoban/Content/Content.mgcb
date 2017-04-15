@@ -50,11 +50,13 @@
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
 /processorParam:WallSwitchesLayerName=Walls_Switches
+/processorParam:BackgroundLayerName=Background
 /processorParam:PlayerId=72
 /processorParam:BoxId=6
 /processorParam:StickyBoxId=9
 /processorParam:HoleId=11
 /processorParam:WallId=99
+/processorParam:IceGroundId=90
 /processorParam:SwitchId=25
 /build:Levels/01.tmx
 
@@ -63,11 +65,13 @@
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
 /processorParam:WallSwitchesLayerName=Walls_Switches
+/processorParam:BackgroundLayerName=Background
 /processorParam:PlayerId=72
 /processorParam:BoxId=6
 /processorParam:StickyBoxId=9
 /processorParam:HoleId=11
 /processorParam:WallId=99
+/processorParam:IceGroundId=90
 /processorParam:SwitchId=25
 /build:Levels/02.tmx
 
@@ -76,11 +80,13 @@
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
 /processorParam:WallSwitchesLayerName=Walls_Switches
+/processorParam:BackgroundLayerName=Background
 /processorParam:PlayerId=72
 /processorParam:BoxId=6
 /processorParam:StickyBoxId=9
 /processorParam:HoleId=11
 /processorParam:WallId=99
+/processorParam:IceGroundId=90
 /processorParam:SwitchId=25
 /build:Levels/03.tmx
 
@@ -89,11 +95,13 @@
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
 /processorParam:WallSwitchesLayerName=Walls_Switches
+/processorParam:BackgroundLayerName=Background
 /processorParam:PlayerId=72
 /processorParam:BoxId=6
 /processorParam:StickyBoxId=9
 /processorParam:HoleId=11
 /processorParam:WallId=99
+/processorParam:IceGroundId=90
 /processorParam:SwitchId=25
 /build:Levels/04.tmx
 
@@ -102,11 +110,13 @@
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
 /processorParam:WallSwitchesLayerName=Walls_Switches
+/processorParam:BackgroundLayerName=Background
 /processorParam:PlayerId=72
 /processorParam:BoxId=6
 /processorParam:StickyBoxId=9
 /processorParam:HoleId=11
 /processorParam:WallId=99
+/processorParam:IceGroundId=90
 /processorParam:SwitchId=25
 /build:Levels/05.tmx
 
@@ -115,11 +125,13 @@
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
 /processorParam:WallSwitchesLayerName=Walls_Switches
+/processorParam:BackgroundLayerName=Background
 /processorParam:PlayerId=72
 /processorParam:BoxId=6
 /processorParam:StickyBoxId=9
 /processorParam:HoleId=11
 /processorParam:WallId=99
+/processorParam:IceGroundId=90
 /processorParam:SwitchId=25
 /build:Levels/06_sticky_hook.tmx
 
@@ -128,11 +140,13 @@
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
 /processorParam:WallSwitchesLayerName=Walls_Switches
+/processorParam:BackgroundLayerName=Background
 /processorParam:PlayerId=72
 /processorParam:BoxId=6
 /processorParam:StickyBoxId=9
 /processorParam:HoleId=11
 /processorParam:WallId=99
+/processorParam:IceGroundId=90
 /processorParam:SwitchId=25
 /build:Levels/07.tmx
 
@@ -141,11 +155,13 @@
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
 /processorParam:WallSwitchesLayerName=Walls_Switches
+/processorParam:BackgroundLayerName=Background
 /processorParam:PlayerId=72
 /processorParam:BoxId=6
 /processorParam:StickyBoxId=9
 /processorParam:HoleId=11
 /processorParam:WallId=99
+/processorParam:IceGroundId=90
 /processorParam:SwitchId=25
 /build:Levels/08.tmx
 
@@ -168,11 +184,13 @@
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
 /processorParam:WallSwitchesLayerName=Walls_Switches
+/processorParam:BackgroundLayerName=Background
 /processorParam:PlayerId=72
 /processorParam:BoxId=6
 /processorParam:StickyBoxId=9
 /processorParam:HoleId=11
 /processorParam:WallId=99
+/processorParam:IceGroundId=90
 /processorParam:SwitchId=25
 /build:Levels/09.tmx
 
@@ -181,11 +199,25 @@
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
 /processorParam:WallSwitchesLayerName=Walls_Switches
+/processorParam:BackgroundLayerName=Background
 /processorParam:PlayerId=72
 /processorParam:BoxId=6
 /processorParam:StickyBoxId=9
 /processorParam:HoleId=11
 /processorParam:WallId=99
+/processorParam:IceGroundId=90
 /processorParam:SwitchId=25
 /build:Levels/10.tmx
+
+#begin keys.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:keys.png
 

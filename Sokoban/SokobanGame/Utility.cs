@@ -46,7 +46,7 @@ namespace SokobanGame
             sb.End();
         }
 
-        public static void DrawString(this SpriteBatch sb, SpriteFont font, string txt, Vector2 position, Color color, Align align)
+        public static Rectangle DrawString(this SpriteBatch sb, SpriteFont font, string txt, Vector2 position, Color color, Align align)
         {
             Vector2 txtSize = font.MeasureString(txt);
             Vector2 pos = position;
@@ -66,6 +66,8 @@ namespace SokobanGame
             }
             pos.Round();
             sb.DrawString(font, txt, pos, color);
+
+            return new Rectangle((int)pos.X, (int)pos.Y, (int)txtSize.X, (int)txtSize.Y);
         }
 
         public static void Round(this Vector2 vec)
