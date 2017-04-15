@@ -117,14 +117,12 @@ namespace SokobanGame.Screen
 
             if (InputManager.Pressed("reset"))
             {
-                map.Room.Reset();
-                playerPos = map.Room.CurrentState.PlayerPosition.ToVector2();
+                Reset();
             }
 
             if (InputManager.Pressed("undo"))
             {
-                map.Room.Undo();
-                playerPos = map.Room.CurrentState.PlayerPosition.ToVector2();
+                Undo();
             }
 
             if (currentAnim != null)
@@ -179,6 +177,18 @@ namespace SokobanGame.Screen
         public override void Resized(int width, int height)
         {
             CalcPositions();
+        }
+
+        public void Undo()
+        {
+            map.Room.Undo();
+            playerPos = map.Room.CurrentState.PlayerPosition.ToVector2();
+        }
+
+        public void Reset()
+        {
+            map.Room.Reset();
+            playerPos = map.Room.CurrentState.PlayerPosition.ToVector2();
         }
     }
 }

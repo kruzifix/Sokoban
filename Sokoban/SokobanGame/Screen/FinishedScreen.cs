@@ -66,13 +66,13 @@ namespace SokobanGame.Screen
             if (InputManager.Pressed("reset"))
             {
                 ScreenManager.RemoveScreen();
-                Assets.Levels[finishedLevel].Room.Reset();
+                (ScreenManager.TopScreen as GameScreen).Reset();
             }
 
             if (InputManager.Pressed("undo"))
             {
                 ScreenManager.RemoveScreen();
-                Assets.Levels[finishedLevel].Room.Undo();
+                (ScreenManager.TopScreen as GameScreen).Undo();
             }
         }
     }
