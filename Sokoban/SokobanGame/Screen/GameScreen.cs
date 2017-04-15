@@ -6,6 +6,7 @@ using SokobanGame.Input;
 using SokobanGame.Logic;
 using SokobanGame.Tiled;
 using System;
+using System.Collections.Generic;
 
 namespace SokobanGame.Screen
 {
@@ -13,7 +14,8 @@ namespace SokobanGame.Screen
     {
         private TiledMap map;
         private bool debugMode = false;
-        private MoveAnimation currentAnim = null;
+        private Queue<MoveAnimation> animations;
+        MoveAnimation currentAnim = null;
         private Vector2 playerPos;
         private int playerTile = 65;
 
@@ -30,8 +32,9 @@ namespace SokobanGame.Screen
             map = Assets.Levels[level];
             map.Room.Reset();
 
+            animations = new Queue<MoveAnimation>();
             playerPos = map.Room.CurrentState.PlayerPosition.ToVector2();
-
+            
             CalcPositions();
         }
 
@@ -133,44 +136,51 @@ namespace SokobanGame.Screen
                 if (currentAnim.Finished)
                 {
                     currentAnim = null;
-                }
-                else
-                {
-                    return;
-                }
-            }
 
-            if (map.Room.IsSolved())
-            {
-                ScreenManager.AddScreen(new FinishedScreen(Level));
+                    if (animations.Count == 0 && map.Room.IsSolved())
+                    {
+                        ScreenManager.AddScreen(new FinishedScreen(Level));
+                    }
+                }
             }
+            if (currentAnim == null && animations.Count > 0)
+                currentAnim = animations.Dequeue();
 
             if (InputManager.Pressed("up"))
             {
-                currentAnim = map.Room.Update(new IntVec(0, -1));
-                if (currentAnim != null)
-                    currentAnim.MoveDir = MovementDir.Up;
+                var anim = map.Room.Update(new IntVec(0, -1));
+                if (anim != null)
+                {
+                    anim.MoveDir = MovementDir.Up;
+                    animations.Enqueue(anim);
+                }
             }
-
-            if (InputManager.Pressed("down"))
+            else if (InputManager.Pressed("down"))
             {
-                currentAnim = map.Room.Update(new IntVec(0, 1));
-                if (currentAnim != null)
-                    currentAnim.MoveDir = MovementDir.Down;
+                var anim = map.Room.Update(new IntVec(0, 1));
+                if (anim != null)
+                {
+                    anim.MoveDir = MovementDir.Down;
+                    animations.Enqueue(anim);
+                }
             }
-
-            if (InputManager.Pressed("left"))
+            else if (InputManager.Pressed("left"))
             {
-                currentAnim = map.Room.Update(new IntVec(-1, 0));
-                if (currentAnim != null)
-                    currentAnim.MoveDir = MovementDir.Left;
+                var anim = map.Room.Update(new IntVec(-1, 0));
+                if (anim != null)
+                {
+                    anim.MoveDir = MovementDir.Left;
+                    animations.Enqueue(anim);
+                }
             }
-
-            if (InputManager.Pressed("right"))
+            else if (InputManager.Pressed("right"))
             {
-                currentAnim = map.Room.Update(new IntVec(1, 0));
-                if (currentAnim != null)
-                    currentAnim.MoveDir = MovementDir.Right;
+                var anim = map.Room.Update(new IntVec(1, 0));
+                if (anim != null)
+                {
+                    anim.MoveDir = MovementDir.Right;
+                    animations.Enqueue(anim);
+                }
             }
         }
 
