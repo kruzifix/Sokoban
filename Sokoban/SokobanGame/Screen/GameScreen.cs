@@ -45,7 +45,7 @@ namespace SokobanGame.Screen
         private void CalcPositions()
         {
             int width = SokobanGame.Width;
-            int height = SokobanGame.Height;
+            int height = SokobanGame.Height - (topPad + botPad);
 
             int tileSize = (int)Math.Min(width / (float)(map.Width + 1), height / (float)(map.Height + 1));
 
@@ -54,7 +54,7 @@ namespace SokobanGame.Screen
             int totalMapWidth = map.Width * map.TileWidth;
             int totalMapHeight = map.Height * map.TileHeight;
 
-            map.RenderOffset = new IntVec((width - totalMapWidth) / 2, (height - totalMapHeight) / 2);
+            map.RenderOffset = new IntVec((width - totalMapWidth) / 2, topPad + borderSize + (height - totalMapHeight) / 2);
         }
 
         public override void Draw(GameTime gameTime)
