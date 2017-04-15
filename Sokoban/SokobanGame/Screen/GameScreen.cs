@@ -50,11 +50,8 @@ namespace SokobanGame.Screen
             int tileSize = (int)Math.Min(width / (float)(map.Width + 1), height / (float)(map.Height + 1));
 
             map.SetTileSize(Math.Min(tileSize, map.Tileset.TileWidth), Math.Min(tileSize, map.Tileset.TileHeight));
-
-            int totalMapWidth = map.Width * map.TileWidth;
-            int totalMapHeight = map.Height * map.TileHeight;
-
-            map.RenderOffset = new IntVec((width - totalMapWidth) / 2, topPad + borderSize + (height - totalMapHeight) / 2);
+            
+            map.RenderOffset = new IntVec((width - map.PixelWidth) / 2, topPad + (height - map.PixelHeight) / 2);
         }
 
         public override void Draw(GameTime gameTime)
