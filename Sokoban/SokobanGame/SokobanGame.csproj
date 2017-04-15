@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Animation\MoveAnimation.cs" />
     <Compile Include="Assets.cs" />
+    <Compile Include="Colors.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="Input\InputManager.cs" />
     <Compile Include="IntVec.cs" />

@@ -77,14 +77,12 @@ namespace SokobanGame.Screen
 
             int width = SokobanGame.Width;
             int height = SokobanGame.Height;
+            
+            sb.DrawRect(0, 0, width, topPad, Colors.PadBackground);
+            sb.DrawRect(0, height - botPad, width, botPad, Colors.PadBackground);
 
-            Color ggray = new Color(51, 51, 51, 255);
-
-            sb.DrawRect(0, 0, width, topPad, ggray);
-            sb.DrawRect(0, height - botPad, width, botPad, ggray);
-
-            sb.DrawRect(0, topPad, width, borderSize, Color.LightGray);
-            sb.DrawRect(0, height - botPad - borderSize, width, borderSize, Color.LightGray);
+            sb.DrawRect(0, topPad, width, borderSize, Colors.PadBorder);
+            sb.DrawRect(0, height - botPad - borderSize, width, borderSize, Colors.PadBorder);
 
             string lvlName;
             if (!map.Properties.TryGetValue("Name", out lvlName))
@@ -100,33 +98,33 @@ namespace SokobanGame.Screen
             r.Height = s * 2;
 
             sb.Draw(Assets.Keys, r, Assets.SrcEsc, Color.White);
-            sb.DrawString(font, "Go Back", new Vector2(r.Right, midTopPad), Color.White, Align.MidLeft);
+            sb.DrawString(font, "Go Back", new Vector2(r.Right, midTopPad), Colors.PadText, Align.MidLeft);
 
-            sb.DrawString(font, lvlName, new Vector2(width * 0.5f, midTopPad), Color.White, Align.Center);
+            sb.DrawString(font, lvlName, new Vector2(width * 0.5f, midTopPad), Colors.PadText, Align.Center);
 
             float midBotPad = height - botPad * 0.5f;
             s = botPad / 2 + 4;
-
-            r.X = 40;
+            
+            r.X = width / 2 - s * 2;
             r.Y = (int)(midBotPad - s);
             r.Width = s * 2;
             r.Height = s * 2;
-            sb.Draw(Assets.Keys, r, Assets.SrcUp, Color.White);
-            r.X = r.Right - 12;
-            sb.Draw(Assets.Keys, r, Assets.SrcRight, Color.White);
-            r.X = r.Right - 12;
-            sb.Draw(Assets.Keys, r, Assets.SrcDown, Color.White);
-            r.X = r.Right - 12;
-            sb.Draw(Assets.Keys, r, Assets.SrcLeft, Color.White);
-            sb.DrawString(font, "Move", new Vector2(r.Right, midBotPad), Color.White, Align.MidLeft);
-
-            r.X = width / 2;
             sb.Draw(Assets.Keys, r, Assets.SrcR, Color.White);
-            var tr = sb.DrawString(font, "Reset", new Vector2(r.Right, midBotPad), Color.White, Align.MidLeft);
+            var tr = sb.DrawString(font, "Reset", new Vector2(r.Right, midBotPad), Colors.PadText, Align.MidLeft);
+            var mr = sb.DrawString(font, "Move", new Vector2(r.X - 24, midBotPad), Colors.PadText, Align.MidRight);
+
+            r.X = mr.X - r.Width;
+            sb.Draw(Assets.Keys, r, Assets.SrcUp, Color.White);
+            r.X = r.X - r.Width + 12;
+            sb.Draw(Assets.Keys, r, Assets.SrcRight, Color.White);
+            r.X = r.X - r.Width + 12;
+            sb.Draw(Assets.Keys, r, Assets.SrcDown, Color.White);
+            r.X = r.X - r.Width + 12;
+            sb.Draw(Assets.Keys, r, Assets.SrcLeft, Color.White);
 
             r.X = tr.Right + 24;
             sb.Draw(Assets.Keys, r, Assets.SrcZ, Color.White);
-            sb.DrawString(font, "Undo", new Vector2(r.Right, midBotPad), Color.White, Align.MidLeft);
+            sb.DrawString(font, "Undo", new Vector2(r.Right, midBotPad), Colors.PadText, Align.MidLeft);
             sb.End();
 
             if (!debugMode)
