@@ -28,14 +28,13 @@ namespace SokobanGame.Screen
         {
             int width = SokobanGame.Width;
             int height = SokobanGame.Height;
-            Color bgCol = new Color(51, 51, 51, 200);
+            sb.DrawRect(width * 0.5f, height * 0.5f, 530, 230, Color.Black, Align.Center);
             sb.DrawRect(width * 0.5f, height * 0.5f, 520, 220, Colors.BoxBorderSel, Align.Center);
             sb.DrawRect(width * 0.5f, height * 0.5f, 500, 200, Colors.BoxBack, Align.Center);
             sb.DrawRect(width * 0.5f, height * 0.5f - 75, 500, 50, Colors.BoxTextBackSel, Align.Center);
 
             string msg = "Level finished!";
             sb.Begin();
-            Color ggray = new Color(51, 51, 51, 255);
             sb.DrawString(font, msg, new Vector2(width * 0.5f, height * 0.5f - 75), Colors.BoxTextSel, Align.Center);
             sb.DrawString(font, string.Format("Score: {0} Moves", moveCount), new Vector2(width * 0.5f, height * 0.5f - 25), Colors.BoxText, Align.Center);
 
