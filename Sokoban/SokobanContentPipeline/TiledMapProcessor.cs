@@ -18,15 +18,15 @@ namespace SokobanContentPipeline
         public string WallSwitchesLayerName { get; set; } = "Walls_Switches";
         public string BackgroundLayerName { get; set; } = "Background";
 
-        public int PlayerId { get; set; } = 72;
+        public int PlayerId { get; set; } = 8;
 
-        public int BoxId { get; set; } = 6;
-        public int StickyBoxId { get; set; } = 9;
-        public int HoleId { get; set; } = 11;
+        public int BoxId { get; set; } = 11;
+        public int StickyBoxId { get; set; } = 19;
+        public int HoleId { get; set; } = 27;
 
-        public int WallId { get; set; } = 99;
-        public int IceGroundId { get; set; } = 90;
-        public int SwitchId { get; set; } = 25;
+        public int WallId { get; set; } = 2;
+        public int IceGroundId { get; set; } = 4;
+        public int SwitchId { get; set; } = 3;
 
         public override TiledMapProcessorOutput Process(TiledMapFile input, ContentProcessorContext context)
         {
