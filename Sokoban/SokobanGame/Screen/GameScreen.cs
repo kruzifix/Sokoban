@@ -38,7 +38,7 @@ namespace SokobanGame.Screen
 
             animations = new Queue<MoveAnimation>();
             playerPos = map.Room.CurrentState.PlayerPosition.ToVector2();
-            
+
             CalcPositions();
         }
 
@@ -50,7 +50,7 @@ namespace SokobanGame.Screen
             int tileSize = (int)Math.Min(width / (float)(map.Width + 1), height / (float)(map.Height + 1));
 
             map.SetTileSize(Math.Min(tileSize, map.Tileset.TileWidth), Math.Min(tileSize, map.Tileset.TileHeight));
-            
+
             map.RenderOffset = new IntVec((width - map.PixelWidth) / 2, topPad + (height - map.PixelHeight) / 2);
         }
 
@@ -74,7 +74,7 @@ namespace SokobanGame.Screen
 
             int width = SokobanGame.Width;
             int height = SokobanGame.Height;
-            
+
             sb.DrawRect(0, 0, width, topPad, Colors.PadBackground);
             sb.DrawRect(0, height - botPad, width, botPad, Colors.PadBackground);
 
@@ -95,20 +95,25 @@ namespace SokobanGame.Screen
             r.Height = s * 2;
 
             sb.Draw(Assets.Keys, r, Assets.SrcEsc, Color.White);
-            sb.DrawString(font, "Go Back", new Vector2(r.Right, midTopPad), Colors.PadText, Align.MidLeft);
+            var tr = sb.DrawString(font, "Go Back", new Vector2(r.Right, midTopPad), Colors.PadText, Align.MidLeft);
+            r.X = tr.Right;
+            sb.Draw(Assets.PadBtns, r, Assets.SrcB, Color.White);
 
             sb.DrawString(font, lvlName, new Vector2(width * 0.5f, midTopPad), Colors.PadText, Align.Center);
 
             float midBotPad = height - botPad * 0.5f;
             s = botPad / 2 + 4;
-            
-            r.X = width / 2;
+
+            r.X = width / 2 - s;
             r.Y = (int)(midBotPad - s);
             r.Width = s * 2;
             r.Height = s * 2;
             sb.Draw(Assets.Keys, r, Assets.SrcR, Color.White);
-            var tr = sb.DrawString(font, "Reset", new Vector2(r.Right, midBotPad), Colors.PadText, Align.MidLeft);
-            var mr = sb.DrawString(font, "Move", new Vector2(r.X - 24, midBotPad), Colors.PadText, Align.MidRight);
+
+            tr = sb.DrawString(font, "Reset", new Vector2(r.Right, midBotPad), Colors.PadText, Align.MidLeft);
+            r.X = r.X - r.Width - 36;
+            sb.Draw(Assets.PadBtns, r, Assets.SrcDPad, Color.White);
+            var mr = sb.DrawString(font, "Move", new Vector2(r.X - 8, midBotPad), Colors.PadText, Align.MidRight);
 
             r.X = mr.X - r.Width;
             sb.Draw(Assets.Keys, r, Assets.SrcUp, Color.White);
@@ -119,9 +124,15 @@ namespace SokobanGame.Screen
             r.X = r.X - r.Width + 12;
             sb.Draw(Assets.Keys, r, Assets.SrcLeft, Color.White);
 
-            r.X = tr.Right + 24;
+            r.X = tr.Right;
+            sb.Draw(Assets.PadBtns, r, Assets.SrcY, Color.White);
+
+            r.X = r.Right + 36;
             sb.Draw(Assets.Keys, r, Assets.SrcZ, Color.White);
-            sb.DrawString(font, "Undo", new Vector2(r.Right, midBotPad), Colors.PadText, Align.MidLeft);
+            var ur = sb.DrawString(font, "Undo", new Vector2(r.Right, midBotPad), Colors.PadText, Align.MidLeft);
+            r.X = ur.Right;
+            sb.Draw(Assets.PadBtns, r, Assets.SrcX, Color.White);
+
             sb.End();
 
             if (!debugMode)
