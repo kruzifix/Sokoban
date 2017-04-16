@@ -13,6 +13,7 @@ namespace SokobanGame
         public static SpriteFont TitleFont { get; private set; }
 
         public static Texture2D PixelTexture { get; private set; }
+        public static Texture2D ArrowTexture { get; private set; }
 
         public static Texture2D Keys { get; private set; }
         public static Rectangle SrcUp { get; private set; }
@@ -33,6 +34,7 @@ namespace SokobanGame
             TitleFont = content.Load<SpriteFont>("title_font");
 
             PixelTexture = content.Load<Texture2D>("pixel_1x1");
+            ArrowTexture = content.Load<Texture2D>("arrow");
 
             Keys = content.Load<Texture2D>("keys");
             SrcUp = new Rectangle(0, 0, 100, 100);

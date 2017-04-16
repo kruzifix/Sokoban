@@ -31,6 +31,7 @@ namespace SokobanGame.Screen
         int rows = 2;
         int padding = 20;
 
+        int horzPad = 80;
         int topPad = 60;
         int borderSize = 10;
 
@@ -70,11 +71,23 @@ namespace SokobanGame.Screen
 
             float midTopPad = topPad * 0.5f;
             int s = topPad / 2;
+            int ah = Assets.ArrowTexture.Height;
+            int aw = Assets.ArrowTexture.Width;
+
+            float cos = (float)Math.Cos(gameTime.TotalGameTime.TotalSeconds * 3.5);
+            float op = 0.65f + 0.35f * cos;
+
+            float aof = 3f * cos;
 
             sb.Begin();
             if (selectedPage > 0)
             {
-                sb.DrawString(font, "<<<", new Vector2(40, midTopPad), Color.White, Align.MidLeft);
+                sb.Draw(Assets.ArrowTexture, new Vector2(15 + aof, topPad + borderSize + (h - ah) / 2), null, Color.White, 0f, Vector2.Zero, 1f, SpriteEffects.FlipHorizontally, 0);
+            }
+
+            if (Assets.Levels.Length > (selectedPage + 1) * columns * rows)
+            {
+                sb.Draw(Assets.ArrowTexture, new Vector2(w - aw - 15 - aof, topPad + borderSize + (h - ah) / 2), Color.White);
             }
 
             var tr = sb.DrawString(font, "Select a Level", new Vector2(w * 0.5f + s, midTopPad), Color.White, Align.Center);
@@ -86,20 +99,17 @@ namespace SokobanGame.Screen
             sb.Draw(Assets.Keys, r, Assets.SrcEsc, Color.White);
             sb.DrawString(font, "Go Back", new Vector2(r.Right, midTopPad), Colors.PadText, Align.MidLeft);
 
-            if (Assets.Levels.Length > (selectedPage + 1) * columns * rows)
-                sb.DrawString(font, ">>>", new Vector2(w - 40, midTopPad), Color.White, Align.MidRight);
             sb.End();
 
-            int dwi = (w - (columns + 1) * padding) / columns;
+            int lw = w - horzPad * 2;
+
+            int dwi = (lw - (columns + 1) * padding) / columns;
             int dhe = (h - (rows + 1) * padding) / rows;
 
             int dw = Math.Min(dwi, dhe);
 
-            int xo = (w - dw * columns - (columns + 1) * padding) / 2;
+            int xo = (lw - dw * columns - (columns + 1) * padding) / 2;
             int yo = (h - dw * rows - (rows + 1) * padding) / 2;
-
-            float cos = (float)Math.Cos(gameTime.TotalGameTime.TotalSeconds * 3.5);
-            float op = 0.65f + 0.35f * cos;
 
             int lvlStart = selectedPage * columns * rows;
             int lvlEnd = Math.Min((selectedPage + 1) * columns * rows, Assets.Levels.Length);
@@ -117,7 +127,7 @@ namespace SokobanGame.Screen
                 string lvlName;
                 if (!lvl.Properties.TryGetValue("Name", out lvlName))
                     lvlName = "noname";
-                int tlx = xo + (dw + padding) * x + padding;
+                int tlx = horzPad + xo + (dw + padding) * x + padding;
                 int tly = (topPad + borderSize) + yo + (dw + padding) * y + padding;
 
                 Color ggray = new Color(51, 51, 51);
