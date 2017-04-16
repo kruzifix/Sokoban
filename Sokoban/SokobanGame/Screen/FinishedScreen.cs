@@ -20,7 +20,7 @@ namespace SokobanGame.Screen
 
             var lvlScreen = ScreenManager.GetScreen<LevelSelectScreen>();
             lvlScreen.UnlockedLevel = Math.Max(lvlScreen.UnlockedLevel, (finishedLevel + 1) % Assets.Levels.Length);
-            
+
             font = Assets.TextFont;
         }
 
@@ -29,17 +29,23 @@ namespace SokobanGame.Screen
             int width = SokobanGame.Width;
             int height = SokobanGame.Height;
             Color bgCol = new Color(51, 51, 51, 200);
-            sb.DrawRect(width * 0.5f, height * 0.5f, 520, 220, Color.DarkOliveGreen, Align.Center);
-            sb.DrawRect(width * 0.5f, height * 0.5f, 500, 200, bgCol, Align.Center);
-            sb.DrawRect(width * 0.5f, height * 0.5f - 75, 500, 50, Color.DarkGray, Align.Center);
+            sb.DrawRect(width * 0.5f, height * 0.5f, 520, 220, Colors.BoxBorderSel, Align.Center);
+            sb.DrawRect(width * 0.5f, height * 0.5f, 500, 200, Colors.BoxBack, Align.Center);
+            sb.DrawRect(width * 0.5f, height * 0.5f - 75, 500, 50, Colors.BoxTextBackSel, Align.Center);
 
-            string msg = "Level finished";
+            string msg = "Level finished!";
             sb.Begin();
             Color ggray = new Color(51, 51, 51, 255);
-            sb.DrawString(font, msg, new Vector2(width * 0.5f, height * 0.5f - 75), Color.GreenYellow, Align.Center);
-            sb.DrawString(font, moveCount + " Moves", new Vector2(width * 0.5f, height * 0.5f - 25), Color.LightGray, Align.Center);
-            sb.DrawString(font, "ESC - back to Level-Select", new Vector2(width * 0.5f, height * 0.5f + 20), Color.LightGray, Align.Center);
-            sb.DrawString(font, "ENTER - next Level", new Vector2(width * 0.5f, height * 0.5f + 65), Color.LightGray, Align.Center);
+            sb.DrawString(font, msg, new Vector2(width * 0.5f, height * 0.5f - 75), Colors.BoxTextSel, Align.Center);
+            sb.DrawString(font, string.Format("Score: {0} Moves", moveCount), new Vector2(width * 0.5f, height * 0.5f - 25), Colors.BoxText, Align.Center);
+
+            var lr = sb.DrawString(font, "Next Level", new Vector2(width * 0.5f, height * 0.5f + 45), Colors.BoxText, Align.Center);
+            int s = 80;
+            Rectangle r = new Rectangle(lr.X - s - 8, lr.Y + (lr.Height - s) / 2, s, s);
+
+            sb.Draw(Assets.Keys, r, Assets.SrcEnter, Color.White);
+            r.X = lr.Right;
+            sb.Draw(Assets.PadBtns, r, Assets.SrcA, Color.White);
             sb.End();
         }
 
