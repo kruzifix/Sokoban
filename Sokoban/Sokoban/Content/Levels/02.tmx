@@ -4,33 +4,33 @@
   <property name="Name" value="Teleporty Holes"/>
   <property name="Teleporters" value="1 1 to 5 3"/>
  </properties>
- <tileset firstgid="1" name="sokoban_tilesheet" tilewidth="128" tileheight="128" tilecount="104" columns="13">
-  <image source="../sokoban_tilesheet.png" width="1664" height="1024"/>
+ <tileset firstgid="1" name="sokoban_tilesheet" tilewidth="128" tileheight="128" tilecount="45" columns="8">
+  <image source="../sokoban_tilesheet.png" width="1024" height="640"/>
  </tileset>
  <layer name="Background" width="8" height="5">
   <data encoding="csv">
-90,90,90,0,0,0,0,0,
-90,90,90,0,0,0,0,0,
-90,90,90,90,90,90,90,90,
-90,90,90,90,90,90,90,90,
-90,90,90,90,90,90,90,90
+2,2,2,0,0,0,0,0,
+2,2,2,0,0,0,0,0,
+2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,2
 </data>
  </layer>
  <layer name="Walls_Switches" width="8" height="5">
   <data encoding="csv">
-100,100,100,0,0,0,0,0,
-100,0,100,0,0,0,0,0,
-100,0,100,100,100,100,100,100,
-100,0,0,0,0,0,26,100,
-100,100,100,100,100,100,100,100
+3,3,3,0,0,0,0,0,
+3,0,3,0,0,0,0,0,
+3,0,3,3,3,3,3,3,
+3,0,0,0,0,0,4,3,
+3,3,3,3,3,3,3,3
 </data>
  </layer>
  <layer name="Objects" width="8" height="5">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,
-0,47,0,0,0,0,0,0,
-0,7,0,0,0,0,0,0,
-0,73,0,7,12,42,0,0,
+0,0,0,0,0,0,0,0,
+0,12,0,0,0,0,0,0,
+0,9,0,12,28,0,0,0,
 0,0,0,0,0,0,0,0
 </data>
  </layer>

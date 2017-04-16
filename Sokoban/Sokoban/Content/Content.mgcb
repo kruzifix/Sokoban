@@ -89,13 +89,13 @@
 /processorParam:ObjectLayerName=Objects
 /processorParam:WallSwitchesLayerName=Walls_Switches
 /processorParam:BackgroundLayerName=Background
-/processorParam:PlayerId=72
-/processorParam:BoxId=6
-/processorParam:StickyBoxId=9
-/processorParam:HoleId=11
-/processorParam:WallId=99
-/processorParam:IceGroundId=90
-/processorParam:SwitchId=25
+/processorParam:PlayerId=8
+/processorParam:BoxId=11
+/processorParam:StickyBoxId=19
+/processorParam:HoleId=27
+/processorParam:WallId=2
+/processorParam:IceGroundId=4
+/processorParam:SwitchId=3
 /build:Levels/01.tmx
 
 #begin Levels/02.tmx
@@ -104,13 +104,13 @@
 /processorParam:ObjectLayerName=Objects
 /processorParam:WallSwitchesLayerName=Walls_Switches
 /processorParam:BackgroundLayerName=Background
-/processorParam:PlayerId=72
-/processorParam:BoxId=6
-/processorParam:StickyBoxId=9
-/processorParam:HoleId=11
-/processorParam:WallId=99
-/processorParam:IceGroundId=90
-/processorParam:SwitchId=25
+/processorParam:PlayerId=8
+/processorParam:BoxId=11
+/processorParam:StickyBoxId=19
+/processorParam:HoleId=27
+/processorParam:WallId=2
+/processorParam:IceGroundId=4
+/processorParam:SwitchId=3
 /build:Levels/02.tmx
 
 #begin Levels/03.tmx
@@ -119,13 +119,13 @@
 /processorParam:ObjectLayerName=Objects
 /processorParam:WallSwitchesLayerName=Walls_Switches
 /processorParam:BackgroundLayerName=Background
-/processorParam:PlayerId=72
-/processorParam:BoxId=6
-/processorParam:StickyBoxId=9
-/processorParam:HoleId=11
-/processorParam:WallId=99
-/processorParam:IceGroundId=90
-/processorParam:SwitchId=25
+/processorParam:PlayerId=8
+/processorParam:BoxId=11
+/processorParam:StickyBoxId=19
+/processorParam:HoleId=27
+/processorParam:WallId=2
+/processorParam:IceGroundId=4
+/processorParam:SwitchId=3
 /build:Levels/03.tmx
 
 #begin Levels/04.tmx
@@ -134,13 +134,13 @@
 /processorParam:ObjectLayerName=Objects
 /processorParam:WallSwitchesLayerName=Walls_Switches
 /processorParam:BackgroundLayerName=Background
-/processorParam:PlayerId=72
-/processorParam:BoxId=6
-/processorParam:StickyBoxId=9
-/processorParam:HoleId=11
-/processorParam:WallId=99
-/processorParam:IceGroundId=90
-/processorParam:SwitchId=25
+/processorParam:PlayerId=8
+/processorParam:BoxId=11
+/processorParam:StickyBoxId=19
+/processorParam:HoleId=27
+/processorParam:WallId=2
+/processorParam:IceGroundId=4
+/processorParam:SwitchId=3
 /build:Levels/04.tmx
 
 #begin Levels/05.tmx
@@ -149,13 +149,13 @@
 /processorParam:ObjectLayerName=Objects
 /processorParam:WallSwitchesLayerName=Walls_Switches
 /processorParam:BackgroundLayerName=Background
-/processorParam:PlayerId=72
-/processorParam:BoxId=6
-/processorParam:StickyBoxId=9
-/processorParam:HoleId=11
-/processorParam:WallId=99
-/processorParam:IceGroundId=90
-/processorParam:SwitchId=25
+/processorParam:PlayerId=8
+/processorParam:BoxId=11
+/processorParam:StickyBoxId=19
+/processorParam:HoleId=27
+/processorParam:WallId=2
+/processorParam:IceGroundId=4
+/processorParam:SwitchId=3
 /build:Levels/05.tmx
 
 #begin Levels/06.tmx
@@ -164,13 +164,13 @@
 /processorParam:ObjectLayerName=Objects
 /processorParam:WallSwitchesLayerName=Walls_Switches
 /processorParam:BackgroundLayerName=Background
-/processorParam:PlayerId=72
-/processorParam:BoxId=6
-/processorParam:StickyBoxId=9
-/processorParam:HoleId=11
-/processorParam:WallId=99
-/processorParam:IceGroundId=90
-/processorParam:SwitchId=25
+/processorParam:PlayerId=8
+/processorParam:BoxId=11
+/processorParam:StickyBoxId=19
+/processorParam:HoleId=27
+/processorParam:WallId=2
+/processorParam:IceGroundId=4
+/processorParam:SwitchId=3
 /build:Levels/06.tmx
 
 #begin Levels/07_sticky_hook.tmx
@@ -179,13 +179,13 @@
 /processorParam:ObjectLayerName=Objects
 /processorParam:WallSwitchesLayerName=Walls_Switches
 /processorParam:BackgroundLayerName=Background
-/processorParam:PlayerId=72
-/processorParam:BoxId=6
-/processorParam:StickyBoxId=9
-/processorParam:HoleId=11
-/processorParam:WallId=99
-/processorParam:IceGroundId=90
-/processorParam:SwitchId=25
+/processorParam:PlayerId=8
+/processorParam:BoxId=11
+/processorParam:StickyBoxId=19
+/processorParam:HoleId=27
+/processorParam:WallId=2
+/processorParam:IceGroundId=4
+/processorParam:SwitchId=3
 /build:Levels/07_sticky_hook.tmx
 
 #begin Levels/08_eva.tmx
@@ -194,13 +194,13 @@
 /processorParam:ObjectLayerName=Objects
 /processorParam:WallSwitchesLayerName=Walls_Switches
 /processorParam:BackgroundLayerName=Background
-/processorParam:PlayerId=72
-/processorParam:BoxId=6
-/processorParam:StickyBoxId=9
-/processorParam:HoleId=11
-/processorParam:WallId=99
-/processorParam:IceGroundId=90
-/processorParam:SwitchId=25
+/processorParam:PlayerId=8
+/processorParam:BoxId=11
+/processorParam:StickyBoxId=19
+/processorParam:HoleId=27
+/processorParam:WallId=2
+/processorParam:IceGroundId=4
+/processorParam:SwitchId=3
 /build:Levels/08_eva.tmx
 
 #begin Levels/09_stickytris.tmx
@@ -209,13 +209,13 @@
 /processorParam:ObjectLayerName=Objects
 /processorParam:WallSwitchesLayerName=Walls_Switches
 /processorParam:BackgroundLayerName=Background
-/processorParam:PlayerId=72
-/processorParam:BoxId=6
-/processorParam:StickyBoxId=9
-/processorParam:HoleId=11
-/processorParam:WallId=99
-/processorParam:IceGroundId=90
-/processorParam:SwitchId=25
+/processorParam:PlayerId=8
+/processorParam:BoxId=11
+/processorParam:StickyBoxId=19
+/processorParam:HoleId=27
+/processorParam:WallId=2
+/processorParam:IceGroundId=4
+/processorParam:SwitchId=3
 /build:Levels/09_stickytris.tmx
 
 #begin Levels/10_stickytris2.tmx
@@ -224,13 +224,13 @@
 /processorParam:ObjectLayerName=Objects
 /processorParam:WallSwitchesLayerName=Walls_Switches
 /processorParam:BackgroundLayerName=Background
-/processorParam:PlayerId=72
-/processorParam:BoxId=6
-/processorParam:StickyBoxId=9
-/processorParam:HoleId=11
-/processorParam:WallId=99
-/processorParam:IceGroundId=90
-/processorParam:SwitchId=25
+/processorParam:PlayerId=8
+/processorParam:BoxId=11
+/processorParam:StickyBoxId=19
+/processorParam:HoleId=27
+/processorParam:WallId=2
+/processorParam:IceGroundId=4
+/processorParam:SwitchId=3
 /build:Levels/10_stickytris2.tmx
 
 #begin Levels/11_sticky_situation.tmx
@@ -239,13 +239,13 @@
 /processorParam:ObjectLayerName=Objects
 /processorParam:WallSwitchesLayerName=Walls_Switches
 /processorParam:BackgroundLayerName=Background
-/processorParam:PlayerId=72
-/processorParam:BoxId=6
-/processorParam:StickyBoxId=9
-/processorParam:HoleId=11
-/processorParam:WallId=99
-/processorParam:IceGroundId=90
-/processorParam:SwitchId=25
+/processorParam:PlayerId=8
+/processorParam:BoxId=11
+/processorParam:StickyBoxId=19
+/processorParam:HoleId=27
+/processorParam:WallId=2
+/processorParam:IceGroundId=4
+/processorParam:SwitchId=3
 /build:Levels/11_sticky_situation.tmx
 
 #begin Levels/12_ice.tmx
@@ -254,13 +254,13 @@
 /processorParam:ObjectLayerName=Objects
 /processorParam:WallSwitchesLayerName=Walls_Switches
 /processorParam:BackgroundLayerName=Background
-/processorParam:PlayerId=72
-/processorParam:BoxId=6
-/processorParam:StickyBoxId=9
-/processorParam:HoleId=11
-/processorParam:WallId=99
-/processorParam:IceGroundId=90
-/processorParam:SwitchId=25
+/processorParam:PlayerId=8
+/processorParam:BoxId=11
+/processorParam:StickyBoxId=19
+/processorParam:HoleId=27
+/processorParam:WallId=2
+/processorParam:IceGroundId=4
+/processorParam:SwitchId=3
 /build:Levels/12_ice.tmx
 
 #begin Levels/13_ice2.tmx
@@ -269,12 +269,12 @@
 /processorParam:ObjectLayerName=Objects
 /processorParam:WallSwitchesLayerName=Walls_Switches
 /processorParam:BackgroundLayerName=Background
-/processorParam:PlayerId=72
-/processorParam:BoxId=6
-/processorParam:StickyBoxId=9
-/processorParam:HoleId=11
-/processorParam:WallId=99
-/processorParam:IceGroundId=90
-/processorParam:SwitchId=25
+/processorParam:PlayerId=8
+/processorParam:BoxId=11
+/processorParam:StickyBoxId=19
+/processorParam:HoleId=27
+/processorParam:WallId=2
+/processorParam:IceGroundId=4
+/processorParam:SwitchId=3
 /build:Levels/13_ice2.tmx
 
