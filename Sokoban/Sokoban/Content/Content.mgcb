@@ -158,7 +158,7 @@
 /processorParam:SwitchId=25
 /build:Levels/05.tmx
 
-#begin Levels/06_sticky_hook.tmx
+#begin Levels/06.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
@@ -171,9 +171,9 @@
 /processorParam:WallId=99
 /processorParam:IceGroundId=90
 /processorParam:SwitchId=25
-/build:Levels/06_sticky_hook.tmx
+/build:Levels/06.tmx
 
-#begin Levels/07_eva.tmx
+#begin Levels/07_sticky_hook.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
@@ -186,9 +186,9 @@
 /processorParam:WallId=99
 /processorParam:IceGroundId=90
 /processorParam:SwitchId=25
-/build:Levels/07_eva.tmx
+/build:Levels/07_sticky_hook.tmx
 
-#begin Levels/08.tmx
+#begin Levels/08_eva.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
@@ -201,9 +201,9 @@
 /processorParam:WallId=99
 /processorParam:IceGroundId=90
 /processorParam:SwitchId=25
-/build:Levels/08.tmx
+/build:Levels/08_eva.tmx
 
-#begin Levels/09.tmx
+#begin Levels/09_stickytris.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
@@ -216,9 +216,9 @@
 /processorParam:WallId=99
 /processorParam:IceGroundId=90
 /processorParam:SwitchId=25
-/build:Levels/09.tmx
+/build:Levels/09_stickytris.tmx
 
-#begin Levels/10.tmx
+#begin Levels/10_stickytris2.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
@@ -231,9 +231,9 @@
 /processorParam:WallId=99
 /processorParam:IceGroundId=90
 /processorParam:SwitchId=25
-/build:Levels/10.tmx
+/build:Levels/10_stickytris2.tmx
 
-#begin Levels/11.tmx
+#begin Levels/11_sticky_situation.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
@@ -246,9 +246,9 @@
 /processorParam:WallId=99
 /processorParam:IceGroundId=90
 /processorParam:SwitchId=25
-/build:Levels/11.tmx
+/build:Levels/11_sticky_situation.tmx
 
-#begin Levels/12.tmx
+#begin Levels/12_ice.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
@@ -261,5 +261,20 @@
 /processorParam:WallId=99
 /processorParam:IceGroundId=90
 /processorParam:SwitchId=25
-/build:Levels/12.tmx
+/build:Levels/12_ice.tmx
+
+#begin Levels/13_ice2.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/processorParam:ObjectLayerName=Objects
+/processorParam:WallSwitchesLayerName=Walls_Switches
+/processorParam:BackgroundLayerName=Background
+/processorParam:PlayerId=72
+/processorParam:BoxId=6
+/processorParam:StickyBoxId=9
+/processorParam:HoleId=11
+/processorParam:WallId=99
+/processorParam:IceGroundId=90
+/processorParam:SwitchId=25
+/build:Levels/13_ice2.tmx
 
