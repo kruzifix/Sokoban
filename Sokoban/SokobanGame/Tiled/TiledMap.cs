@@ -66,9 +66,9 @@ namespace SokobanGame.Tiled
             
             // TODO: replace with teleporter tiles!!
             Color[] teleporterColors = new Color[] {
-                new Color(63, 168, 229),
-                Color.LemonChiffon,
-                Color.IndianRed
+                Color.White,
+                new Color(231, 76, 60),
+                new Color(47, 149, 208)
             };
 
             sb.Begin();
@@ -76,25 +76,9 @@ namespace SokobanGame.Tiled
             int col = 0;
             foreach (var t in Room.Teleporters)
             {
-                Vector2 pos = t.Pos.ToVector2();
-                pos.X = (pos.X + 0.5f) * TileWidth + RenderOffset.X;
-                pos.Y = (pos.Y + 0.5f) * TileHeight + RenderOffset.Y;
-
-                Vector2 target = t.Target.ToVector2();
-                target.X = (target.X + 0.5f) * TileWidth + RenderOffset.X;
-                target.Y = (target.Y + 0.5f) * TileHeight + RenderOffset.Y;
-
-                Vector2 dir = target - pos;
-                dir.Normalize();
-                double angle = Math.Atan2(dir.Y, dir.X) + Math.PI * 0.5;
-
-                dest.X = (int)pos.X;
-                dest.Y = (int)pos.Y;
-
-                Rectangle srcRect = Tileset.GetSourceRect(37);
-
-                sb.Draw(Tileset.Texture, dest, srcRect, teleporterColors[col],
-                        (float)angle, new Vector2(srcRect.Width/2,srcRect.Height/2), SpriteEffects.None, 0);
+                dest.X = t.Pos.X * TileWidth + RenderOffset.X;
+                dest.Y = t.Pos.Y * TileHeight + RenderOffset.Y;
+                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(37), teleporterColors[col]);
                 
                 dest.X = t.Target.X * TileWidth + RenderOffset.X;
                 dest.Y = t.Target.Y * TileHeight + RenderOffset.Y;
