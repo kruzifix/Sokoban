@@ -17,7 +17,7 @@ namespace SokobanGame.Screen
         private Queue<MoveAnimation> animations;
         MoveAnimation currentAnim = null;
         private Vector2 playerPos;
-        private int playerTile = 65;
+        private int playerTile = 8;
 
         private SpriteFont font;
 
@@ -228,7 +228,7 @@ namespace SokobanGame.Screen
 
             map.Room.Undo();
             playerPos = map.Room.CurrentState.PlayerPosition.ToVector2();
-            playerTile = 65;
+            playerTile = 8;
         }
 
         public void Reset()
@@ -238,7 +238,7 @@ namespace SokobanGame.Screen
 
             map.Room.Reset();
             playerPos = map.Room.CurrentState.PlayerPosition.ToVector2();
-            playerTile = 65;
+            playerTile = 8;
         }
     }
 }

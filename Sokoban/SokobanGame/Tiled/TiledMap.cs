@@ -63,7 +63,7 @@ namespace SokobanGame.Tiled
             {
                 layer.Draw(RenderOffset);
             }
-            
+
             // TODO: replace with teleporter tiles!!
             Color[] teleporterColors = new Color[] {
                 Color.White,
@@ -78,11 +78,11 @@ namespace SokobanGame.Tiled
             {
                 dest.X = t.Pos.X * TileWidth + RenderOffset.X;
                 dest.Y = t.Pos.Y * TileHeight + RenderOffset.Y;
-                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(37), teleporterColors[col]);
-                
+                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(35), teleporterColors[col]);
+
                 dest.X = t.Target.X * TileWidth + RenderOffset.X;
                 dest.Y = t.Target.Y * TileHeight + RenderOffset.Y;
-                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(38), teleporterColors[col]);
+                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(36), teleporterColors[col]);
 
                 col++;
             }
@@ -140,16 +140,16 @@ namespace SokobanGame.Tiled
         private void DrawRoomState(RoomState rs)
         {
             sb.Begin();
-            
+
             Rectangle dest = new Rectangle(0, 0, TileWidth, TileHeight);
 
             foreach (Hole h in rs.Holes)
             {
                 dest.X = h.Pos.X * TileWidth + RenderOffset.X;
                 dest.Y = h.Pos.Y * TileHeight + RenderOffset.Y;
-                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(h.Filled ? 58 : 11), Color.White);
+                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(h.Filled ? 28 : 27), Color.White);
             }
-            
+
             int boxPad = 0;
             dest.Width = TileWidth - boxPad * 2;
             dest.Height = TileHeight - boxPad * 2;
@@ -160,7 +160,7 @@ namespace SokobanGame.Tiled
 
                 dest.X = b.Pos.X * TileWidth + RenderOffset.X + boxPad;
                 dest.Y = b.Pos.Y * TileHeight + RenderOffset.Y + boxPad;
-                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(boxOnSwitch ? 19 : 6), Color.White);
+                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(boxOnSwitch ? 12 : 11), Color.White);
             }
 
             foreach (StickyBox b in rs.StickyBoxes)
@@ -169,7 +169,7 @@ namespace SokobanGame.Tiled
 
                 dest.X = b.Pos.X * TileWidth + RenderOffset.X + boxPad;
                 dest.Y = b.Pos.Y * TileHeight + RenderOffset.Y + boxPad;
-                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(boxOnSwitch ? 22: 9), Color.White);
+                sb.Draw(Tileset.Texture, dest, Tileset.GetSourceRect(boxOnSwitch ? 20 : 19), Color.White);
             }
 
             sb.End();

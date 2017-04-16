@@ -33,7 +33,7 @@ namespace SokobanGame.Animation
 
         public void Update(GameTime gameTime)
         {
-            int[] tiles = { 68, 65, 94, 91 };
+            int[] tiles = { 24, 8, 32, 16 };
             
             Time += (float)gameTime.ElapsedGameTime.TotalSeconds;
             Finished = Time >= Length;
