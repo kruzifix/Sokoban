@@ -199,7 +199,7 @@ namespace SokobanGame.Screen
             if (enteringLevel)
             {
                 animProg += time * 2f;
-                if (animProg >= 2f)
+                if (animProg >= 1.3f)
                     ScreenManager.AddScreen(new GameScreen(SelectedLevel));
             }
 

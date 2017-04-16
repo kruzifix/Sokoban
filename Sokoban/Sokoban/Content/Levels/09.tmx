@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="7" height="7" tilewidth="128" tileheight="128" nextobjectid="5">
  <properties>
-  <property name="Name" value="Don't slide to far"/>
+  <property name="Name" value="Don't slide 2 far"/>
  </properties>
  <tileset firstgid="1" name="sokoban_tilesheet" tilewidth="128" tileheight="128" tilecount="104" columns="13">
   <image source="../sokoban_tilesheet.png" width="1664" height="1024"/>

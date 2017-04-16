@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="8" height="7" tilewidth="128" tileheight="128" nextobjectid="5">
  <properties>
-  <property name="Name" value="Blockslide"/>
+  <property name="Name" value="SlideBox"/>
  </properties>
  <tileset firstgid="1" name="sokoban_tilesheet" tilewidth="128" tileheight="128" tilecount="104" columns="13">
   <image source="../sokoban_tilesheet.png" width="1664" height="1024"/>
