@@ -69,16 +69,22 @@ namespace SokobanGame.Screen
             sb.DrawRect(0, topPad, w, borderSize, Colors.PadBorder);
 
             float midTopPad = topPad * 0.5f;
+            int s = topPad / 2;
 
             sb.Begin();
             if (selectedPage > 0)
+            {
                 sb.DrawString(font, "<<<", new Vector2(40, midTopPad), Color.White, Align.MidLeft);
+            }
 
-            int s = topPad / 2;
             var tr = sb.DrawString(font, "Select a Level", new Vector2(w * 0.5f + s, midTopPad), Color.White, Align.Center);
 
             Rectangle r = new Rectangle(tr.X - s * 2 - 4, (int)(midTopPad - s), s * 2, s * 2);
             sb.Draw(Assets.Keys, r, Assets.SrcEnter, Color.White);
+
+            r.X = 40;
+            sb.Draw(Assets.Keys, r, Assets.SrcEsc, Color.White);
+            sb.DrawString(font, "Go Back", new Vector2(r.Right, midTopPad), Colors.PadText, Align.MidLeft);
 
             if (Assets.Levels.Length > (selectedPage + 1) * columns * rows)
                 sb.DrawString(font, ">>>", new Vector2(w - 40, midTopPad), Color.White, Align.MidRight);

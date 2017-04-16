@@ -228,6 +228,7 @@ namespace SokobanGame.Screen
 
             map.Room.Undo();
             playerPos = map.Room.CurrentState.PlayerPosition.ToVector2();
+            playerTile = 65;
         }
 
         public void Reset()
@@ -237,6 +238,7 @@ namespace SokobanGame.Screen
 
             map.Room.Reset();
             playerPos = map.Room.CurrentState.PlayerPosition.ToVector2();
+            playerTile = 65;
         }
     }
 }
