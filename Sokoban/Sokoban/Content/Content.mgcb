@@ -45,6 +45,44 @@
 /processorParam:TextureFormat=Color
 /build:pixel_1x1.png
 
+#begin text_font.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:text_font.spritefont
+
+#begin title_font.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/build:title_font.spritefont
+
+#begin keys.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:keys.png
+
+#begin arrow.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:arrow.png
+
 #begin Levels/01.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
@@ -135,7 +173,7 @@
 /processorParam:SwitchId=25
 /build:Levels/06_sticky_hook.tmx
 
-#begin Levels/07.tmx
+#begin Levels/07_eva.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
@@ -148,7 +186,7 @@
 /processorParam:WallId=99
 /processorParam:IceGroundId=90
 /processorParam:SwitchId=25
-/build:Levels/07.tmx
+/build:Levels/07_eva.tmx
 
 #begin Levels/08.tmx
 /importer:TiledMapImporter
@@ -164,20 +202,6 @@
 /processorParam:IceGroundId=90
 /processorParam:SwitchId=25
 /build:Levels/08.tmx
-
-#begin text_font.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:text_font.spritefont
-
-#begin title_font.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:PremultiplyAlpha=True
-/processorParam:TextureFormat=Compressed
-/build:title_font.spritefont
 
 #begin Levels/09.tmx
 /importer:TiledMapImporter
@@ -209,27 +233,18 @@
 /processorParam:SwitchId=25
 /build:Levels/10.tmx
 
-#begin keys.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:keys.png
-
-#begin arrow.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:arrow.png
+#begin Levels/11.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/processorParam:ObjectLayerName=Objects
+/processorParam:WallSwitchesLayerName=Walls_Switches
+/processorParam:BackgroundLayerName=Background
+/processorParam:PlayerId=72
+/processorParam:BoxId=6
+/processorParam:StickyBoxId=9
+/processorParam:HoleId=11
+/processorParam:WallId=99
+/processorParam:IceGroundId=90
+/processorParam:SwitchId=25
+/build:Levels/11.tmx
 
