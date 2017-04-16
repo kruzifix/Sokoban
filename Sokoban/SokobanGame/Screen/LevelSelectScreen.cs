@@ -182,7 +182,7 @@ namespace SokobanGame.Screen
 
             var tr = sb.DrawString(font, "Select Level", new Vector2(w * 0.5f, midTopPad), Color.White, Align.Center);
 
-            Rectangle r = new Rectangle(tr.X - s * 2 - 4, (int)(midTopPad - s), s * 2, s * 2);
+            Rectangle r = new Rectangle(tr.X - s * 2 - 8, (int)(midTopPad - s), s * 2, s * 2);
             sb.Draw(Assets.Keys, r, Assets.SrcEnter, Color.White);
             r.X = tr.Right;
             sb.Draw(Assets.PadBtns, r, Assets.SrcA, Color.White);

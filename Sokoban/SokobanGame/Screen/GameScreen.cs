@@ -114,11 +114,11 @@ namespace SokobanGame.Screen
             sb.Draw(Assets.Keys, r, Assets.SrcR, Color.White);
 
             tr = sb.DrawString(font, "Reset", new Vector2(r.Right, midBotPad), Colors.PadText, Align.MidLeft);
-            r.X = r.X - r.Width - 36;
+            r.X = r.X - r.Width - 48;
             sb.Draw(Assets.PadBtns, r, Assets.SrcDPad, Color.White);
             var mr = sb.DrawString(font, "Move", new Vector2(r.X - 8, midBotPad), Colors.PadText, Align.MidRight);
 
-            r.X = mr.X - r.Width;
+            r.X = mr.X - r.Width - 4;
             sb.Draw(Assets.Keys, r, Assets.SrcUp, Color.White);
             r.X = r.X - r.Width + 12;
             sb.Draw(Assets.Keys, r, Assets.SrcRight, Color.White);
@@ -130,7 +130,7 @@ namespace SokobanGame.Screen
             r.X = tr.Right;
             sb.Draw(Assets.PadBtns, r, Assets.SrcY, Color.White);
 
-            r.X = r.Right + 36;
+            r.X = r.Right + 48;
             sb.Draw(Assets.Keys, r, Assets.SrcZ, Color.White);
             var ur = sb.DrawString(font, "Undo", new Vector2(r.Right, midBotPad), Colors.PadText, Align.MidLeft);
             r.X = ur.Right;
