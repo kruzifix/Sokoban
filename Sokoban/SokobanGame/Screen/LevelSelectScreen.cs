@@ -180,14 +180,18 @@ namespace SokobanGame.Screen
                 sb.Draw(Assets.ArrowTexture, new Vector2(w - aw - 15 - aof, topPad + borderSize + (h - ah) / 2), Color.White);
             }
 
-            var tr = sb.DrawString(font, "Select a Level", new Vector2(w * 0.5f + s, midTopPad), Color.White, Align.Center);
+            var tr = sb.DrawString(font, "Select Level", new Vector2(w * 0.5f, midTopPad), Color.White, Align.Center);
 
             Rectangle r = new Rectangle(tr.X - s * 2 - 4, (int)(midTopPad - s), s * 2, s * 2);
             sb.Draw(Assets.Keys, r, Assets.SrcEnter, Color.White);
+            r.X = tr.Right;
+            sb.Draw(Assets.PadBtns, r, Assets.SrcA, Color.White);
 
             r.X = 40;
             sb.Draw(Assets.Keys, r, Assets.SrcEsc, Color.White);
-            sb.DrawString(font, "Go Back", new Vector2(r.Right, midTopPad), Colors.PadText, Align.MidLeft);
+            tr = sb.DrawString(font, "Go Back", new Vector2(r.Right, midTopPad), Colors.PadText, Align.MidLeft);
+            r.X = tr.Right;
+            sb.Draw(Assets.PadBtns, r, Assets.SrcB, Color.White);
 
             sb.End();
         }
