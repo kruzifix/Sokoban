@@ -67,7 +67,7 @@ namespace SokobanGame.Tiled
             // TODO: replace with teleporter tiles!!
             Color[] teleporterColors = new Color[] {
                 new Color(63, 168, 229),
-                Color.Magenta,
+                Color.LemonChiffon,
                 Color.IndianRed
             };
 
