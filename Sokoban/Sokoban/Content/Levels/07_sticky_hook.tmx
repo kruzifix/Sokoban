@@ -3,8 +3,8 @@
  <properties>
   <property name="Name" value="Sticky Hook"/>
  </properties>
- <tileset firstgid="1" name="sokoban_tilesheet" tilewidth="128" tileheight="128" tilecount="43" columns="8">
-  <image source="../sokoban_tilesheet.png" width="1024" height="640"/>
+ <tileset firstgid="1" name="sokoban_tilesheet" tilewidth="128" tileheight="128" tilecount="40" columns="8">
+  <image source="../tilesheet.png" width="1024" height="640"/>
  </tileset>
  <layer name="Background" width="10" height="8">
   <data encoding="csv">

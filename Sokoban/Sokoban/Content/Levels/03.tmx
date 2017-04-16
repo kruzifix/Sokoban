@@ -4,8 +4,8 @@
   <property name="Name" value="Teleboxy"/>
   <property name="Teleporters" value="5 4 to 5 2"/>
  </properties>
- <tileset firstgid="1" name="sokoban_tilesheet" tilewidth="128" tileheight="128" tilecount="45" columns="8">
-  <image source="../sokoban_tilesheet.png" width="1024" height="640"/>
+ <tileset firstgid="1" name="sokoban_tilesheet" tilewidth="128" tileheight="128" tilecount="40" columns="8">
+  <image source="../tilesheet.png" width="1024" height="640"/>
  </tileset>
  <layer name="Background" width="8" height="6">
   <data encoding="csv">
