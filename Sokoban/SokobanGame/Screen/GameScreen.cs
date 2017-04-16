@@ -101,6 +101,9 @@ namespace SokobanGame.Screen
 
             sb.DrawString(font, lvlName, new Vector2(width * 0.5f, midTopPad), Colors.PadText, Align.Center);
 
+            string moves = string.Format("Moves: {0}", map.Room.Moves);
+            sb.DrawString(font, moves, new Vector2(width * 0.75f, midTopPad), Colors.PadText, Align.MidLeft);
+
             float midBotPad = height - botPad * 0.5f;
             s = botPad / 2 + 4;
 
