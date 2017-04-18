@@ -120,12 +120,12 @@ namespace SokobanGame.Screen
                     {
                         int nx = horzPad + xo + (dw + padding) * (columns / 2) + padding;
                         tlx = (int)MathHelper.Lerp(tlx, nx, aprog);
-                        tly = (int)MathHelper.Lerp(tly, (topPad + borderSize) +yo+ (h - dw) * 0.5f, aprog);
+                        tly = (int)MathHelper.Lerp(tly, (topPad + borderSize) + yo + (h - dw) * 0.5f, aprog);
                     }
                     else
                     {
                         if (y == 0)
-                            tly -= (int)(aprog * h*0.75f);
+                            tly -= (int)(aprog * h * 0.75f);
                         else
                             tly += (int)(aprog * h);
                     }
@@ -163,6 +163,13 @@ namespace SokobanGame.Screen
                     // draw lock
                     Color back = new Color(27, 27, 27, 158);
                     sb.DrawRect(tlx, tly + 40, tw, tw - 40, back);
+
+                    int liw = Assets.LockIcon.Width / 2;
+                    int lih = Assets.LockIcon.Height / 2;
+                    Rectangle re = new Rectangle(tlx + (tw - liw) / 2, tly + (tw + 20 - lih) / 2, liw, lih);
+                    sb.Begin();
+                    sb.Draw(Assets.LockIcon, re, Color.White);
+                    sb.End();
                 }
             }
 

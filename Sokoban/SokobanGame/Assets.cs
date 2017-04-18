@@ -32,6 +32,8 @@ namespace SokobanGame
         public static Rectangle SrcX { get; private set; }
         public static Rectangle SrcY { get; private set; }
 
+        public static Texture2D LockIcon { get; private set; }
+
         public static TiledMap[] Levels { get; private set; }
 
         public static void LoadAssets(ContentManager content)
@@ -59,6 +61,8 @@ namespace SokobanGame
             SrcB = new Rectangle(200, 0, 100, 100);
             SrcX = new Rectangle(300, 0, 100, 100);
             SrcY = new Rectangle(400, 0, 100, 100);
+
+            LockIcon = content.Load<Texture2D>("lock");
 
             string levelsPath = "Levels";
             DirectoryInfo dir = new DirectoryInfo(content.RootDirectory + "/" + levelsPath);
