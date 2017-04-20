@@ -164,9 +164,11 @@ namespace SokobanGame.Screen
                     Color back = new Color(27, 27, 27, 158);
                     sb.DrawRect(tlx, tly + 40, tw, tw - 40, back);
 
-                    int liw = Assets.LockIcon.Width / 2;
-                    int lih = Assets.LockIcon.Height / 2;
-                    Rectangle re = new Rectangle(tlx + (tw - liw) / 2, tly + (tw + 20 - lih) / 2, liw, lih);
+                    int liw = Math.Min(Assets.LockIcon.Width / 2, tw);
+                    int lih = Math.Min(Assets.LockIcon.Height / 2, tw - 40);
+                    int lsize = Math.Min(liw, lih);
+
+                    Rectangle re = new Rectangle(tlx + (tw - lsize) / 2, tly + 40 + (tw - 40 - lsize) / 2, lsize, lsize);
                     sb.Begin();
                     sb.Draw(Assets.LockIcon, re, Color.White);
                     sb.End();
