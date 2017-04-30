@@ -35,7 +35,7 @@ namespace SokobanGame.Screen
 
         public override void Draw(GameTime gameTime)
         {
-            SokobanGame.Instance.GraphicsDevice.Clear(Color.LightSlateGray);
+            SokobanGame.Instance.GraphicsDevice.Clear(Colors.MenuScreenBackground);
 
             int width = SokobanGame.Width;
             int height = SokobanGame.Height;

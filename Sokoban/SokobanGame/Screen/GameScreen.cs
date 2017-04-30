@@ -56,7 +56,7 @@ namespace SokobanGame.Screen
 
         public override void Draw(GameTime gameTime)
         {
-            SokobanGame.Instance.GraphicsDevice.Clear(Color.LightSlateGray);
+            SokobanGame.Instance.GraphicsDevice.Clear(Colors.GameScreenBackground);
 
             map.Draw();
 
