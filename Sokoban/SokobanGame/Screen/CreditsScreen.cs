@@ -1,8 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// ----------------------------------------------------------------------------------------//
+// Das Spiel "Sokoban" wurde im Rahmen des Bachelorstudiengangs "MultiMediaTechnology" der //
+// Fachhochschule Salzburg von David Cukrowicz als MultiMediaProjekt 1 entwickelt.         //
+//                                                                                         //
+// Author: David Cukrowicz                                                                 //
+//                                                                                         //
+// Copyright (c) 2017 All Rights Reserved                                                  //
+// ----------------------------------------------------------------------------------------//
+
 using Microsoft.Xna.Framework;
 using SokobanGame.Input;
 using Microsoft.Xna.Framework.Graphics;

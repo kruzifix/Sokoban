@@ -1,10 +1,17 @@
-﻿using Microsoft.Xna.Framework;
+﻿// ----------------------------------------------------------------------------------------//
+// Das Spiel "Sokoban" wurde im Rahmen des Bachelorstudiengangs "MultiMediaTechnology" der //
+// Fachhochschule Salzburg von David Cukrowicz als MultiMediaProjekt 1 entwickelt.         //
+//                                                                                         //
+// Author: David Cukrowicz                                                                 //
+//                                                                                         //
+// Copyright (c) 2017 All Rights Reserved                                                  //
+// ----------------------------------------------------------------------------------------//
+
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace SokobanGame
 {
-
-
     public static class Utility
     {
         public static void DrawRect(this SpriteBatch sb, float x, float y, float width, float height, Color color, Align align = Align.TopLeft)
