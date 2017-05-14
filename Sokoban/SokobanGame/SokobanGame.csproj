@@ -53,6 +53,7 @@
     <Compile Include="Logic\StickyBox.cs" />
     <Compile Include="Logic\Teleporter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Screen\CreditsScreen.cs" />
     <Compile Include="Screen\FinishedScreen.cs" />
     <Compile Include="Screen\GameScreen.cs" />
     <Compile Include="Screen\LevelSelectScreen.cs" />

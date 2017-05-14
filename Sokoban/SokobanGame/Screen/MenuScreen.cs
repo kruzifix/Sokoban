@@ -10,8 +10,6 @@ namespace SokobanGame.Screen
         private int selectedOption;
         private string[] options = {
             "Play!",
-            "Tutorial",
-            "Options",
             "Credits",
             "Exit"
         };
@@ -125,10 +123,9 @@ namespace SokobanGame.Screen
                         ScreenManager.AddScreen(new LevelSelectScreen());
                         break;
                     case 1:
-                        LevelSelectScreen.LockLevels = false;
-                        options[1] = "Levels unlocked";
+                        ScreenManager.AddScreen(new CreditsScreen());
                         break;
-                    case 4:
+                    case 2:
                         exiting = true;
                         return;
                 }

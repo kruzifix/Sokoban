@@ -270,6 +270,11 @@ namespace SokobanGame.Screen
             }
             if (SelectedLevel >= Assets.Levels.Length)
                 SelectedLevel = Assets.Levels.Length - 1;
+
+            if (InputManager.KeyPressed(Microsoft.Xna.Framework.Input.Keys.U))
+            {
+                LockLevels = !LockLevels;
+            }
         }
     }
 }
