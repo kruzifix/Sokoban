@@ -230,6 +230,9 @@ namespace SokobanGame.Screen
                 }
             }
 
+            if (enteringLevel)
+                return;
+
             int maxIndex = columns * rows;
 
             if (InputManager.Pressed("right"))
