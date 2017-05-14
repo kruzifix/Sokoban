@@ -37,6 +37,19 @@ namespace SokobanGame
             return new Vector2(X, Y);
         }
 
+        public MovementDir ToMovementDir()
+        {
+            if (X == 0 && Y < 0)
+                return MovementDir.Up;
+            if (X == 0 && Y > 0)
+                return MovementDir.Down;
+            if (X > 0 && Y == 0)
+                return MovementDir.Right;
+            if (X < 0 && Y == 0)
+                return MovementDir.Left;
+            return MovementDir.Down;
+        }
+
         public override bool Equals(object obj)
         {
             if (obj == null)
