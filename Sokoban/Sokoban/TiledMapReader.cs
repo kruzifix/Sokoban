@@ -41,6 +41,8 @@ namespace Sokoban
             int tsColumns = input.ReadInt32();
             string tsPath = input.ReadString();
 
+            // HACK!!! UGLY!!!
+            // TODO: tileset texture gets loaded foreach level. cache already loaded tilesets!!!
             Texture2D tileSetTexture = input.ContentManager.Load<Texture2D>(tsPath);
             var tileset = new TiledTileset(tsName, tsTileWidth, tsTileHeight, tsTileCount, tsColumns, tileSetTexture);
 
