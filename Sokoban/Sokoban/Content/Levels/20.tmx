@@ -1,30 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="8" height="6" tilewidth="128" tileheight="128" nextobjectid="3">
  <properties>
-  <property name="Name" value="Teleboxy"/>
-  <property name="Teleporters" value="5 4 to 5 2"/>
+  <property name="Name" value="Sticky box box"/>
  </properties>
  <tileset firstgid="1" name="sokoban_tilesheet" tilewidth="128" tileheight="128" tilecount="40" columns="8">
   <image source="../tilesheet.png" width="1024" height="640"/>
  </tileset>
  <layer name="Background" width="8" height="6">
   <data encoding="csv">
-0,0,2,2,2,2,2,2,
+0,0,0,2,2,2,2,2,
 0,2,2,2,2,2,2,2,
 2,2,2,2,2,2,2,2,
 2,2,2,2,2,2,2,2,
-2,2,2,2,2,2,2,2,
-2,2,2,2,2,2,2,2
+2,2,2,2,2,2,2,0,
+2,2,2,2,2,2,0,0
 </data>
  </layer>
  <layer name="Walls_Switches" width="8" height="6">
   <data encoding="csv">
-0,0,3,3,3,3,3,3,
-0,3,3,0,0,0,0,3,
+0,0,0,3,3,3,3,3,
+0,3,3,3,0,4,4,3,
 3,3,0,0,0,0,4,3,
-3,0,0,0,0,3,3,3,
-3,0,0,0,0,0,4,3,
-3,3,3,3,3,3,3,3
+3,0,0,0,0,0,3,3,
+3,0,0,0,0,3,3,0,
+3,3,3,3,3,3,0,0
 </data>
  </layer>
  <layer name="Objects" width="8" height="6">
@@ -32,8 +31,8 @@
 0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,
-0,0,12,0,12,0,0,0,
-0,9,0,0,0,0,0,0,
+0,0,20,20,0,0,0,0,
+0,9,0,20,0,0,0,0,
 0,0,0,0,0,0,0,0
 </data>
  </layer>

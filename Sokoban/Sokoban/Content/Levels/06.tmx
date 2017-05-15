@@ -1,39 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="8" height="6" tilewidth="128" tileheight="128" nextobjectid="3">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="7" height="6" tilewidth="128" tileheight="128" nextobjectid="3">
  <properties>
-  <property name="Name" value="Sticky box box"/>
+  <property name="Name" value="Porty Puzzle"/>
+  <property name="Teleporters" value="3 4 to 2 1"/>
  </properties>
  <tileset firstgid="1" name="sokoban_tilesheet" tilewidth="128" tileheight="128" tilecount="40" columns="8">
   <image source="../tilesheet.png" width="1024" height="640"/>
  </tileset>
- <layer name="Background" width="8" height="6">
+ <layer name="Background" width="7" height="6">
   <data encoding="csv">
-0,0,0,2,2,2,2,2,
-0,2,2,2,2,2,2,2,
-2,2,2,2,2,2,2,2,
-2,2,2,2,2,2,2,2,
-2,2,2,2,2,2,2,0,
-2,2,2,2,2,2,0,0
+2,2,2,2,2,2,0,
+2,2,2,2,2,2,0,
+2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,
+2,2,2,2,2,2,2,
+2,2,2,2,2,2,2
 </data>
  </layer>
- <layer name="Walls_Switches" width="8" height="6">
+ <layer name="Walls_Switches" width="7" height="6">
   <data encoding="csv">
-0,0,0,3,3,3,3,3,
-0,3,3,3,0,4,4,3,
-3,3,0,0,0,0,4,3,
-3,0,0,0,0,0,3,3,
-3,0,0,0,0,3,3,0,
-3,3,3,3,3,3,0,0
+3,3,3,3,3,3,0,
+3,4,0,4,0,3,0,
+3,0,0,3,0,3,3,
+3,0,0,0,0,0,3,
+3,0,4,0,0,0,3,
+3,3,3,3,3,3,3
 </data>
  </layer>
- <layer name="Objects" width="8" height="6">
+ <layer name="Objects" width="7" height="6">
   <data encoding="csv">
-0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,
-0,0,20,20,0,0,0,0,
-0,9,0,20,0,0,0,0,
-0,0,0,0,0,0,0,0
+0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,
+0,0,12,12,12,0,0,
+0,9,0,0,0,0,0,
+0,0,0,0,0,0,0
 </data>
  </layer>
 </map>

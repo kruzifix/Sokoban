@@ -71,6 +71,42 @@
 /processorParam:TextureFormat=Color
 /build:arrow.png
 
+#begin tilesheet.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:tilesheet.png
+
+#begin pad_buttons.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:pad_buttons.png
+
+#begin lock.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:lock.png
+
 #begin Levels/01.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
@@ -161,7 +197,7 @@
 /processorParam:SwitchId=3
 /build:Levels/06.tmx
 
-#begin Levels/07_sticky_hook.tmx
+#begin Levels/20.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
@@ -174,9 +210,9 @@
 /processorParam:WallId=2
 /processorParam:IceGroundId=4
 /processorParam:SwitchId=3
-/build:Levels/07_sticky_hook.tmx
+/build:Levels/20.tmx
 
-#begin Levels/08_eva.tmx
+#begin Levels/21.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
@@ -189,9 +225,9 @@
 /processorParam:WallId=2
 /processorParam:IceGroundId=4
 /processorParam:SwitchId=3
-/build:Levels/08_eva.tmx
+/build:Levels/21.tmx
 
-#begin Levels/09_stickytris.tmx
+#begin Levels/22.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
@@ -204,9 +240,9 @@
 /processorParam:WallId=2
 /processorParam:IceGroundId=4
 /processorParam:SwitchId=3
-/build:Levels/09_stickytris.tmx
+/build:Levels/22.tmx
 
-#begin Levels/10_stickytris2.tmx
+#begin Levels/23.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
@@ -219,9 +255,9 @@
 /processorParam:WallId=2
 /processorParam:IceGroundId=4
 /processorParam:SwitchId=3
-/build:Levels/10_stickytris2.tmx
+/build:Levels/23.tmx
 
-#begin Levels/11_sticky_situation.tmx
+#begin Levels/24.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
@@ -234,9 +270,9 @@
 /processorParam:WallId=2
 /processorParam:IceGroundId=4
 /processorParam:SwitchId=3
-/build:Levels/11_sticky_situation.tmx
+/build:Levels/24.tmx
 
-#begin Levels/12_ice.tmx
+#begin Levels/25.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
@@ -249,9 +285,9 @@
 /processorParam:WallId=2
 /processorParam:IceGroundId=4
 /processorParam:SwitchId=3
-/build:Levels/12_ice.tmx
+/build:Levels/25.tmx
 
-#begin Levels/13_ice2.tmx
+#begin Levels/40.tmx
 /importer:TiledMapImporter
 /processor:TiledMapProcessor
 /processorParam:ObjectLayerName=Objects
@@ -264,41 +300,20 @@
 /processorParam:WallId=2
 /processorParam:IceGroundId=4
 /processorParam:SwitchId=3
-/build:Levels/13_ice2.tmx
+/build:Levels/40.tmx
 
-#begin tilesheet.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:tilesheet.png
-
-#begin pad_buttons.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:pad_buttons.png
-
-#begin lock.png
-/importer:TextureImporter
-/processor:TextureProcessor
-/processorParam:ColorKeyColor=255,0,255,255
-/processorParam:ColorKeyEnabled=True
-/processorParam:GenerateMipmaps=False
-/processorParam:PremultiplyAlpha=True
-/processorParam:ResizeToPowerOfTwo=False
-/processorParam:MakeSquare=False
-/processorParam:TextureFormat=Color
-/build:lock.png
+#begin Levels/41.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/processorParam:ObjectLayerName=Objects
+/processorParam:WallSwitchesLayerName=Walls_Switches
+/processorParam:BackgroundLayerName=Background
+/processorParam:PlayerId=8
+/processorParam:BoxId=11
+/processorParam:StickyBoxId=19
+/processorParam:HoleId=27
+/processorParam:WallId=2
+/processorParam:IceGroundId=4
+/processorParam:SwitchId=3
+/build:Levels/41.tmx
 
