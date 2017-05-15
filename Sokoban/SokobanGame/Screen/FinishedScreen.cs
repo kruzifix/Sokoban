@@ -47,7 +47,7 @@ namespace SokobanGame.Screen
             sb.DrawString(font, msg, new Vector2(width * 0.5f, height * 0.5f - 75), Colors.BoxTextSel, Align.Center);
             sb.DrawString(font, string.Format("Score: {0} Moves", moveCount), new Vector2(width * 0.5f, height * 0.5f - 25), Colors.BoxText, Align.Center);
 
-            var lr = sb.DrawString(font, "Next Level", new Vector2(width * 0.5f, height * 0.5f + 45), Colors.BoxText, Align.Center);
+            var lr = sb.DrawString(font, finishedLevel == Assets.Levels.Length - 1 ? "Credits" : "Next Level", new Vector2(width * 0.5f, height * 0.5f + 45), Colors.BoxText, Align.Center);
             int s = 80;
             Rectangle r = new Rectangle(lr.X - s - 8, lr.Y + (lr.Height - s) / 2, s, s);
 
@@ -72,9 +72,18 @@ namespace SokobanGame.Screen
             {
                 ScreenManager.RemoveScreen(); // finished
                 ScreenManager.RemoveScreen(); // gamescreen
-                int newLevel = (finishedLevel + 1) % Assets.Levels.Length;
-                (ScreenManager.TopScreen as LevelSelectScreen).SelectedLevel = newLevel;
-                ScreenManager.AddScreen(new GameScreen(newLevel));
+                
+                if (finishedLevel == Assets.Levels.Length - 1)
+                {
+                    ScreenManager.RemoveScreen(); // level select
+                    ScreenManager.AddScreen(new CreditsScreen());
+                }
+                else
+                {
+                    int newLevel = (finishedLevel + 1) % Assets.Levels.Length;
+                    (ScreenManager.TopScreen as LevelSelectScreen).SelectedLevel = newLevel;
+                    ScreenManager.AddScreen(new GameScreen(newLevel));
+                }
             }
 
             if (InputManager.Pressed("reset"))

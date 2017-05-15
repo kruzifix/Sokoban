@@ -54,6 +54,8 @@ namespace SokobanGame.Screen
 
             sb.Begin();
             sb.DrawString(titleFont, title, new Vector2(width * 0.5f, -120 + 240 * k), Color.White, Align.Center);
+            sb.DrawString(Assets.DebugFont, "Toggle Fullscreen with F10", new Vector2(20, height + 20 - 40 * k), Color.Black, Align.MidLeft);
+            sb.DrawString(Assets.DebugFont, "A Game made by David Cukrowicz", new Vector2(width - 20, height + 20 - 40 * k), Color.Black, Align.MidRight);
             sb.End();
 
             int textPadding = 70;

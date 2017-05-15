@@ -63,7 +63,7 @@ namespace SokobanGame
         {
             InputManager.Update();
 
-            if (InputManager.KeyPressed(Keys.F))
+            if (InputManager.KeyPressed(Keys.F10))
             {
                 SetFullScreen(!FullScreened);
             }
