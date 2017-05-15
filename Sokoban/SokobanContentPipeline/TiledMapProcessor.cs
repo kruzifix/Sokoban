@@ -34,7 +34,7 @@ namespace SokobanContentPipeline
         public int HoleId { get; set; } = 27;
 
         public int WallId { get; set; } = 2;
-        public int IceGroundId { get; set; } = 4;
+        public int[] IceGroundIds { get; set; } = { 4, 5, 6, 7, 13, 14, 15, 21, 22, 23, 29, 30, 31 };
         public int SwitchId { get; set; } = 3;
 
         public override TiledMapProcessorOutput Process(TiledMapFile input, ContentProcessorContext context)
@@ -171,8 +171,14 @@ namespace SokobanContentPipeline
                         {
                             for (int j = 0; j < output.Height; j++)
                             {
-                                if (layer.Data[i, j] - 1 == IceGroundId)
-                                    output.Room.Walls[i, j] = 2;
+                                for (int k = 0; k < IceGroundIds.Length; k++)
+                                {
+                                    if (layer.Data[i, j] - 1 == IceGroundIds[k])
+                                    {
+                                        output.Room.Walls[i, j] = 2;
+                                        break;
+                                    }
+                                }
                             }
                         }
 
