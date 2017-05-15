@@ -317,3 +317,18 @@
 /processorParam:SwitchId=3
 /build:Levels/41.tmx
 
+#begin Levels/42.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/processorParam:ObjectLayerName=Objects
+/processorParam:WallSwitchesLayerName=Walls_Switches
+/processorParam:BackgroundLayerName=Background
+/processorParam:PlayerId=8
+/processorParam:BoxId=11
+/processorParam:StickyBoxId=19
+/processorParam:HoleId=27
+/processorParam:WallId=2
+/processorParam:IceGroundId=4
+/processorParam:SwitchId=3
+/build:Levels/42.tmx
+
