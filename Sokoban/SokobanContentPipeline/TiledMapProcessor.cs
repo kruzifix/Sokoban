@@ -34,7 +34,7 @@ namespace SokobanContentPipeline
         public int HoleId { get; set; } = 27;
 
         public int WallId { get; set; } = 2;
-        public int[] IceGroundIds { get; set; } = { 4, 5, 6, 7, 13, 14, 15, 21, 22, 23, 29, 30, 31 };
+        public int[] IceGroundIds { get; set; } = { 4, 5, 6, 7, 13, 14, 15, 21, 22, 23, 29, 30, 31, 37, 38, 39 };
         public int SwitchId { get; set; } = 3;
 
         public override TiledMapProcessorOutput Process(TiledMapFile input, ContentProcessorContext context)

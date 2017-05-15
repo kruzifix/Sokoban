@@ -118,7 +118,7 @@
 /processorParam:StickyBoxId=19
 /processorParam:HoleId=27
 /processorParam:WallId=2
-/processorParam:IceGroundId=4
+/processorParam:IceGroundIds=Int32[] Array
 /processorParam:SwitchId=3
 /build:Levels/01.tmx
 
@@ -133,7 +133,7 @@
 /processorParam:StickyBoxId=19
 /processorParam:HoleId=27
 /processorParam:WallId=2
-/processorParam:IceGroundId=4
+/processorParam:IceGroundIds=Int32[] Array
 /processorParam:SwitchId=3
 /build:Levels/02.tmx
 
@@ -148,7 +148,7 @@
 /processorParam:StickyBoxId=19
 /processorParam:HoleId=27
 /processorParam:WallId=2
-/processorParam:IceGroundId=4
+/processorParam:IceGroundIds=Int32[] Array
 /processorParam:SwitchId=3
 /build:Levels/03.tmx
 
@@ -163,7 +163,7 @@
 /processorParam:StickyBoxId=19
 /processorParam:HoleId=27
 /processorParam:WallId=2
-/processorParam:IceGroundId=4
+/processorParam:IceGroundIds=Int32[] Array
 /processorParam:SwitchId=3
 /build:Levels/04.tmx
 
@@ -178,7 +178,7 @@
 /processorParam:StickyBoxId=19
 /processorParam:HoleId=27
 /processorParam:WallId=2
-/processorParam:IceGroundId=4
+/processorParam:IceGroundIds=Int32[] Array
 /processorParam:SwitchId=3
 /build:Levels/05.tmx
 
@@ -193,7 +193,7 @@
 /processorParam:StickyBoxId=19
 /processorParam:HoleId=27
 /processorParam:WallId=2
-/processorParam:IceGroundId=4
+/processorParam:IceGroundIds=Int32[] Array
 /processorParam:SwitchId=3
 /build:Levels/06.tmx
 
@@ -208,7 +208,7 @@
 /processorParam:StickyBoxId=19
 /processorParam:HoleId=27
 /processorParam:WallId=2
-/processorParam:IceGroundId=4
+/processorParam:IceGroundIds=Int32[] Array
 /processorParam:SwitchId=3
 /build:Levels/20.tmx
 
@@ -223,7 +223,7 @@
 /processorParam:StickyBoxId=19
 /processorParam:HoleId=27
 /processorParam:WallId=2
-/processorParam:IceGroundId=4
+/processorParam:IceGroundIds=Int32[] Array
 /processorParam:SwitchId=3
 /build:Levels/21.tmx
 
@@ -238,7 +238,7 @@
 /processorParam:StickyBoxId=19
 /processorParam:HoleId=27
 /processorParam:WallId=2
-/processorParam:IceGroundId=4
+/processorParam:IceGroundIds=Int32[] Array
 /processorParam:SwitchId=3
 /build:Levels/22.tmx
 
@@ -253,7 +253,7 @@
 /processorParam:StickyBoxId=19
 /processorParam:HoleId=27
 /processorParam:WallId=2
-/processorParam:IceGroundId=4
+/processorParam:IceGroundIds=Int32[] Array
 /processorParam:SwitchId=3
 /build:Levels/23.tmx
 
@@ -268,7 +268,7 @@
 /processorParam:StickyBoxId=19
 /processorParam:HoleId=27
 /processorParam:WallId=2
-/processorParam:IceGroundId=4
+/processorParam:IceGroundIds=Int32[] Array
 /processorParam:SwitchId=3
 /build:Levels/24.tmx
 
@@ -283,7 +283,7 @@
 /processorParam:StickyBoxId=19
 /processorParam:HoleId=27
 /processorParam:WallId=2
-/processorParam:IceGroundId=4
+/processorParam:IceGroundIds=Int32[] Array
 /processorParam:SwitchId=3
 /build:Levels/25.tmx
 
@@ -298,7 +298,7 @@
 /processorParam:StickyBoxId=19
 /processorParam:HoleId=27
 /processorParam:WallId=2
-/processorParam:IceGroundId=4
+/processorParam:IceGroundIds=Int32[] Array
 /processorParam:SwitchId=3
 /build:Levels/40.tmx
 
@@ -313,7 +313,7 @@
 /processorParam:StickyBoxId=19
 /processorParam:HoleId=27
 /processorParam:WallId=2
-/processorParam:IceGroundId=4
+/processorParam:IceGroundIds=Int32[] Array
 /processorParam:SwitchId=3
 /build:Levels/41.tmx
 
@@ -328,7 +328,22 @@
 /processorParam:StickyBoxId=19
 /processorParam:HoleId=27
 /processorParam:WallId=2
-/processorParam:IceGroundId=4
+/processorParam:IceGroundIds=Int32[] Array
 /processorParam:SwitchId=3
 /build:Levels/42.tmx
+
+#begin Levels/43.tmx
+/importer:TiledMapImporter
+/processor:TiledMapProcessor
+/processorParam:ObjectLayerName=Objects
+/processorParam:WallSwitchesLayerName=Walls_Switches
+/processorParam:BackgroundLayerName=Background
+/processorParam:PlayerId=8
+/processorParam:BoxId=11
+/processorParam:StickyBoxId=19
+/processorParam:HoleId=27
+/processorParam:WallId=2
+/processorParam:IceGroundIds=Int32[] Array
+/processorParam:SwitchId=3
+/build:Levels/43.tmx
 
