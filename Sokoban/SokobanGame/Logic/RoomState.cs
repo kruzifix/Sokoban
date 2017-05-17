@@ -21,10 +21,13 @@ namespace SokobanGame.Logic
         public List<StickyBox> StickyBoxes { get; private set; }
         public List<Hole> Holes { get; private set; }
 
+        public int MoveCount { get; set; }
+
         public RoomState(IntVec playerPosition, IEnumerable<Entity> ents)
         {
             PlayerPosition = playerPosition;
             Entities = new List<Entity>(ents);
+            MoveCount = 0;
 
             HashEntities();
         }
@@ -38,7 +41,9 @@ namespace SokobanGame.Logic
 
         public RoomState Copy()
         {
-            return new RoomState(PlayerPosition, Entities.ConvertAll(e => e.Copy()));
+            var rs = new RoomState(PlayerPosition, Entities.ConvertAll(e => e.Copy()));
+            rs.MoveCount = MoveCount;
+            return rs;
         }
 
         public Entity EntityAt(IntVec pos)

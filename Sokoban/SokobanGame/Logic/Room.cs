@@ -23,9 +23,10 @@ namespace SokobanGame.Logic
 
         private RoomState initialState;
         public RoomState CurrentState { get; private set; }
+
         private Stack<RoomState> history;
         
-        public int Moves { get { return history.Count; } }
+        public int Moves { get { return CurrentState.MoveCount; } }
 
         public Room(int width, int height, IntVec[] switches, Teleporter[] teleporters, RoomState initialState)
         {
@@ -37,7 +38,9 @@ namespace SokobanGame.Logic
 
             this.initialState = initialState.Copy();
             history = new Stack<RoomState>();
-            Reset();
+
+            CurrentState = initialState.Copy();
+            CurrentState.MoveCount = 0;
         }
 
         public void SetObject(int x, int y, FieldObject v)
@@ -57,7 +60,9 @@ namespace SokobanGame.Logic
 
         public void Reset()
         {
-            history.Clear();
+            if (CurrentState.MoveCount == 0)
+                return;
+            history.Push(CurrentState.Copy());
             CurrentState = initialState.Copy();
         }
 
@@ -135,6 +140,7 @@ namespace SokobanGame.Logic
             var anim = new MoveAnimation(CurrentState.PlayerPosition, pos, animTime);
             
             CurrentState.PlayerPosition = pos;
+            CurrentState.MoveCount++;
 
             history.Push(oldState);
 
