@@ -19,6 +19,7 @@ namespace SokobanGame.Screen
         private int selectedOption;
         private string[] options = {
             "Play!",
+            "How to play",
             "Credits",
             "Exit"
         };
@@ -134,9 +135,12 @@ namespace SokobanGame.Screen
                         ScreenManager.AddScreen(new LevelSelectScreen());
                         break;
                     case 1:
-                        ScreenManager.AddScreen(new CreditsScreen());
+                        ScreenManager.AddScreen(new TutorialScreen());
                         break;
                     case 2:
+                        ScreenManager.AddScreen(new CreditsScreen());
+                        break;
+                    case 3:
                         exiting = true;
                         return;
                 }

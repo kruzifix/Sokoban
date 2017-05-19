@@ -16,6 +16,7 @@ namespace SokobanGame
         public static Color MenuScreenBackground { get { return Color.LightSlateGray; } }
         public static Color LevelSelectScreenBackground { get { return Color.LightSlateGray; } }
         public static Color GameScreenBackground { get { return Color.LightSlateGray; } }
+        public static Color TutorialScreenBackground { get { return Color.LightSlateGray; } }
 
         public static Color PadBackground { get { return new Color(51, 51, 51); } }
         public static Color PadBorder { get { return Color.LightGray; } }

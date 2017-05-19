@@ -60,6 +60,7 @@
     <Compile Include="Screen\MenuScreen.cs" />
     <Compile Include="Screen\Screen.cs" />
     <Compile Include="Screen\ScreenManager.cs" />
+    <Compile Include="Screen\TutorialScreen.cs" />
     <Compile Include="SokobanGame.cs" />
     <Compile Include="Tiled\TiledLayer.cs" />
     <Compile Include="Tiled\TiledMap.cs" />
