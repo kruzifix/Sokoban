@@ -62,7 +62,7 @@ namespace SokobanGame.Screen
 
         public override void Update(GameTime gameTime)
         {
-            if (InputManager.Pressed("back"))
+            if (InputManager.Pressed("back") || InputManager.Pressed("confirm"))
             {
                 ScreenManager.RemoveScreen();
             }
