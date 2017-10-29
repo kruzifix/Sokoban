@@ -6,6 +6,8 @@ Sokoban is a old genre of puzzle games.
 The aim of the game is to push boxes onto defined spaces.
 By adding new mechanics this game features challenging levels.
 
+Get the latest release here: [Releases](https://github.com/kruzifix/Sokoban/releases)
+
 This project was made as part of the bachelors program MultiMediaTechnology of the University of Applied Sciences Salzburg.
 
 ### Screenshots ###
